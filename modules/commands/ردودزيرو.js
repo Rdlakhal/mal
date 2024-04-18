@@ -254,11 +254,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
 
    if ((event.body.toLowerCase() == "تبا") || (event.body.toLowerCase() == "اسكت احسن لك") || (event.body.toLowerCase() == "🙂 💢")) {
      return api.sendMessage("احا حبي عصب انفدو بريشكم🐧😱.", threadID);
-   };
-
-   if ((event.body.toLowerCase() == "يوتا") || (event.body.toLowerCase() == "نا")) {
-     return api.sendMessage("️يوتا التوب و الباقي فوتوشوب...! 🍃⚜️", threadID);
-   };
+   }; 
 
    if ((event.body.toLowerCase() == "الصور") || (event.body.toLowerCase() == ".صور")) {
      return api.sendMessage("️اذهب لغوغل يا ابني", threadID);
