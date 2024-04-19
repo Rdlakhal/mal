@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermission: 0,
 	credits: "John Lester",
 	description: " ",
-	commandCategory: "𝔻𝔼𝕍𝔼𝕃𝕆ℙ𝔼ℝ",
+	commandCategory: "خدمات",
 	cooldowns: 0,
 };
 const fs = require("fs");
