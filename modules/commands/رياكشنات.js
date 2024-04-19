@@ -16,7 +16,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 				body: ""
 			}
 			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("😠", event.messageID, (err) => {}, true)
+    api.setMessageReaction("😐", event.messageID, (err) => {}, true)
           };
     if(react.includes("افويسد") || react.includes("Mahal") || react.includes("Love") || react.includes("love") || react.includes("lab") || react.includes("lab") || react.includes("😊") || react.includes("😗") || react.includes("😙") || react.includes("😘") || react.includes("🐢") || react.includes("😍") || react.includes("🤭") || react.includes("🥰") || react.includes("😇") || react.includes("🤡")) {
       var lab = {
