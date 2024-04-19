@@ -102,12 +102,6 @@ if ((event.body.toLowerCase() == "ريحتو قويا بدها بندول") || (
 if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="بحبك" && event.senderID == "100094409873389")) {
      return api.sendMessage("وانا اموت فيك يا حبي", threadID);
    };
-  if ((event.body.toLowerCase() == "بنتي") || (event.body.toLowerCase() =="بيبي" && event.senderID == "100094409873389")) {
-     return api.sendMessage("العب بعيد...! 🤦‍♀️🍃", threadID);
-   };
-  if ((event.body.toLowerCase() == "بنتي") || (event.body.toLowerCase() =="بيبي" && event.senderID == "100094409873389")) {
-     return api.sendMessage("نعم بابا...!😋🌹", threadID);
-   };
   if ((event.body.toLowerCase() == "🦧") || (event.body.toLowerCase() == "🦍")) {
      return api.sendMessage("واو هناك غوريلى مفقسة في نص الجروب", threadID);
    };
@@ -191,7 +185,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
    };
 
    if ((event.body.toLowerCase() == "بوت") || (event.body.toLowerCase() == "يا بوت")) {
-     return api.sendMessage(" اسمي ملاك و لما تتكلم معي تقول يوتا 😑💢", threadID);
+     return api.sendMessage(" اسمي ملاك", threadID);
    };
 
    if ((event.body.toLowerCase() == "صباحو") || (event.body.toLowerCase() == "صباح الخير")) {
@@ -218,7 +212,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
   };
 
    if ((event.body.toLowerCase() == "اسكت") || (event.body.toLowerCase() == "توقف")) {
-     return api.sendMessage("مش بسكت لي امثالك🧐.", threadID);
+     return api.sendMessage("كيف تقدر تسكت بنت كيوت مثلي... 🥹😚", threadID);
    };
 
    if ((event.body.toLowerCase() == "مارسي") || (event.body.toLowerCase() == "ملوكة")) {
@@ -266,11 +260,11 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
    };
 
    if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اجل")) {
-     return api.sendMessage("️بشر يعععع..! 😳🚮", threadID);
+     return api.sendMessage("️نعامة تخبطك فيوالحيط...! 😑😾", threadID);
    };
 
    if ((event.body.toLowerCase() == "🙂") || (event.body.toLowerCase() == "🙃")) {
-     return api.sendMessage("️انا ابحث عن كرامت احدهم الم تروها...! 😂🍯", threadID);
+     return api.sendMessage("️انت مقتنع بنفسك بهاذا الوجه البشع؟🤨🍷...! 😂🍯", threadID);
    };
 
    if ((event.body.toLowerCase() == "لا احد يحبني") || (event.body.toLowerCase() == "انا حزين") || (event.body.toLowerCase() == "انا سنجل")) {
@@ -282,7 +276,7 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
    };
    
    if ((event.body.toLowerCase() == "😂") || (event.body.toLowerCase() == "😁") || (event.body.toLowerCase() == "😆") || (event.body.toLowerCase() == "🤣") || (event.body.toLowerCase() == "😸") || (event.body.toLowerCase() == "😹")) {
-     return api.sendMessage("من يضحك كثيرة يبكي اخيرا..!😪🫀", threadID);
+     return api.sendMessage("الله يدوم الضحكة الحلوه يبعد روحي..!😚😋", threadID);
    };
 
    if ((event.body.toLowerCase() == "🥰") || (event.body.toLowerCase() == "😍") || (event.body.toLowerCase() == "😻") || (event.body.toLowerCase() == "😘")) {
