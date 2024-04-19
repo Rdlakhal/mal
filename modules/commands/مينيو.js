@@ -76,8 +76,8 @@ module.exports.run = async function({ api, event, args }) {
   const axios = require('axios');
   const fs = require('fs-extra');
   const imgP = []
-  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/367521719_3602764970049730_3777527349120950515_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=z5Shb6I7t80AX_cEnvZ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQpqhboCU7smdpPMxVEfL4f5uOvVqcCKcWQpz93Ee5Gog&oe=662B2B43","https://scontent.xx.fbcdn.net/v/t1.15752-9/363784106_139715549164670_3768734630738836831_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3XilEyDNKo4AX8k2Plc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQuDbwi69Dygg4yIIFUgWJK9dM8C91fk_iUq_96XnGJxg&oe=662B161C" 
-,"https://scontent.xx.fbcdn.net/v/t1.15752-9/367626146_1374655346798034_6959125126174834656_n.jpg?stp=dst-jpg_p480x480&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=35VyNpBeQ0YAX9mhJlG&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRftFMRv8HMmOe74-vC_1JtO7B907n0CGde_Or82LCrqQ&oe=662B0BF1",]
+  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/367385987_232212126452955_5945552453509546609_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF4ZXcoQTFsA2UW8Koi8Y7Bp01VmzC5xy-nTVWbMLnHLy4lrJXIWFox-VnAe4VtC4PliejB5uMVgWFhenaC1BIb&_nc_ohc=3LGeavEI8SEAb4dr3oU&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QECzlaFZOwI7qYtpqAo_NGLZ0KLjPzn5tGWsydrs9Eoaw&oe=664A104C","https://scontent.xx.fbcdn.net/v/t1.15752-9/363784106_139715549164670_3768734630738836831_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3XilEyDNKo4AX8k2Plc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQuDbwi69Dygg4yIIFUgWJK9dM8C91fk_iUq_96XnGJxg&oe=662B161C" 
+,"https://scontent.xx.fbcdn.net/v/t1.15752-9/368576737_605403615006655_3180810604628144376_n.jpg?stp=dst-jpg_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEjRgJxXK4MG0Fx6xYotdwh2pvCd2b56Hjam8J3ZvnoeL4QLJ5vvsDUUKtzI9ho-5j0j6U62oMM595PgQcZO1pP&_nc_ohc=su5goNO3JmIAb7LZcMx&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QG6kQ_ybgZR80O9LR8jiWGPg_tD23G83iQrE8E_mCzosg&oe=6649EE5A",]
   var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
 
@@ -146,7 +146,7 @@ module.exports.run = async function({ api, event, args }) {
     bonus = index_start;
     index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
     group = group.slice(index_start, index_end);
-    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎    𓆩${commandGroup.group.toUpperCase()}𓆪`);
+    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎    ⎒❲${commandGroup.group.toUpperCase()}❳⎒`);
     msg += `\n\n• {${page_num_input || 1}/${page_num_total}} `;
     msg +=``
     msg += `\n╭───────────────╮\n m.me/100094409873389\n╰───────────────╯ `;
