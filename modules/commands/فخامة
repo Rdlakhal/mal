@@ -1,0 +1,38 @@
+module.exports.config = {
+  name: "تاركو",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "الفخم المتكبر ",
+  description: "",
+  commandCategory: "صور",
+  usages: "art",
+  cooldowns: 5,
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
+    
+};
+
+module.exports.run = async({api,event,args,Users,Threads,Currencies}) => {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+  var link = [
+
+    "https://i.imgur.com/sbRlDOh.jpg",
+  ];
+  var max = Math.floor(Math.random() * 6);  
+var min = Math.floor(Math.random() * 2);
+  var data = await Currencies.getData(event.senderID);
+  var exp =  data.exp;
+  var money = data.money
+      if(money < 0) api.sendMessage("عشان تحصل افخم صور الانمي لازم يمون معاك 900000 واذا مامعك عادي في دين بيصير عليك دين 900000",event.threadID,event.messageID)
+          else {
+   Currencies.setData(event.senderID, options = {money: money - 900000})
+   var callback = () => api.sendMessage({body:` افـخـم صـور الانمي
+💀عدد صور ${link.length}\n-900000 دولار!`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
+     }
+   };
