@@ -36,7 +36,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
       msg += `هاذي هيا الاوامر من نوع 𓆪${dataAfter.group.toUpperCase()}𓆩\n`;
 
       dataAfter.cmds.forEach(item => {
-        msg += `\n 『${count+=1}』♕${item}♕\n ⏎ ${commands.get(item).config.description}\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`;
+        msg += `\n 『${count+=1}』⎒ ❲  ${item}  ❳ ⎒\n ⏎ ${commands.get(item).config.description}\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`;
       })
       msg += "\n\n ‌.     ‌ ༺ཌ༈ⓎⓄⓊⓉⒶ༈ད༻";
     }
@@ -146,7 +146,7 @@ module.exports.run = async function({ api, event, args }) {
     bonus = index_start;
     index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
     group = group.slice(index_start, index_end);
-    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎    ⎒❲${commandGroup.group.toUpperCase()}❳⎒`);
+    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎    ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
     msg += `\n\n• {${page_num_input || 1}/${page_num_total}} `;
     msg +=``
     msg += `\n╭───────────────╮\n m.me/100094409873389\n╰───────────────╯ `;
