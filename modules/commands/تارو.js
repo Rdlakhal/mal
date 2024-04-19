@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "تاركو",
+  name: "تارو",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "الفخم المتكبر ",
