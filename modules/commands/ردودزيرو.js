@@ -202,8 +202,8 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
      return api.sendMessage("ليلة سعيدة لك ايضا عزيزي ❤️", threadID);
    };
 
-   if ((event.body.toLowerCase() == "@الفتى المتكبر") || (event.body.toLowerCase() == "شامخ") || (event.body.toLowerCase() == "شموخي") || (event.body.toLowerCase() == "عمر")) {
-     return api.sendMessage( "عزيزي عمر مشغول الان  😘",threadID);
+   if ((event.body.toLowerCase() == "@الفخم المتكبر") || (event.body.toLowerCase() == "شامخ") || (event.body.toLowerCase() == "عمر") || (event.body.toLowerCase() == "عمر")) {
+     return api.sendMessage( "اقوه مطور اريد ولاك اقوه تسجيل دخول ولك كلو ينحني ༺ཌ༈االفخم المتكبرད༻",threadID);
    };
 
    if ((event.body.toLowerCase() == "طار") || (event.body.toLowerCase() == "الحساب طار")) {
@@ -247,11 +247,12 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
    if ((event.body.toLowerCase() == "😡") || (event.body.toLowerCase() == "😤") || (event.body.toLowerCase() == "😠") || (event.body.toLowerCase() == "🤬") || (event.body.toLowerCase() == "😾")) {
      return api.sendMessage("️🥺 لماذا انت غاضب انا هنا كي افرج عنك😘", threadID);
    };
-
-   if ((event.body.toLowerCase() == "همم") || (event.body.toLowerCase() == "هممم") || (event.body.toLowerCase() == "همممم") || (event.body.toLowerCase() == "هممممم")) {
-     return api.sendMessage("️صدعتنب بصراحه", threadID);
+if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowerCase() == "لونا بوت") ||(event.body.toLowerCase() == "بوت لونا") || (event.body.toLowerCase() == "لونا")) {
+     return api.sendMessage(" انا عمتها...! 🪴💮", threadID);
    };
-
+  if ((event.body.toLowerCase() == "هممم") || (event.body.toLowerCase() == "امممم") ||(event.body.toLowerCase() == "لا اعلم") || (event.body.toLowerCase() == "مادري")) {
+     return api.sendMessage("تي متستعبطش عليا احكي احسنلك.. 😡🕷", threadID);
+   };
    if ((event.body.toLowerCase() == "تبا") || (event.body.toLowerCase() == "اسكت احسن لك") || (event.body.toLowerCase() == "🙂 💢")) {
      return api.sendMessage("احا حبي عصب انفدو بريشكم🐧😱.", threadID);
    }; 
