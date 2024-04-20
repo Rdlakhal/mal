@@ -18,9 +18,9 @@ module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currenc
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
-   var hi = ["••>🦋\n\nشو بدك","تف"];
+   var hi = ["••>🦋\n\nشو بدك","بحبك بابي 😍🥰😊"];
   var know = hi[Math.floor(Math.random() * hi.length)];
-  var link = ["https://i.imgur.com/ZpeTvOW.jpeg"
+  var link = ["https://i.imgur.com/BawYFx1.jpg","https://i.imgur.com/FT9ajDD.jpg","https://i.imgur.com/sbRlDOh.jpg" 
 ];
 	 var callback = () => api.sendMessage({body:`「 ${know} 」`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
