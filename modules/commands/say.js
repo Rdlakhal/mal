@@ -21,7 +21,7 @@ module.exports.run = async function({ api, event, args }) {
 		var languageToSay = (["ru","en","ko","ja"].some(item => content.indexOf(item) == 0)) ? content.slice(0, content.indexOf(" ")) : global.config.language;
 		var msg = (languageToSay != global.config.language) ? content.slice(3, content.length) : content;
 		const path = resolve(__dirname, 'cache', `${event.threadID}_${event.senderID}.mp3`);
-		await global.utils.downloadFile(`https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(msg)}&tl=ar&client=tw-ob`, path);
+		await global.utils.downloadFile(`https://voice-v1-b81800f628a2.herokuapp.com/synthesize?text=هلو&language=ar&speaker=https://replicate.delivery/pbxt/Jt79w0xsT64R1JsiJ0LQRL8UcWspg5J4RFrU6YwEKpOT1ukS/male.wav=${encodeURIComponent(msg)}&tl=ar&client=tw-ob`, path);
 		return api.sendMessage({ attachment: createReadStream(path)}, event.threadID, () => unlinkSync(path));
 	} catch (e) { return console.log(e) };
 }
