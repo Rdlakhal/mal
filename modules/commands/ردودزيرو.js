@@ -197,7 +197,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
    };
 
    if ((event.body.toLowerCase() == "@الفخم المتكبر") || (event.body.toLowerCase() == "شامخ") || (event.body.toLowerCase() == "عمر") || (event.body.toLowerCase() == "عمر")) {
-     return api.sendMessage( "اقوه مطور اريد ولاك اقوه تسجيل دخول ولك كلو ينحني ༺ཌ༈االفخم المتكبرད༻",threadID);
+     return api.sendMessage( "اقوه مطور اريد ولاك اقوه تسجيل دخول ولك كلو ينحني 💀🤡\n༺ཌ༈االفخم المتكبرད༻",threadID);
    };
 
    if ((event.body.toLowerCase() == "طار") || (event.body.toLowerCase() == "الحساب طار")) {
