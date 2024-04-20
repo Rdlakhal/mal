@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Joshua Sy", //don't change the credits please
 	description: "معلومات البوت و المطور",
-	commandCategory: "خدمات",
+	commandCategory: "المطور",
 	cooldowns: 1,
 	dependencies: 
 	{
@@ -29,11 +29,26 @@ var callback = () => api.sendMessage({body:`.      ༺ཌ༈ⓎⓄⓊⓉⒶ༈�
 كنيتي: ${global.config.BOTNAME}
  ${global.config.PREFIX}
 
-✫ مطور البوت:⏎  ༺༽الـمـتـكـبـر༼༻
 
- رابط حساب المطور ⏎:\n m.me/100094409873389
+
+
+✫ مطور البوت:⏎  \n ༺༽الـمـتـكـبـر༼༻
+
+
+
+رابط حساب المطور• 
+
+https://www.facebook.com/arrogant3j?mibextid=ZbWKwL
+
+
+
+ للدردشة مع المطور ⏎:\n m.me/100094409873389
+
+مرحبا بي الجميع  في الخاص للاستفسار او افكار للبوت 
 
 ⏎سيرفر البوت✅
+
+
 
 ⏎اليوم: ${juswa} 
 
