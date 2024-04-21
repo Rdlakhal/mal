@@ -40,7 +40,7 @@ if ((event.body.toLowerCase() == "لا تسب") || (event.body.toLowerCase() == 
      return api.sendMessage("اتفق و بشده♡•-•", threadID)
    };
 if ((event.body.toLowerCase() == "ممنوع الكلام") || (event.body.toLowerCase() == "كلام ممنوع")) {
-     return api.sendMessage("طيب انا بوت عادي اتكلم🤧", threadID)
+     return api.sendMessage("قد اتكلم بلخطأ فارجو ان تعذرني لاني بوت.. 😊❤️‍🩹", threadID)
    };
 if ((event.body.toLowerCase() == "من المطور") || (event.body.toLowerCase() == "مين عمر")) {
      return api.sendMessage("عمر حبيبي رابط حسابه \n m.me/100094409873389", threadID)
@@ -295,7 +295,7 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
    };
 
    if ((event.body.toLowerCase() == "يب") || (event.body.toLowerCase() == "yup")) {
-     return api.sendMessage("ياااااه على الزمن ده مفيش احترام للبوتات خالص دزمان كانو يبوسون يدي عشان ارضة عليهم...! 😂✅", threadID);
+     return api.sendMessage("يقول يب مسوي نفسو مثقف وكذا ...! 😂✅", threadID);
    };
 
    if ((event.body.toLowerCase() == "وتفك") || (event.body.toLowerCase() == "وات")) {
