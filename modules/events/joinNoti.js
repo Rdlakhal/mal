@@ -1,82 +1,106 @@
 module.exports.config = {
-    name: "joinNoti",
-    eventType: ["log:subscribe"],
-    version: "1.0.4",
-    credits: "Mirai Team",
-    description: "Thông báo bot hoặc người vào nhóm",
-    dependencies: {
-        "fs-extra": " "
-    }
+	name: "leaveNoti",
+	eventType: ["log:unsubscribe"],
+	version: "1.0.0",
+	credits: "",
+	description: "Thông báo bot hoặc người rời khỏi nhóm có random gif/ảnh/video",
+	dependencies: {
+		"fs-extra": "",
+		"path": ""
+	}
 };
+function byte2mb(bytes) {
+	const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+	let l = 0, n = parseInt(bytes, 10) || 0;
+	while (n >= 1024 && ++l) n = n / 1024;
+	return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
+}
+const checkttPath = __dirname + '/../commands/checktuongtac/'
 
-module.exports.run = async function({ api, event, Users, Threads }) {
-   var fullYear = global.client.getTime("fullYear");
+module.exports.onLoad = function () {
+    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { join } = global.nodemodule["path"];
+
+	const path = join(__dirname, "cache", "leaveGif");
+	if (existsSync(path)) mkdirSync(path, { recursive: true });	
+
+	const path2 = join(__dirname, "cache", "leaveGif", "randomgif");
+    if (!existsSync(path2)) mkdirSync(path2, { recursive: true });
+
+    return;
+}
+
+module.exports.run = async function ({ api, event, Users, Threads }) {
+    var fullYear = global.client.getTime("fullYear");
   	var getHours = await global.client.getTime("hours");
-			var session = `${getHours < 3 ? "ن" : getHours < 8 ? "ح" : getHours < 11 ? "ه" : getHours < 16 ? "ق" : getHours < 23 ? "ث" : "ه"}`
+		var session = `${getHours < 3 ? "đêm khuya" : getHours < 8 ? "buổi sáng sớm" : getHours < 12 ? "buổi trưa" : getHours < 17 ? "buổi chiều" : getHours < 23 ? "buổi tối" : "đêm khuya"}`
+    if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
+    const { createReadStream, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
     const { threadID } = event;
-  const { PREFIX } = global.config;
-    console.log(2)
-    if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-        console.log(1)
-        return api.sendMessage("⚜️== 「اتصال ناجح ✅」==⚜️", threadID, async () => {
-            let check = true;
-            while (check) {
-                setTimeout(() => check = false, 30 * 1000);
-                const threadData = (await Threads.getInfo(threadID)) || {};
-                if (threadData.hasOwnProperty("adminIDs")) {
-                    check = false;
-                    api.sendMessage(" ", threadID, (err, info) => {
-                        global.client.handleReply.push({
-                            name: "langChoose_0x01042022",
-                            messageID: info.messageID,
-                            adminIDs: threadData.adminIDs
-                        });
-                    });
-                }
-            }
-            api.changeNickname(`[ . ] • ${(!global.config.BOTNAME) ? "و" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-          	api.sendMessage(``, threadID);
-		}); 
-	}
-    else {
-        try {
-            const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-            let { threadName, participantIDs } = await api.getThreadInfo(threadID);
+    const moment = require("moment-timezone");
+    const time = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
+    const hours = moment.tz("Asia/Ho_Chi_Minh").format("HH");
+    var thu = moment.tz('Asia/Ho_Chi_Minh').format('dddd');
+    if (thu == 'Sunday') thu = 'Chủ Nhật'
+    if (thu == 'Monday') thu = 'Thứ Hai'
+    if (thu == 'Tuesday') thu = 'Thứ Ba'
+    if (thu == 'Wednesday') thu = 'Thứ Tư'
+    if (thu == "Thursday") thu = 'Thứ Năm'
+    if (thu == 'Friday') thu = 'Thứ Sáu'
+    if (thu == 'Saturday') thu = 'Thứ Bảy'
+    const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
+    const iduser = event.logMessageData.leftParticipantFbId;
+    const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
+    const type = (event.author == event.logMessageData.leftParticipantFbId) ? "𝘁𝘂̛̣ 𝗯𝗮̂́𝗺 𝗻𝘂́𝘁 𝗯𝗶𝗲̂́𝗻" : "𝗯𝗶̣ 𝗾𝘂𝗮̉𝗻 𝘁𝗿𝗶̣ 𝘃𝗶𝗲̂𝗻 {author} \n→ [🌐] 𝗨𝗥𝗟 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐤𝐢𝐜𝐤:\nfb.com/{uidAuthor}";
+	const path = join(__dirname, "cache", "leaveGif");
+	const gifPath = join(path, `${threadID}.gìf`);
+    var msg, formPush
 
-            const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join(" ");
-			const pathGif = join(path, `hdfi2.jpg`);
+    if (existsSync(checkttPath + threadID + '.json')) {
+        const threadData = JSON.parse(readFileSync(checkttPath + threadID + '.json'));
+        const userData_week_index = threadData.week.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
+        const userData_day_index = threadData.day.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
+        const userData_total_index = threadData.total.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
+        if (userData_total_index != -1) {
+            threadData.total.splice(userData_total_index, 1);
+        }
+        if (userData_week_index != -1) {
+            threadData.week.splice(userData_week_index, 1);
+        }
+        if (userData_day_index != -1) {
+            threadData.day.splice(userData_day_index, 1);
+        }
 
-			var mentions = [], nameArray = [], memLength = [], i = 0;
-			
-			for (id in event.logMessageData.addedParticipants) {
-				const userName = event.logMessageData.addedParticipants[id].fullName;
-				nameArray.push(userName);
-				mentions.push({ tag: userName, id });
-				memLength.push(participantIDs.length - i++);
+        writeFileSync(checkttPath + threadID + '.json', JSON.stringify(threadData, null, 4));
+    }
+    if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-				if (!global.data.allUserID.includes(id)) {
-					await Users.createData(id, { name: userName, data: {} });
-					global.data.userName.set(id, userName);
-					global.data.allUserID.push(id);
-				}
-			}
-			memLength.sort((a, b) => a - b);
-			
-			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n「{name}」: اهلا \n\nفي  شات  {threadName} \n{type}\n انا بوت يوتا في خدمتك...! ❤🩶" : msg = threadData.customJoin;
-			msg = msg
-			.replace(/\{name}/g, nameArray.join(', '))
-			.replace(/\{type}/g, (memLength.length > 1) ?  'các bạn' : 'ه')
-			.replace(/\{soThanhVien}/g, memLength.join(', '))
-			.replace(/\{threadName}/g, threadName);
+    (typeof data.customLeave == "undefined") ? msg = "『 𝗧𝗩 𝗢𝗨𝗧 𝗡𝗛𝗢́𝗠 』\n━━━━━━━━━━━━━\n{name} 𝘃𝘂̛̀𝗮 {type} \n→ [🌐] 𝗨𝗥𝗟 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐫𝐨̛̀𝐢 𝐧𝐡𝐨́𝐦:\nfb.com/{iduser} 🌸\n━━━━━━━━━━━━━\n→ [⏰] 𝘃𝗮̀𝗼 {buoi} || {thu} || {time}" : msg = data.customLeave;
+  var getData = await Users.getData(event.author)
+var nameAuthor = typeof getData.name == "undefined" ? "" : getData.name
+    msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type).replace(/\{buoi}/g, session).replace(/\{thu}/g, thu).replace(/\{iduser}/g, iduser).replace(/\{author}/g, nameAuthor).replace(/\{uidAuthor}/g, event.author).replace(/\{time}/g, time);
 
-			if (existsSync(path)) mkdirSync(path, { recursive: true });
+	const randomPath = readdirSync(join(__dirname, "cache", "leaveGif"));
 
-			if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif), mentions }
-			else formPush = { body: msg, mentions }
+    if (existsSync(gifPath)) formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
+url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
+method: "GET",
+responseType: "stream"
+})).data }
+    else if (randomPath.length != 0) {
+		const pathRandom = join(__dirname, "cache", "leaveGif", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
+        formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
+url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
+method: "GET",
+responseType: "stream"
+})).data }
+    }
+    else formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
+url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
+method: "GET",
+responseType: "stream"
+})).data }
 
-			return api.sendMessage(formPush, threadID);
-		} catch (e) { return console.log(e) };
-	}
-}
+    return api.sendMessage(formPush, threadID);
+	    }
