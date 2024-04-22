@@ -1,34 +1,22 @@
 module.exports.config = {
-	name: "leave",
-	eventType: ["log:unsubscribe"],
-	version: "1.0.0",
-	credits: "Mirai Team",
-	description: "Notify bots or leavers",
-	dependencies: {
-		"fs-extra": "",
-		"path": ""
-	}
+ name: "antiout",
+ eventType: ["log:unsubscribe"],
+ version: "0.0.1",
+ credits: "DungUwU",
+ description: "Listen events"
 };
 
-module.exports.run = async function({ api, event, Users, Threads }) {
-	if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
-	const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-	const { join } =  global.nodemodule["path"];
-	const { threadID } = event;
-	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
-	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "⚜️=「غادر(ت)」=⚜️" : "⚜️=「انطرد」=⚜️";
-	const path = join(__dirname, "cache", "leachfvveGif");
-	const gifPath = join(path, `byxcve2.jpg`);
-	var msg, formPush
-
-	if (existsSync(path)) mkdirSync(path, { recursive: true });
-
-	(typeof data.customLeave == "undefined") ? msg = "⚜️= 「 شخص ترك المجموعة 」=⚜️\n\n「الاسم」:「{name}」\n \n 「السبب」: {type}" : msg = data.customLeave;
-	msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type);
-
-	if (existsSync(gifPath)) formPush = { body: msg, attachment: createReadStream(gifPath) }
-	else formPush = { body: msg }
-	
-	return api.sendMessage(formPush, threadID);
+module.exports.run = async({ event, api, Threads, Users }) => {
+ let data = (await Threads.getData(event.threadID)).data || {};
+ if (data.antiout == false) return;
+ if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
+ const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
+ const type = (event.author == event.logMessageData.leftParticipantFbId) ? "self-separation" : "being kicked by the administrator na pasikat";
+ if (type == "self-separation") {
+  api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
+   if (error) {
+    api.sendMessage(`Unable to re-add members ${name} to the group ni block ako ng hayop:( `, event.threadID)
+   } else api.sendMessage(`HAHAHAHAHA tanga wala kang takas dito, ${name}`, event.threadID);
+  })
+ }
 }
