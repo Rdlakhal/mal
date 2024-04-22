@@ -1,106 +1,132 @@
 module.exports.config = {
-	name: "leaveNoti",
-	eventType: ["log:unsubscribe"],
-	version: "1.0.0",
-	credits: "",
-	description: "Thông báo bot hoặc người rời khỏi nhóm có random gif/ảnh/video",
-	dependencies: {
-		"fs-extra": "",
-		"path": ""
-	}
+  name: "adminNoti",
+  eventType: [
+    "log:thread-admins",
+    "log:thread-name",
+    "log:user-nickname",
+    "log:thread-call",
+    "log:thread-icon",
+    "log:thread-color",
+    "log:link-status",
+    "log:magic-words",
+    "log:thread-approval-mode",
+    "log:thread-poll"
+  ],
+  version: "1.0.1",
+  credits: "Mirai Team & mod by Yan Maglinte",
+  description: "Group Information Update",
+  envConfig: {
+    autoUnsend: true,
+    sendNoti: true,
+    timeToUnsend: 10
+  }
 };
-function byte2mb(bytes) {
-	const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	let l = 0, n = parseInt(bytes, 10) || 0;
-	while (n >= 1024 && ++l) n = n / 1024;
-	return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
-}
-const checkttPath = __dirname + '/../commands/checktuongtac/'
 
-module.exports.onLoad = function () {
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { join } = global.nodemodule["path"];
+module.exports.run = async function({ event, api, Threads, Users }) {
+  const { author, threadID, logMessageType, logMessageData, logMessageBody } = event;
+  const { setData, getData } = Threads;
+  const fs = require("fs");
+  const iconPath = __dirname + "/cache/emoji.json";
+  if (!fs.existsSync(iconPath)) fs.writeFileSync(iconPath, JSON.stringify({}));
+  if (author === threadID) return;
 
-	const path = join(__dirname, "cache", "leaveGif");
-	if (existsSync(path)) mkdirSync(path, { recursive: true });	
+  try {
+    let dataThread = (await getData(threadID)).threadInfo;
 
-	const path2 = join(__dirname, "cache", "leaveGif", "randomgif");
-    if (!existsSync(path2)) mkdirSync(path2, { recursive: true });
-
-    return;
-}
-
-module.exports.run = async function ({ api, event, Users, Threads }) {
-    var fullYear = global.client.getTime("fullYear");
-  	var getHours = await global.client.getTime("hours");
-		var session = `${getHours < 3 ? "đêm khuya" : getHours < 8 ? "buổi sáng sớm" : getHours < 12 ? "buổi trưa" : getHours < 17 ? "buổi chiều" : getHours < 23 ? "buổi tối" : "đêm khuya"}`
-    if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
-    const { createReadStream, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } = global.nodemodule["fs-extra"];
-    const { join } = global.nodemodule["path"];
-    const { threadID } = event;
-    const moment = require("moment-timezone");
-    const time = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
-    const hours = moment.tz("Asia/Ho_Chi_Minh").format("HH");
-    var thu = moment.tz('Asia/Ho_Chi_Minh').format('dddd');
-    if (thu == 'Sunday') thu = 'Chủ Nhật'
-    if (thu == 'Monday') thu = 'Thứ Hai'
-    if (thu == 'Tuesday') thu = 'Thứ Ba'
-    if (thu == 'Wednesday') thu = 'Thứ Tư'
-    if (thu == "Thursday") thu = 'Thứ Năm'
-    if (thu == 'Friday') thu = 'Thứ Sáu'
-    if (thu == 'Saturday') thu = 'Thứ Bảy'
-    const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
-    const iduser = event.logMessageData.leftParticipantFbId;
-    const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-    const type = (event.author == event.logMessageData.leftParticipantFbId) ? "𝘁𝘂̛̣ 𝗯𝗮̂́𝗺 𝗻𝘂́𝘁 𝗯𝗶𝗲̂́𝗻" : "𝗯𝗶̣ 𝗾𝘂𝗮̉𝗻 𝘁𝗿𝗶̣ 𝘃𝗶𝗲̂𝗻 {author} \n→ [🌐] 𝗨𝗥𝗟 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐤𝐢𝐜𝐤:\nfb.com/{uidAuthor}";
-	const path = join(__dirname, "cache", "leaveGif");
-	const gifPath = join(path, `${threadID}.gìf`);
-    var msg, formPush
-
-    if (existsSync(checkttPath + threadID + '.json')) {
-        const threadData = JSON.parse(readFileSync(checkttPath + threadID + '.json'));
-        const userData_week_index = threadData.week.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
-        const userData_day_index = threadData.day.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
-        const userData_total_index = threadData.total.findIndex(e => e.id == event.logMessageData.leftParticipantFbId);
-        if (userData_total_index != -1) {
-            threadData.total.splice(userData_total_index, 1);
+    switch (logMessageType) {
+      case "log:thread-admins": {
+        if (logMessageData.ADMIN_EVENT === "add_admin") {
+          dataThread.adminIDs.push({ id: logMessageData.TARGET_ID });
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ USER UPDATE ${Users.getNameUser(logMessageData.TARGET_ID)} Became a group admin`, threadID);
+        } else if (logMessageData.ADMIN_EVENT === "remove_admin") {
+          dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id !== logMessageData.TARGET_ID);
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ Remove user's admin position ${logMessageData.TARGET_ID}`, threadID);
         }
-        if (userData_week_index != -1) {
-            threadData.week.splice(userData_week_index, 1);
+        break;
+      }
+      case "log:user-nickname": {
+        const { participant_id, nickname } = logMessageData;
+        if (participant_id && nickname) {
+          dataThread.nicknames = dataThread.nicknames || {};
+          dataThread.nicknames[participant_id] = nickname;
+          const participantName = await Users.getNameUser(participant_id);
+          const formattedNickname = nickname || "deleted nickname";
+          api.sendMessage(`[ GROUP ]\n❯ Updated nickname for ${participantName}: ${formattedNickname}.`, threadID);
         }
-        if (userData_day_index != -1) {
-            threadData.day.splice(userData_day_index, 1);
+        break;
+      }
+      case "log:thread-name": {
+        dataThread.threadName = logMessageData.name || null;
+        api.sendMessage(`[ GROUP UPDATE ]\n❯ ${(dataThread.threadName) ? `Updated Group Name to: ${dataThread.threadName}` : 'Cleared the Group Name'}.`, threadID);
+        break;
+      }
+      case "log:thread-icon": {
+        const preIcon = JSON.parse(fs.readFileSync(iconPath));
+        dataThread.threadIcon = logMessageData.thread_icon || "👍";
+        if (global.configModule[this.config.name].sendNoti) {
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${logMessageBody.replace("emoji", "icon")}\n❯ Original Emoji: ${preIcon[threadID] || "unknown"}`, threadID, async (error, info) => {
+            preIcon[threadID] = dataThread.threadIcon;
+            fs.writeFileSync(iconPath, JSON.stringify(preIcon));
+            if (global.configModule[this.config.name].autoUnsend) {
+              await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
+              return api.unsendMessage(info.messageID);
+            }
+          });
         }
-
-        writeFileSync(checkttPath + threadID + '.json', JSON.stringify(threadData, null, 4));
+        break;
+      }
+      case "log:thread-call": {
+        if (logMessageData.event === "group_call_started") {
+          const name = await Users.getNameUser(logMessageData.caller_id);
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${name} STARTED A ${(logMessageData.video) ? 'VIDEO ' : ''}CALL.`, threadID);
+        } else if (logMessageData.event === "group_call_ended") {
+          const callDuration = logMessageData.call_duration;
+          const hours = Math.floor(callDuration / 3600);
+          const minutes = Math.floor((callDuration - (hours * 3600)) / 60);
+          const seconds = callDuration - (hours * 3600) - (minutes * 60);
+          const timeFormat = `${hours}:${minutes}:${seconds}`;
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${(logMessageData.video) ? 'Video' : ''} call has ended.\n❯ Call duration: ${timeFormat}`, threadID);
+        } else if (logMessageData.joining_user) {
+          const name = await Users.getNameUser(logMessageData.joining_user);
+          api.sendMessage(`❯ [ GROUP UPDATE ]\n❯ ${name} Joined the ${(logMessageData.group_call_type == '1') ? 'Video' : ''} call.`, threadID);
+        }
+        break;
+      }
+      case "log:link-status": {
+        api.sendMessage(logMessageBody, threadID);
+        break;
+      }
+      case "log:magic-words": {
+        api.sendMessage(`» [ GROUP UPDATE ] Theme ${logMessageData.magic_word} added effect: ${logMessageData.theme_name}\nEmoij: ${logMessageData.emoji_effect || "No emoji "}\nTotal ${logMessageData.new_magic_word_count} word effect added`, threadID)
+        break;
+      }
+      case "log:thread-poll": {
+        const obj = JSON.parse(logMessageData.question_json);
+        if (logMessageData.event_type === "question_creation" || logMessageData.event_type === "update_vote") {
+          api.sendMessage(logMessageBody, threadID);
+        }
+        break;
+      }
+      case "log:thread-approval-mode": {
+        api.sendMessage(logMessageBody, threadID);
+        break;
+      }
+      case "log:thread-color": {
+        dataThread.threadColor = logMessageData.thread_color || "🌤";
+        if (global.configModule[this.config.name].sendNoti) {
+          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${logMessageBody.replace("Theme", "color")}`, threadID, async (error, info) => {
+            if (global.configModule[this.config.name].autoUnsend) {
+              await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
+              return api.unsendMessage(info.messageID);
+            }
+          });
+        }
+        break;
+      }
     }
-    if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-    (typeof data.customLeave == "undefined") ? msg = "『 𝗧𝗩 𝗢𝗨𝗧 𝗡𝗛𝗢́𝗠 』\n━━━━━━━━━━━━━\n{name} 𝘃𝘂̛̀𝗮 {type} \n→ [🌐] 𝗨𝗥𝗟 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐫𝐨̛̀𝐢 𝐧𝐡𝐨́𝐦:\nfb.com/{iduser} 🌸\n━━━━━━━━━━━━━\n→ [⏰] 𝘃𝗮̀𝗼 {buoi} || {thu} || {time}" : msg = data.customLeave;
-  var getData = await Users.getData(event.author)
-var nameAuthor = typeof getData.name == "undefined" ? "" : getData.name
-    msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type).replace(/\{buoi}/g, session).replace(/\{thu}/g, thu).replace(/\{iduser}/g, iduser).replace(/\{author}/g, nameAuthor).replace(/\{uidAuthor}/g, event.author).replace(/\{time}/g, time);
-
-	const randomPath = readdirSync(join(__dirname, "cache", "leaveGif"));
-
-    if (existsSync(gifPath)) formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
-method: "GET",
-responseType: "stream"
-})).data }
-    else if (randomPath.length != 0) {
-		const pathRandom = join(__dirname, "cache", "leaveGif", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
-        formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
-method: "GET",
-responseType: "stream"
-})).data }
-    }
-    else formPush = { body: msg, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://no1-19fc-1.miraiv.repl.co/api/anime.php')).data.data,
-method: "GET",
-responseType: "stream"
-})).data }
-
-    return api.sendMessage(formPush, threadID);
-	    }
+    await setData(threadID, { threadInfo: dataThread });
+  } catch (error) {
+    console.log(error);
+  }
+};
