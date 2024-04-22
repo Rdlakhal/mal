@@ -43,7 +43,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
   }
   const axios = require('axios');
   const fs = require('fs-extra');
-  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/438089792_1135988231159796_4523076980072127150_n.jpg?stp=dst-jpg_p480x480&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEkHBPeGczMlw9gFa1eYz-9HbHs_us4v3odsez-6zi_et3bTydZ9j2Nnz-buEpCbQrnF2qk0Y3nfOIn5L82oMZX&_nc_ohc=VPVkT-T_OyYAb4bOxUn&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGSX_2tAoggZC8f6S3JpjbrquUlRosKNxDvK_VLo0yZdA&oe=664DDB6A", "https://scontent.xx.fbcdn.net/v/t1.15752-9/438089827_768216195503592_8072226927899701248_n.jpg?stp=dst-jpg_p480x480&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHRTXHZnV4En-DLGGKUsDH-mBMFQb_TxsOYEwVBv9PGwxjpslSv1qxETVzC3JmaOyb3U8W4OhGR2LAPk7Uy7Mnr&_nc_ohc=5KP5y67IdQIAb5LNJQX&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QEtMQY5VPSjN3B9WN1s3fV_8vJXdnhBOVWnTG4CdYWabA&oe=664DD29C",
+  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/438089792_1135988231159796_4523076980072127150_n.jpg?stp=dst-jpg_p480x480&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEkHBPeGczMlw9gFa1eYz-9HbHs_us4v3odsez-6zi_et3bTydZ9j2Nnz-buEpCbQrnF2qk0Y3nfOIn5L82oMZX&_nc_ohc=VPVkT-T_OyYAb4bOxUn&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGSX_2tAoggZC8f6S3JpjbrquUlRosKNxDvK_VLo0yZdA&oe=664DDB6A", "https://scontent.xx.fbcdn.net/v/t1.15752-9/438089827_768216195503592_8072226927899701248_n.jpg?stp=dst-jpg_p480x480&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHRTXHZnV4En-DLGGKUsDH-mBMFQb_TxsOYEwVBv9PGwxjpslSv1qxETVzC3JmaOyb3U8W4OhGR2LAPk7Uy7Mnr&_nc_ohc=5KP5y67IdQIAb5LNJQX&_nc_ad=z-m&_nc_cid=0&_nc_ht=.&oh=&oe=664DD29C",
 "https://scontent.xx.fbcdn.net/v/t1.15752-9/438083808_1766225380568866_7681935192886424738_n.jpg?stp=dst-jpg_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwx1rmjL5D3e3cPhKOzAA6gC41e5g0MN2ALjV7mDQw3eOYv46w1ldWFE8NVMW3-Lg5HKIGXKHgmU71qQhyV3I4&_nc_ohc=FT3uEAolWFAAb6WTxji&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpkE8QU19Zxq6P8dRWeU2HkRNbGxRQO3cXohfaelzWOw&oe=664DE4D5", 
 "https://scontent.xx.fbcdn.net/v/t1.15752-9/414252410_334076712827303_5239024295342902847_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGxwLtccKVU49mvP8ixjNeo6X_pJBTHbdTpf-kkFMdt1Jsa-KSjNGFFTdbiTMhzZgc4lbAL5AG7c_gPNOmgu-Q5&_nc_ohc=rNR0VxWcXXcAb7wUdMi&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QH57NBHuxUQ79d7PC3uGf3hB8viItPQLz33PRQl_HUSMQ&oe=664E038B"
  ]
@@ -76,7 +76,7 @@ module.exports.run = async function({ api, event, args }) {
   const axios = require('axios');
   const fs = require('fs-extra');
   const imgP = []
-  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/367385987_232212126452955_5945552453509546609_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF4ZXcoQTFsA2UW8Koi8Y7Bp01VmzC5xy-nTVWbMLnHLy4lrJXIWFox-VnAe4VtC4PliejB5uMVgWFhenaC1BIb&_nc_ohc=3LGeavEI8SEAb4dr3oU&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QECzlaFZOwI7qYtpqAo_NGLZ0KLjPzn5tGWsydrs9Eoaw&oe=664A104C","https://scontent.xx.fbcdn.net/v/t1.15752-9/363784106_139715549164670_3768734630738836831_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3XilEyDNKo4AX8k2Plc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQuDbwi69Dygg4yIIFUgWJK9dM8C91fk_iUq_96XnGJxg&oe=662B161C" 
+  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/367385987_232212126452955_5945552453509546609_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF4ZXcoQTFsA2UW8Koi8Y7Bp01VmzC5xy-nTVWbMLnHLy4lrJXIWFox-VnAe4VtC4PliejB5uMVgWFhenaC1BIb&_nc_ohc=3LGeavEI8SEAb4dr3oU&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QECzlaFZOwI7qYtpqAo_NGLZ0KLjPzn5tGWsydrs9Eoaw&oe=664A104C","https://scontent.xx.fbcdn.net/v/t1.15752-9/367393460_1484063028801167_6279139986347503565_n.jpg?stp=dst-jpg_p480x480&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=s2ToZnMJi_0Ab4xovbl&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QERNdnNzcAo05MWtRmYn3BDV_qnFwTtsWHiI-XG47aoeg&oe=664E09B0"
 ,"https://scontent.xx.fbcdn.net/v/t1.15752-9/368576737_605403615006655_3180810604628144376_n.jpg?stp=dst-jpg_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEjRgJxXK4MG0Fx6xYotdwh2pvCd2b56Hjam8J3ZvnoeL4QLJ5vvsDUUKtzI9ho-5j0j6U62oMM595PgQcZO1pP&_nc_ohc=su5goNO3JmIAb7LZcMx&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QG6kQ_ybgZR80O9LR8jiWGPg_tD23G83iQrE8E_mCzosg&oe=6649EE5A",]
   var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
@@ -146,10 +146,10 @@ module.exports.run = async function({ api, event, args }) {
     bonus = index_start;
     index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
     group = group.slice(index_start, index_end);
-    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎   اسم الامر      ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
+    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎ الاسم  ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
     msg += `\n\n• {${page_num_input || 1}/${page_num_total}} `;
     msg +=``
-    msg += `\n╭───────────────╮\n من تصميم الـفـخـم الـمـتـكـبــر \n╰───────────────╯ `;
+    msg += `\n╭───────────────╮\n‌         من تصميم الـفـخـم الـمـتـكـبــر \n╰───────────────╯ `;
   }
   var msgg = {body: msg, attachment: imgP}
   return api.sendMessage(msgg, threadID, async (error, info) => {
