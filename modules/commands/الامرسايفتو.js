@@ -1,10 +1,10 @@
 module.exports.config = {
-  name: "sayv2",
+  name: "قولي2",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "Mirai Team/Modified By Ciel",
   description: "Make the bot return google's audio file via text",
-  commandCategory: "Song/video",
+  commandCategory: "خدمات",
   usages: "[ru/en/ko/ja/tl] [Text]",
   cooldowns: 5,
   dependencies: {
