@@ -25,27 +25,27 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
       msg += `〖${command_config.commandCategory.toUpperCase()}〗\n`;
       msg += `\nاسم الأمر: ${dataAfter}`;
       msg += `\nمعلومات: ${command_config.description}`;
-      msg += `\nالاستخدام: ${(command_config.usages) ? command_config.usages : ""}`;
+      msg += `\nالاستخدام: ${(command_config.usages) ? command_config.usages : "ال"}`;
       msg += `\nوقت الانتظار: ${command_config.cooldowns || 5}s`;
-      msg += `\nالصلاحية: ${(command_config.hasPermssion == 0) ? "الكل" : (command_config.hasPermssion == 1) ? "مسؤولي المجموعات" : "المطور"}`;
+      msg += `\nالصلاحية: ${(command_config.hasPermssion == 0) ? "ك" : (command_config.hasPermssion == 1) ? "مسؤولي المجموعات" : "المطور"}`;
      msg += `\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`
-      msg += `\n\n↞ تم تطويره بواسطة ${command_config.credits} `;
+      msg += `\n\n↞ تم برمجته بواسطة ${command_config.credits} `;
     } else {
       check = true;
       let count = 0;
-      msg += `هاذي هيا الاوامر من نوع 𓆪${dataAfter.group.toUpperCase()}𓆩\n`;
+      msg += `هاذي هيا الاوامر من نوع ❖ 」${dataAfter.group.toUpperCase()}「 ❖ \n`;
 
       dataAfter.cmds.forEach(item => {
-        msg += `\n 『${count+=1}』⎒ ❲  ${item}  ❳ ⎒\n ⏎ ${commands.get(item).config.description}\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`;
+        msg += `\n 『${count+=1}』⎒ ❲  ${item}  ❳ ⎒\n\n ⏎ ${commands.get(item).config.description}\n\n\n\n`;
       })
       msg += "\n\n ‌.     ‌ ༺ⓜⒶⓁⒶⓀ༻";
     }
   }
   const axios = require('axios');
   const fs = require('fs-extra');
-  const img = ["https://i.ibb.co/d56tk6p/426832990-923698049075141-8261874210181133533-n-jpg-stp-dst-jpg-p480x480-nc-cat-104-ccb-1-7-nc-sid-8.jpg", "https://i.ibb.co/RDVJ1JP/426167932-436793058784884-5778496062152567081-n-jpg-stp-dst-jpg-p480x480-nc-cat-105-ccb-1-7-nc-sid-8.jpg",
-"https://i.ibb.co/xCdQrSY/430484079-1322382168425133-8037429260254754735-n-jpg-stp-dst-jpg-p480x480-nc-cat-111-ccb-1-7-nc-sid.jpg",
-"https://i.ibb.co/TPT0N99/430012116-455402100293879-2270925309150600172-n-jpg-stp-dst-jpg-p480x480-nc-cat-103-ccb-1-7-nc-sid-8.jpg"
+  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/438089792_1135988231159796_4523076980072127150_n.jpg?stp=dst-jpg_p480x480&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEkHBPeGczMlw9gFa1eYz-9HbHs_us4v3odsez-6zi_et3bTydZ9j2Nnz-buEpCbQrnF2qk0Y3nfOIn5L82oMZX&_nc_ohc=VPVkT-T_OyYAb4bOxUn&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGSX_2tAoggZC8f6S3JpjbrquUlRosKNxDvK_VLo0yZdA&oe=664DDB6A", "https://scontent.xx.fbcdn.net/v/t1.15752-9/438089827_768216195503592_8072226927899701248_n.jpg?stp=dst-jpg_p480x480&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHRTXHZnV4En-DLGGKUsDH-mBMFQb_TxsOYEwVBv9PGwxjpslSv1qxETVzC3JmaOyb3U8W4OhGR2LAPk7Uy7Mnr&_nc_ohc=5KP5y67IdQIAb5LNJQX&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QEtMQY5VPSjN3B9WN1s3fV_8vJXdnhBOVWnTG4CdYWabA&oe=664DD29C",
+"https://scontent.xx.fbcdn.net/v/t1.15752-9/438083808_1766225380568866_7681935192886424738_n.jpg?stp=dst-jpg_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwx1rmjL5D3e3cPhKOzAA6gC41e5g0MN2ALjV7mDQw3eOYv46w1ldWFE8NVMW3-Lg5HKIGXKHgmU71qQhyV3I4&_nc_ohc=FT3uEAolWFAAb6WTxji&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpkE8QU19Zxq6P8dRWeU2HkRNbGxRQO3cXohfaelzWOw&oe=664DE4D5", 
+"https://scontent.xx.fbcdn.net/v/t1.15752-9/414252410_334076712827303_5239024295342902847_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGxwLtccKVU49mvP8ixjNeo6X_pJBTHbdTpf-kkFMdt1Jsa-KSjNGFFTdbiTMhzZgc4lbAL5AG7c_gPNOmgu-Q5&_nc_ohc=rNR0VxWcXXcAb7wUdMi&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QH57NBHuxUQ79d7PC3uGf3hB8viItPQLz33PRQl_HUSMQ&oe=664E038B"
  ]
 var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
@@ -85,7 +85,7 @@ module.exports.run = async function({ api, event, args }) {
         fs.writeFileSync(path, Buffer.from(dowloadIMG, "utf-8") );
         imgP.push(fs.createReadStream(path))
   const command = commands.values();
-  var group = [], msg = "༺ཌ༈ⓎⓄⓊⓉⒶ༈ད༻\n";
+  var group = [], msg = "༺ཌ༈ⓜⓐⓛⓐⓚ༈ད༻\n";
   let check = true, page_num_input = "";
   let bonus = 0;
 
@@ -94,7 +94,7 @@ module.exports.run = async function({ api, event, args }) {
     else group.find(item => item.group.toLowerCase() == commandConfig.config.commandCategory.toLowerCase()).cmds.push(commandConfig.config.name);
   }
 
-  if (args[0] && ["all", "الكل"].includes(args[0].trim())) {
+  if (args[0] && ["all", "ك"].includes(args[0].trim())) {
     let all_commands = [];
     group.forEach(commandGroup => {
       commandGroup.cmds.forEach(item => all_commands.push(item));
@@ -146,10 +146,10 @@ module.exports.run = async function({ api, event, args }) {
     bonus = index_start;
     index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
     group = group.slice(index_start, index_end);
-    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎    ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
+    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎   اسم الامر      ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
     msg += `\n\n• {${page_num_input || 1}/${page_num_total}} `;
     msg +=``
-    msg += `\n╭───────────────╮\n m.me/100094409873389\n╰───────────────╯ `;
+    msg += `\n╭───────────────╮\n من تصميم الـفـخـم الـمـتـكـبــر \n╰───────────────╯ `;
   }
   var msgg = {body: msg, attachment: imgP}
   return api.sendMessage(msgg, threadID, async (error, info) => {
