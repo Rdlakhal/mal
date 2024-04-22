@@ -1,132 +1,82 @@
 module.exports.config = {
-  name: "adminNoti",
-  eventType: [
-    "log:thread-admins",
-    "log:thread-name",
-    "log:user-nickname",
-    "log:thread-call",
-    "log:thread-icon",
-    "log:thread-color",
-    "log:link-status",
-    "log:magic-words",
-    "log:thread-approval-mode",
-    "log:thread-poll"
-  ],
-  version: "1.0.1",
-  credits: "Mirai Team & mod by Yan Maglinte",
-  description: "Group Information Update",
-  envConfig: {
-    autoUnsend: true,
-    sendNoti: true,
-    timeToUnsend: 10
-  }
-};
-
-module.exports.run = async function({ event, api, Threads, Users }) {
-  const { author, threadID, logMessageType, logMessageData, logMessageBody } = event;
-  const { setData, getData } = Threads;
-  const fs = require("fs");
-  const iconPath = __dirname + "/cache/emoji.json";
-  if (!fs.existsSync(iconPath)) fs.writeFileSync(iconPath, JSON.stringify({}));
-  if (author === threadID) return;
-
-  try {
-    let dataThread = (await getData(threadID)).threadInfo;
-
-    switch (logMessageType) {
-      case "log:thread-admins": {
-        if (logMessageData.ADMIN_EVENT === "add_admin") {
-          dataThread.adminIDs.push({ id: logMessageData.TARGET_ID });
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ USER UPDATE ${Users.getNameUser(logMessageData.TARGET_ID)} Became a group admin`, threadID);
-        } else if (logMessageData.ADMIN_EVENT === "remove_admin") {
-          dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id !== logMessageData.TARGET_ID);
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ Remove user's admin position ${logMessageData.TARGET_ID}`, threadID);
-        }
-        break;
-      }
-      case "log:user-nickname": {
-        const { participant_id, nickname } = logMessageData;
-        if (participant_id && nickname) {
-          dataThread.nicknames = dataThread.nicknames || {};
-          dataThread.nicknames[participant_id] = nickname;
-          const participantName = await Users.getNameUser(participant_id);
-          const formattedNickname = nickname || "deleted nickname";
-          api.sendMessage(`[ GROUP ]\n❯ Updated nickname for ${participantName}: ${formattedNickname}.`, threadID);
-        }
-        break;
-      }
-      case "log:thread-name": {
-        dataThread.threadName = logMessageData.name || null;
-        api.sendMessage(`[ GROUP UPDATE ]\n❯ ${(dataThread.threadName) ? `Updated Group Name to: ${dataThread.threadName}` : 'Cleared the Group Name'}.`, threadID);
-        break;
-      }
-      case "log:thread-icon": {
-        const preIcon = JSON.parse(fs.readFileSync(iconPath));
-        dataThread.threadIcon = logMessageData.thread_icon || "👍";
-        if (global.configModule[this.config.name].sendNoti) {
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${logMessageBody.replace("emoji", "icon")}\n❯ Original Emoji: ${preIcon[threadID] || "unknown"}`, threadID, async (error, info) => {
-            preIcon[threadID] = dataThread.threadIcon;
-            fs.writeFileSync(iconPath, JSON.stringify(preIcon));
-            if (global.configModule[this.config.name].autoUnsend) {
-              await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
-              return api.unsendMessage(info.messageID);
-            }
-          });
-        }
-        break;
-      }
-      case "log:thread-call": {
-        if (logMessageData.event === "group_call_started") {
-          const name = await Users.getNameUser(logMessageData.caller_id);
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${name} STARTED A ${(logMessageData.video) ? 'VIDEO ' : ''}CALL.`, threadID);
-        } else if (logMessageData.event === "group_call_ended") {
-          const callDuration = logMessageData.call_duration;
-          const hours = Math.floor(callDuration / 3600);
-          const minutes = Math.floor((callDuration - (hours * 3600)) / 60);
-          const seconds = callDuration - (hours * 3600) - (minutes * 60);
-          const timeFormat = `${hours}:${minutes}:${seconds}`;
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${(logMessageData.video) ? 'Video' : ''} call has ended.\n❯ Call duration: ${timeFormat}`, threadID);
-        } else if (logMessageData.joining_user) {
-          const name = await Users.getNameUser(logMessageData.joining_user);
-          api.sendMessage(`❯ [ GROUP UPDATE ]\n❯ ${name} Joined the ${(logMessageData.group_call_type == '1') ? 'Video' : ''} call.`, threadID);
-        }
-        break;
-      }
-      case "log:link-status": {
-        api.sendMessage(logMessageBody, threadID);
-        break;
-      }
-      case "log:magic-words": {
-        api.sendMessage(`» [ GROUP UPDATE ] Theme ${logMessageData.magic_word} added effect: ${logMessageData.theme_name}\nEmoij: ${logMessageData.emoji_effect || "No emoji "}\nTotal ${logMessageData.new_magic_word_count} word effect added`, threadID)
-        break;
-      }
-      case "log:thread-poll": {
-        const obj = JSON.parse(logMessageData.question_json);
-        if (logMessageData.event_type === "question_creation" || logMessageData.event_type === "update_vote") {
-          api.sendMessage(logMessageBody, threadID);
-        }
-        break;
-      }
-      case "log:thread-approval-mode": {
-        api.sendMessage(logMessageBody, threadID);
-        break;
-      }
-      case "log:thread-color": {
-        dataThread.threadColor = logMessageData.thread_color || "🌤";
-        if (global.configModule[this.config.name].sendNoti) {
-          api.sendMessage(`[ GROUP UPDATE ]\n❯ ${logMessageBody.replace("Theme", "color")}`, threadID, async (error, info) => {
-            if (global.configModule[this.config.name].autoUnsend) {
-              await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
-              return api.unsendMessage(info.messageID);
-            }
-          });
-        }
-        break;
-      }
+    name: "joinNoti",
+    eventType: ["log:subscribe"],
+    version: "1.0.4",
+    credits: "Mirai Team",
+    description: "Thông báo bot hoặc người vào nhóm",
+    dependencies: {
+        "fs-extra": " "
     }
-
-    await setData(threadID, { threadInfo: dataThread });
-  } catch (error) {
-    console.log(error);
-  }
 };
+
+module.exports.run = async function({ api, event, Users, Threads }) {
+   var fullYear = global.client.getTime("fullYear");
+  	var getHours = await global.client.getTime("hours");
+			var session = `${getHours < 3 ? "ن" : getHours < 8 ? "ح" : getHours < 11 ? "ه" : getHours < 16 ? "ق" : getHours < 23 ? "ث" : "ه"}`
+    const { join } = global.nodemodule["path"];
+    const { threadID } = event;
+  const { PREFIX } = global.config;
+    console.log(2)
+    if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
+        console.log(1)
+        return api.sendMessage("⚜️== 「اتصال ناجح ✅」==⚜️", threadID, async () => {
+            let check = true;
+            while (check) {
+                setTimeout(() => check = false, 30 * 1000);
+                const threadData = (await Threads.getInfo(threadID)) || {};
+                if (threadData.hasOwnProperty("adminIDs")) {
+                    check = false;
+                    api.sendMessage(" ", threadID, (err, info) => {
+                        global.client.handleReply.push({
+                            name: "langChoose_0x01042022",
+                            messageID: info.messageID,
+                            adminIDs: threadData.adminIDs
+                        });
+                    });
+                }
+            }
+            api.changeNickname(` ${(!global.config.BOTNAME) ? "و" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+          	api.sendMessage(``, threadID);
+		}); 
+	}
+    else {
+        try {
+            const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+            let { threadName, participantIDs } = await api.getThreadInfo(threadID);
+
+            const threadData = global.data.threadData.get(parseInt(threadID)) || {};
+			const path = join(" ");
+			const pathGif = join(path, `hdfi2.jpg`);
+
+			var mentions = [], nameArray = [], memLength = [], i = 0;
+			
+			for (id in event.logMessageData.addedParticipants) {
+				const userName = event.logMessageData.addedParticipants[id].fullName;
+				nameArray.push(userName);
+				mentions.push({ tag: userName, id });
+				memLength.push(participantIDs.length - i++);
+
+				if (!global.data.allUserID.includes(id)) {
+					await Users.createData(id, { name: userName, data: {} });
+					global.data.userName.set(id, userName);
+					global.data.allUserID.push(id);
+				}
+			}
+			memLength.sort((a, b) => a - b);
+			
+			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n「{name}」: اهلا \n\nفي  شات  {threadName} \n{type}" : msg = threadData.customJoin;
+			msg = msg
+			.replace(/\{name}/g, nameArray.join(', '))
+			.replace(/\{type}/g, (memLength.length > 1) ?  'các bạn' : 'انا بوت ملاك في خدمتك 💀🎻')
+			.replace(/\{soThanhVien}/g, memLength.join(', '))
+			.replace(/\{threadName}/g, threadName);
+
+			if (existsSync(path)) mkdirSync(path, { recursive: true });
+
+			if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif), mentions }
+			else formPush = { body: msg, mentions }
+
+			return api.sendMessage(formPush, threadID);
+		} catch (e) { return console.log(e) };
+	}
+        }
