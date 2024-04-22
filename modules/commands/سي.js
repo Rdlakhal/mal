@@ -3,11 +3,11 @@ const axios = require('axios');
 
 const aa = {
   config: {
-  name: "ملاك",
+  name: "سيم",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Gry KJ",
-  description: "",
+  description: "العاب",
   commandCategory: "العاب",
   usages: "",
   cooldowns: 5,
