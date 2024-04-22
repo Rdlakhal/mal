@@ -12,7 +12,7 @@ module.exports.config = {
     
     usePrefix:true,
 
-	commandCategory: "إقتصاد",
+	commandCategory: "الاموال",
 
 	usages: "[تاغ أو أتركه فرغا]",
 
