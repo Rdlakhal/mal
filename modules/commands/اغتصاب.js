@@ -1,9 +1,9 @@
 module.exports.config = {
-    name: "زواج",
+    name: "احم",
     version: "3.1.1",
-    hasPermssion: 0,
+    hasPermssion: 2,
     credits: "عمر",
-    description: "زواج بمنشن",
+    description: "احم بمنشن",
     commandCategory: "ترفية",
     usages: "[@منشن]",
     cooldowns: 5,
@@ -66,7 +66,7 @@ module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);
-    if (!mention[0]) return api.sendMessage("منشن حد", threadID, messageID);
+    if (!mention[0]) return api.sendMessage("منشن حد لكي يتن.اك", threadID, messageID);
     else {
         const one = senderID, two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
