@@ -1,11 +1,11 @@
 module.exports.config = {
-    name: "احم",
+    name: "شنق",
     version: "3.1.1",
-    hasPermssion: 2,
+    hasPermssion: 0,
     credits: "عمر",
-    description: "احم بمنشن",
-    commandCategory: "ترفية",
-    usages: "[@منشن]",
+    description: "تشنق حد بمنشن",
+    commandCategory: "العاب",
+    usages: "[للشخص لتريده@حط]",
     cooldowns: 5,
     dependencies: {
         "axios": "",
@@ -20,9 +20,9 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'marriedv4.png');
+    const path = resolve(__dirname, 'cache/canvas', 'smto.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/brq6rDDB/received-1417994055426496.jpg-acL76Ac-A8BXGXGNpMNeglJtG1Trh8qsKD0yG3mb30VahImpSL&_nc_ohc=tH7tytVRTbUAb4ngtVQ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpdekoFo9gDhciEcovJnTuzpmFu_b0MCv2HNICE0v_Gw&oe=664F8D30", path);
+    if (!existsSync(path)) await downloadFile("https://scontent.xx.fbcdn.net/v/t1.15752-9/438095276_291864083863382_3445979593059847264_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5DCOlQL6MNUAb5j5EPY&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QG-PGyS8wn5eCM8TlJqqZ2VqcaYfBjM_U1P5TQs9AVQrg&oe=6650CA2D", path);
 }
 
 async function makeImage({ one, two }) {
@@ -32,8 +32,8 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let batgiam_img = await jimp.read(__root + "/marriedv4.png");
-    let pathImg = __root + `/batman${one}_${two}.png`;
+    let batgiam_img = await jimp.read(__root + "/smto.png");
+    let pathImg = __root + `/smto${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
     
@@ -45,7 +45,7 @@ async function makeImage({ one, two }) {
     
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    batgiam_img.composite(circleOne.resize(130, 130), 200, 70).composite(circleTwo.resize(130, 130), 350, 150);
+    batgiam_img.composite(circleOne.resize(200, 200), 255, 25005).composite(circleTwo.resize(118, 118), 350, 80);
     
     let raw = await batgiam_img.getBufferAsync("image/png");
     
@@ -62,13 +62,13 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args }) {    
+module.expo🤬rts.run = async function ({ event, api, args }) {    
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);
-    if (!mention[0]) return api.sendMessage("منشن حد لكي يتن.اك", threadID, messageID);
+    if (!mention[0]) return api.sendMessage("تاغ للبني ادم", threadID, messageID);
     else {
         const one = senderID, two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
-      }
+}
