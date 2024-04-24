@@ -22,7 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'marriedv4.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://scontent.xx.fbcdn.net/v/t1.15752-9/380150775_1281977002515831_7907817330254446165_n.jpg?stp=dst-jpg_p480x480&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE1n4JXjRFAaFvZi5CMjVGyHQfmnC--gHMdB-acL76Ac-A8BXGXGNpMNeglJtG1Trh8qsKD0yG3mb30VahImpSL&_nc_ohc=tH7tytVRTbUAb4ngtVQ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpdekoFo9gDhciEcovJnTuzpmFu_b0MCv2HNICE0v_Gw&oe=664F8D30", path);
+    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/brq6rDDB/received-1417994055426496.jpg-acL76Ac-A8BXGXGNpMNeglJtG1Trh8qsKD0yG3mb30VahImpSL&_nc_ohc=tH7tytVRTbUAb4ngtVQ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpdekoFo9gDhciEcovJnTuzpmFu_b0MCv2HNICE0v_Gw&oe=664F8D30", path);
 }
 
 async function makeImage({ one, two }) {
