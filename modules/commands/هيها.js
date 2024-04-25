@@ -3,10 +3,10 @@ const { MessageType } = require("@adiwajshing/baileys");
 module.exports.config = {
   name: "غشم",
   version: "1.0.1",
-  hasPermssion: 1,
+  hasPermssion: 2,
   credits: "DRIDI-RAYEN",
-  description: "إنشاء غرفة دردشة جماعية مع أعضاء محددين",
-  commandCategory: "المجموعات",
+  description: "🎶🎶🎶🎶🎶🎶",
+  commandCategory: "المطور",
   usages: "[ردود الفعل/الأعضاء] [عدد الأعضاء]",
   cooldowns: 5,
 };
