@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Joshua Sy",
     description: "subo etits",
-    commandCategory: "general",
+    commandCategory: "تجربة",
     usages: "[@mention]",
     cooldowns: 5,
     dependencies: {
