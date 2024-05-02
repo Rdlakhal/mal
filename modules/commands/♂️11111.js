@@ -1,10 +1,10 @@
 module.exports.config = {
-    name: "avtlol2",
+    name: "لووغو",
     version: "1.0.1",
     hasPermssion: 0,
     credits: "Rip05",
-    description: "edit txt",
-    commandCategory: "tạo ảnh",
+    description: "تصميم لوغو بي اسمك",
+    commandCategory: "صور",
     usages: "[Text1]",
     cooldowns: 5,
     dependencies: {
@@ -31,7 +31,7 @@ await axios.get(`https://api.lolhuman.xyz/api/ephoto1/lolbanner?apikey=b229f3dc2
         .then(data => {
             const imageBuffer = data.data;
             fs.writeFileSync(pathsave, Buffer.from(imageBuffer));
-            api.sendMessage({body: `[R05] - Module: ${moduleName} || Name: ....  || - Text: ${text}`, attachment: fs.createReadStream(pathsave)}, event.threadID, () => fs.unlinkSync(pathsave), event.messageID);})
+            api.sendMessage({body: `[R05] - الموديل: ${moduleName} \n\n الاسم ....  \n\n ${text}`, attachment: fs.createReadStream(pathsave)}, event.threadID, () => fs.unlinkSync(pathsave), event.messageID);})
         .catch(error => {
             let err;
             if (error.response) err = JSON.parse(error.response.data.toString());
