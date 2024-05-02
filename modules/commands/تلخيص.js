@@ -1,10 +1,10 @@
 module.exports.config = {
-	name: "sauce",
+	name: "تلخيص",
 	version: "1.0.2",
 	hasPermssion: 0,
 	credits: "Mirai Team",
-	description: "Tìm kiếm thông tin ảnh thông qua ảnh (chỉ dành cho anime và hentai)",
-	commandCategory: "media",
+	description: "تجارب",
+	commandCategory: "خطر",
 	cooldowns: 5,
 	dependencies: {
 		"sagiri": "",
