@@ -1,10 +1,10 @@
 module.exports.config = {
-  name: "ayaka",
+  name: "اياكا",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Teri",
-  description: "Random ảnh ayaka",
-  commandCategory: "Random-IMG",
+  description: "صور شخصية اياكا",
+  commandCategory: "صور",
   usages: "ayaka",
   cooldowns: 5,
   dependencies: {
@@ -126,7 +126,7 @@ var min = Math.floor(Math.random() * 2);
       if(money < 0) api.sendMessage("Do you need $100 to see the photo?",event.threadID,event.messageID)
           else {
    Currencies.setData(event.senderID, options = {money: money - 0})
-   var callback = () => api.sendMessage({body:`Photo Ayaka Hey 💞 ${link.length}\n-100 usd!`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
+   var callback = () => api.sendMessage({body:`صور اياكا ${link.length}\n-100 usd!`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
      }
    };
