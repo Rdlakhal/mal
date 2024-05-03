@@ -1,4 +1,7 @@
-module.exports.config = {
+const bxo = global.config.adonly;
+
+module.exports = {
+	config: {
 	name: "‌إيقاف",
 	version: "1.0.0",
 	hasPermssion: 2,
@@ -6,5 +9,11 @@ module.exports.config = {
 	description: "ٕ",
 	commandCategory: "المطور",
 	cooldowns: 0
-        };
-module.exports.run = ({event, api}) =>api.sendMessage("تم ايقاف النضام",event.threadID, () =>process.exit(0))
+        },
+run: async function({ api, event, args }) {
+
+//لازم اطلع حاليااااااااااااااااااااا
+	
+}
+
+}
