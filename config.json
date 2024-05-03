@@ -1,6 +1,7 @@
 {
     "language": "en",
     "keyActive": "",
+    "adonly": false,
     "DeveloperMode": false,
     "autoCreateDB": true,
     "allowInbox": true,
