@@ -64,7 +64,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 					global.data.allUserID.push(id);
 				}
 			}
-		const gifes = await axios.get(`https://i.pinimg.com/originals/e7/1f/95/e71f9525a5518264edf7df95408d87c6.gif` { responseType: "stream"});
+		const gifes = await axios.get(`https://i.pinimg.com/originals/e7/1f/95/e71f9525a5518264edf7df95408d87c6.gif`, { responseType: "stream"});
 		const atth = gifes.data;
 		memLength.sort((a, b) => a - b);
 			
