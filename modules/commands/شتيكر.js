@@ -1,16 +1,24 @@
 const axios = require("axios");
+
+/*
+يغاق وقف
+ابييي اساعددد وااع
+نجب وشاهد
+*/
+
+
 module.exports = {
-    Caera: {
-        name: "ستيكر",
-        Aliases: ["ملسق", "ستيكرات"],
-        version: "1.0.0",
-        author: "عبدالرحمن محمد",
-        Validity: 0,
-        CDown: 0,
-        description: "شراء ستيكرات من يوتا",
-        Class: "ثريدز",
+    config: {
+	name: "ستيكر",
+	version: "1.2.2",
+	hasPermssion: 0,
+	credits: "ريووووووووووو",
+	description: "ستيكرات تع مدري المهم جرب",
+	commandCategory: "..",
+	usages: ".."
     },
-    onUse: async ({ Message: message, event }) => {
+    run: async ({ api, event }) => {
+      
         const msg = `🔥 |  مكتــبة الستيكرات 🏫📚
 
  ←› يرجى الرد على هذه الرسالة بكلمات البحث لاسم الستيكر  
@@ -18,8 +26,8 @@ module.exports = {
 
 ⌯︙يفضل استخدام الحروف الانجليزية .\n⌯︙ يمكنك البحث عن شخصيه انمي او انمي او يوتيوبرز يابانين\nسعر الاستيكر 90`;
 
-        message.reply(msg, (err, info) => {
-            global.Caera.onReply.set(info.messageID, {
+        api.sendMessage(msg, event.threadID , (err, info) => {
+             global.client.handleReply.push({
                 name: "ستيكر",
                 messageID: info.messageID,
                 author: event.senderID,
@@ -27,7 +35,7 @@ module.exports = {
             });
         });
     },
-    onReply: async ({ onReply, Message: message, event, usersData }) => {
+    handleReply: async ({ handleReply: onReply, api, event }) => {
         const { type, result, author } = onReply;
          if( author != event.senderID ) return;
 const messageBody = event.body.trim().toLowerCase();
@@ -35,7 +43,7 @@ const messageBody = event.body.trim().toLowerCase();
         
         if (type === "letsSearch") {
             const keywords = messageBody;
-            message.react("🔎");
+            
             try {
                 const response = await axios.get(
                     `https://app-lines-986717226d96.herokuapp.com/line?ser=${encodeURIComponent(keywords)}`);
@@ -43,8 +51,8 @@ const messageBody = event.body.trim().toLowerCase();
                 const NumberOfSearch = mangaData.length;
 
                 if (NumberOfSearch === 0) {
-                    message.react("❌");
-                    return message.reply(`❌︙لم يتم العثور على "${keywords}" ❌`);
+                  
+                    return  api.sendMessage(`❌︙لم يتم العثور على "${keywords}" ❌`, event.threadID);
                 }
 
                 let formattedMessage = `〄 تم العثور على ${NumberOfSearch} ستيكرات 🔎⤷\n\n`;
@@ -58,13 +66,13 @@ const messageBody = event.body.trim().toLowerCase();
                     please = "⌯︙ قم بالرد برقم واحد 1 .";
                 }
 
-                message.reply(
+                api.sendMessage(
                     `
 ${formattedMessage}
 ${please}
-`,
+`, event.threadID,
                     (err, info) => {
-                        global.Caera.onReply.set(info.messageID, {
+                        global.client.handleReply.push({
                             name: "ستيكر",
                             messageID: info.messageID,
                             resultMessageID: info.messageID,
@@ -76,19 +84,16 @@ ${please}
                 );
             } catch (error) {
                 console.error("Error occurred while fetching anime data:", error);
-                return message.reply(`❌︙لم يتم العثور على "${keywords}" ❌`);
+                return api.sendMessage(`❌︙لم يتم العثور على "${keywords}" ❌`, event.threadID);
             }
         }
 
         if (type === "animeResults") {
             try {
                 if (isNaN(body) || body < 1 || body > result.length) {
-                    return message.reply(`⌯︙قم بالرد برقم بين 1 و ${result.length} 🧞‍♂`);
-                }
-              let datas = await usersData.get(event.senderID);
-              let money = datas.money;
-              if (money < 90) { return message.reply("نقلع وجيب 90 وتعال") }
-              await usersData.addMoney(event.senderID, -90);
+                    return api.sendMessage(`⌯︙قم بالرد برقم بين 1 و ${result.length} 🧞‍♂`, event.threadID);
+                } //خلص عملتها
+            
 
                 const index = body - 1;
                 const playUrl = result[index].id;
@@ -101,20 +106,21 @@ ${please}
                 
                 let stream = [];
              for( ar of arr) {
-
-               stream.push(await global.Mods.imgd(ar))
+                 //لعرف غلط تع ستريم
+                  let strr = await axios.get(ar, { responseType: "stream" });
+               stream.push(strr.data)
              }
               
               
-              message.reply(
+              api.sendMessage(
                     {
                         body: "⇣♡◄∘ تفضل ستيكراتك عزيزي ∘►♡⇡",
                         attachment: stream,
-                    }
+                    } , event.threadID
                 );
             } catch (error) {
                 console.error("Error occurred while fetching anime details:", error);
-                return message.reply("❌︙حدث خطأ أثناء جلب تفاصيل الستيكر. الرجاء المحاولة مرة أخرى في وقت لاحق.");
+                return api.sendMessage("❌︙حدث خطأ أثناء جلب تفاصيل الستيكر. الرجاء المحاولة مرة أخرى في وقت لاحق.", event.threadID);
             }
         }
         
