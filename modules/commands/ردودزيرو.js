@@ -119,8 +119,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
   if ((event.body.toLowerCase() == "استغفرالله ") || (event.body.toLowerCase() == "استغفر الله ")) {
      return api.sendMessage("استغفراللهالعظيم ...! 🙎‍♀️🍃", threadID);
    };
- if ((event.body.toLowerCase() == "لا") || (event.body.toLowerCase() == "يس")) {
-     return api.sendMessage("متاكد؟", threadID);
+ if ((event.body.toLowerCase() == "لا") || (event.body.toLowerCase() == "يس")) {    return api.sendMessage("متاكد؟", threadID);
    };
   
   if ((event.body.toLowerCase() == "شرح زينبو") || (event.body.toLowerCase() == "ماهوا الزينبو")) {
@@ -184,8 +183,8 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
      return api.sendMessage("شوفو في كلب عم ينبح🤣💔", threadID);
    };
 
-   if ((event.body.toLowerCase() == "بوت") || (event.body.toLowerCase() == "يا بوت")) {
-     return api.sendMessage(" اسمي ملاك", threadID);
+   if ((event.body.toLowerCase() == "استغفرالله ") || (event.body.toLowerCase() == "استغفر الله")) {
+     return api.sendMessage("استغفر الله العظيم...! 🖤🦅", threadID);
    };
 
    if ((event.body.toLowerCase() == "صباحو") || (event.body.toLowerCase() == "صباح الخير")) {
