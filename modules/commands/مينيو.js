@@ -146,7 +146,7 @@ module.exports.run = async function({ api, event, args }) {
     bonus = index_start;
     index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
     group = group.slice(index_start, index_end);
-    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎ الاسم  ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
+    group.forEach(commandGroup => msg += `\n『${index_start+=1}』⏎ ࿐ཽ༵͜͜͜  ⎒ ❲  ${commandGroup.group.toUpperCase()} ❳ ⎒`);
     msg += `\n\n• {${page_num_input || 1}/${page_num_total}} `;
     msg +=``
     msg += `\n╭───────────────╮\n‌         من تصميم الـفـخـم الـمـتـكـبــر \n╰───────────────╯ `;
