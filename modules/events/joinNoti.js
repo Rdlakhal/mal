@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 module.exports.config = {
     name: "joinNoti",
     eventType: ["log:subscribe"],
@@ -62,7 +64,9 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 					global.data.allUserID.push(id);
 				}
 			}
-			memLength.sort((a, b) => a - b);
+		const gifes = await axios.get(`https://i.pinimg.com/originals/e7/1f/95/e71f9525a5518264edf7df95408d87c6.gif` { responseType: "stream"});
+		const atth = gifes.data;
+		memLength.sort((a, b) => a - b);
 			
 			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n「{name}」: اهلا \n\nفي  شات  {threadName} \n{type}" : msg = threadData.customJoin;
 			msg = msg
@@ -73,8 +77,8 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 
 			if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-			if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif), mentions }
-			else formPush = { body: msg, mentions }
+			if (existsSync(pathGif)) formPush = { body: msg, attachment: atth, mentions }
+			else formPush = { body: msg, attachment: atth, mentions }
 
 			return api.sendMessage(formPush, threadID);
 		} catch (e) { return console.log(e) };
