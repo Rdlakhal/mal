@@ -29,7 +29,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
 
  if (!ADMINBOT.includes(senderID)) {
         if (adonly) {
-          return;
+          return api.setMessageReaction("❌", event.messageID, (err) => {}, true);;
         }
       }
     
