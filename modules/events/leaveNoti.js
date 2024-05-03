@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 module.exports.config = {
 	name: "leave",
 	eventType: ["log:unsubscribe"],
@@ -15,7 +17,14 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
 	const { join } =  global.nodemodule["path"];
 	const { threadID } = event;
+
+
+const gifes = await axios.get(`https://i.imgur.com/ne7XSkE.jpeg` { responseType: "stream"});
+		const atth = gifes.data;
+
+	
 	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
+	
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
 	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "⚜️=「غادر(ت)」=⚜️" : "⚜️=「انطرد」=⚜️";
 	const path = join(__dirname, "cache", "leachfvveGif");
@@ -27,8 +36,8 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	(typeof data.customLeave == "undefined") ? msg = "「{name}」\n\m" : msg = data.customLeave;
 	msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type);
 
-	if (existsSync(gifPath)) formPush = { body: msg, attachment: createReadStream(gifPath) }
-	else formPush = { body: msg }
+	if (existsSync(gifPath)) formPush = { body: msg, attachment: atth }
+	else formPush = { body: msg, attachment: atth }
 	
 	return api.sendMessage(formPush, threadID);
 }
