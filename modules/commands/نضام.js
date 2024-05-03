@@ -6,7 +6,7 @@ module.exports = {
 	version: "1.0.0",
 	hasPermssion: 2,
 	credits: "ريوو",
-	description: "ٕ",
+	description: "..",
 	commandCategory: "المطور",
 	cooldowns: 0
         },
