@@ -1,18 +1,26 @@
-const bxo = global.config.adonly;
+let bxo = global.config.adonly;
 
 module.exports = {
 	config: {
-	name: "‌إيقاف",
+	name: "‌نضام",
 	version: "1.0.0",
 	hasPermssion: 2,
-	credits: "HTHB",
+	credits: "ريوو",
 	description: "ٕ",
 	commandCategory: "المطور",
 	cooldowns: 0
         },
 run: async function({ api, event, args }) {
+let dd = args[0];
+	if( dd == "تشغيل" ) {
+		api.sendMessage("تمم رجعتلكم ملاك", event.threadID);
+		bxo = false;
+	}
 
-//لازم اطلع حاليااااااااااااااااااااا
+if( dd == "ايقاف" ) {
+		api.sendMessage("رايحه انام", event.threadID);
+		bxo = true;
+	}
 	
 }
 
