@@ -26,14 +26,14 @@ const gifes = await axios.get(`https://i.imgur.com/ne7XSkE.jpeg`, { responseType
 	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
 	
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "⚜️=「غادر(ت)」=⚜️" : "⚜️=「انطرد」=⚜️";
+	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "⚜️=غادر」=⚜️" : "⚜️=「انطرد」」=⚜️";
 	const path = join(__dirname, "cache", "leachfvveGif");
 	const gifPath = join(path, `byxcve2.jpg`);
 	var msg, formPush
 
 	if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-	(typeof data.customLeave == "undefined") ? msg = "「{name}」\n\m" : msg = data.customLeave;
+	(typeof data.customLeave == "undefined") ? msg = "「{name}」\n\n{type} " : msg = data.customLeave;
 	msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type);
 
 	if (existsSync(gifPath)) formPush = { body: msg, attachment: atth }
