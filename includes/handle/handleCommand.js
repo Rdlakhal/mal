@@ -7,14 +7,14 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
   return async function ({ event }) {
     const dateNow = Date.now();
     const time = moment.tz("Asia/Manila").format("HH:MM:ss DD/MM/YYYY");
-    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } =
+    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly, adonly } =
       global.config;
 
     const { userBanned, threadBanned, threadInfo, threadData, commandBanned } =
       global.data;
     const { commands, cooldowns } = global.client;
     
-    var { body, senderID, threadID, messageID } = event;
+    var { body, senderID, threadID, messageID, isGroup } = event;
 
     var senderID = String(senderID),
       threadID = String(threadID);
@@ -26,6 +26,13 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
     );
     if (!prefixRegex.test(body)) return;
 
+
+ if (!ADMINBOT.includes(senderID)) {
+        if (adonly) {
+          return;
+        }
+      }
+    
     if (
       userBanned.has(senderID) ||
       threadBanned.has(threadID) ||
