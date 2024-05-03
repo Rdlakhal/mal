@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "‌ايقاف",
+	name: "‌إيقاف",
 	version: "1.0.0",
 	hasPermssion: 2,
 	credits: "HTHB",
