@@ -19,7 +19,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	const { threadID } = event;
 
 
-const gifes = await axios.get(`https://i.imgur.com/ne7XSkE.jpeg` { responseType: "stream"});
+const gifes = await axios.get(`https://i.imgur.com/ne7XSkE.jpeg`, { responseType: "stream"});
 		const atth = gifes.data;
 
 	
