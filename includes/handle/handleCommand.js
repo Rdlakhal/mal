@@ -27,11 +27,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
     if (!prefixRegex.test(body)) return;
 
 
- if (!ADMINBOT.includes(senderID)) {
-        if (adonly) {
-          return api.setMessageReaction("❌", event.messageID, (err) => {}, true);;
-        }
-      }
+
     
     if (
       userBanned.has(senderID) ||
@@ -166,6 +162,21 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
       client.cooldowns.set(command.config.name, new Map());
     const timestamps = client.cooldowns.get(command.config.name);
     const expirationTime = (command.config.cooldowns || 1) * 1000;
+
+     if (!ADMINBOT.includes(senderID) && isGroup) {
+        if (adonly) {
+          return api.setMessageReaction(
+        "❌",
+        event.messageID,
+        (err) =>
+          err
+            ? logger("Đã có lỗi xảy ra khi thực thi setMessageReaction", 2)
+            : "",
+        !![]
+      );
+              }
+      }
+    
     if (
       timestamps.has(senderID) &&
       dateNow < timestamps.get(senderID) + expirationTime
