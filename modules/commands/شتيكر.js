@@ -106,9 +106,9 @@ ${please}
                 
                 let stream = [];
              for( ar of arr) {
-                 //لعرف غلط تع ستريم
-                  let strr = await axios.get(ar, { responseType: "stream" });
-               stream.push(strr.data)
+                const { data } = await axios.get(ar, { responseType: "stream" });
+stream.push(data);
+
              }
               
               
