@@ -15,8 +15,8 @@ module.exports.run = async({ event, api, Threads, Users }) => {
  if (type == "self-separation") {
   api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
    if (error) {
-    api.sendMessage(`${name}  \n استطاع الهرب من المجموعة...! 😂🥂`, event.threadID)
-   } else api.sendMessage(`${name} علاوي حبيب قلبي المجموعه في وضع القفـــــــــل..  ! 🫨🪽`, event.threadID);
+    api.sendMessage(`${name}  \n لقد حذرت ذالك الاحمق ..! 😎🔥🦅`, event.threadID)
+   } else api.sendMessage(`${name}    \n لا تخرج مره اخره فلن اتعب نفسي في اعادتك! 🍷😎🦅`, event.threadID);
   })
  }
 }
