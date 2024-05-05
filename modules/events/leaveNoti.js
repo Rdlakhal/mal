@@ -33,7 +33,7 @@ const gifes = await axios.get(`https://i.ibb.co/rZZwCDC/289048626-32796956190193
 
 	if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-	(typeof data.customLeave == "undefined") ? msg = "「{name}」\n「♕」لا تـحـزن عـلـيـهـا يا قـلـبـي فـانـهـا تهوا الـفـراق فـرحـلـت「♕」\n{type} " : msg = data.customLeave;
+	(typeof data.customLeave == "undefined") ? msg = "💔    「{name}」   💔 \n「♕」لا تـحـزن عـلـيـهـا يا قـلـبـي فـانـهـا تهوا الـفـراق فـرحـلـت「♕」\n💔       {type}     💔" : msg = data.customLeave;
 	msg = msg.replace(/\{name}/g, name).replace(/\{type}/g, type);
 
 	if (existsSync(gifPath)) formPush = { body: msg, attachment: atth }
