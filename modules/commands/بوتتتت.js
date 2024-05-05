@@ -1,7 +1,7 @@
 module.exports.config = {
    name: "بوت",
     version: "1.0.0",
-    hasPermssion: 1,
+    hasPermssion: 0,
     credits: "3bida",
     description: "",
     usages: "",
@@ -14,7 +14,7 @@ module.exports.config = {
   }
 };
 
-module.ex🔥ports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
+module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
