@@ -26,7 +26,7 @@ const gifes = await axios.get(`https://i.ibb.co/rZZwCDC/289048626-32796956190193
 	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
 	
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "⚜️=غادر」=⚜️" : "⚜️=「انطرد」」=⚜️";
+	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "♧=「 غادر 」=♧" : "♧=「 اترمه 」=♧";
 	const path = join(__dirname, "cache", "leachfvveGif");
 	const gifPath = join(path, `byxcve2.jpg`);
 	var msg, formPush
