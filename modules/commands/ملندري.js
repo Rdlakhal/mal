@@ -10,7 +10,7 @@ module.exports.Preset = {
   Rest: 0
   }
  
-module.exports.Start = function ({ event, api, args }) {};
+module.exports.run = function ({ event, api, args }) {};
 module.exports.onEvent = async function ({ event, api }) {
   const { body, threadID } = event;
   if (
