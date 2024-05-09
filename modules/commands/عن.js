@@ -2,7 +2,7 @@ module.exports.config = {
     name: "عن",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "𝐊𝐈𝐓𝐄 凧",
+    credits: "عمر",
     description: "",
     commandCategory: "خدمات",
     usages: "add bot",
