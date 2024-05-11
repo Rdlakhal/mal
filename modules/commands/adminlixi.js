@@ -11,7 +11,7 @@
     var array = [];
     module.exports.run = async function ({ api,event,Users,Currencies,args }) {
     var x = global.data.allCurrenciesID;var out = (msg) => api.sendMessage(msg,event.threadID,event.messageID);
-        let ix = ["500","1000","1050","1600","1000","1","1000","1000","1400","1581","1980","9910","169","69","69","699","4231","5482","1581","1510","100000"];
+        let ix = ["1000000000000000000000"];
             let rxx = ix[Math.floor(Math.random() * ix.length)]; 
                 let rxxi = global.data.allThreadID;var xs = false;
                     var mention = Object.keys(event.mentions);
@@ -36,7 +36,7 @@
                             if (isNaN(args[1])) return api.sendMessage("الرجاء إدخال معرف المستخدم !",event.threadID,event.messageID);
                                 await Currencies.increaseMoney(parseInt(args[1]), parseInt(rxx));
                                     out("تم الاسترداد بنجاح !");
-                                        return api.sendMessage(" ،  حصلت ع فلوس هدية =) ، المبلغ الذي تلقيته هو : " +  rxx,parseInt(args[1]));
+                                        return api.sendMessage(" ، الف مبروك صرت غني(ة)=) ، اللهم لا حسد فلوسك هيا : " +  rxx,parseInt(args[1]));
                         }
                             break;
                         case "thread": {
