@@ -61,7 +61,7 @@
                 default: {
                         if(array.includes(event.senderID)) return out("انت محصل عـا الفلوس قمنقلع   !");array.push(event.senderID);
                     await Currencies.increaseMoney(event.senderID, parseInt(rxx)); 
-                return out("====[ الحظ ]====\nمبروك حصلت ع فلوس الحظ , والمبلغ هوة  : " + rxx);
+                return out("====[ هدية من المطور عمر  ]====\nالف مبروك صرت من اغنة الاغنياء و ثروتك تقدر بي : " + rxx);
             }
         }
     };
