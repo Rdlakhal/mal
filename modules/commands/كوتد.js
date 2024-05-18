@@ -1,10 +1,10 @@
  module.exports.config = {
-  name: "anh18",
+  name: "18h",
   version: "1.0.0",
-  hasPermssion: 0,
+  hasPermssion: 2,
   credits: "Binee",
   description: "",
-  commandCategory: "nsfw",
+  commandCategory: "المطور",
   usages: "anh18",
   cooldowns: 5,
   dependencies: {
