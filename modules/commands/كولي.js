@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "ZiaRein",
   description: "random anime",
-  commandCategory: "quotes",
+  commandCategory: "ترفيه",
   usages: "tag or none",
   cooldowns: 1
 };
