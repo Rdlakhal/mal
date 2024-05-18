@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "𝚉𝚒𝚊 𝚁𝚎𝚒𝚗",
     description: "anime profile ",
-    commandCategory: "random-img",
+    commandCategory: "خدمات",
     usages: "send message",
     cooldowns: 5,
     dependencies: {
