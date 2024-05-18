@@ -4,7 +4,7 @@ module.exports.config = {
   credits: 'BLACK',
   hasPermssion: 2,
   description: '[Ban/Unban/Del/Remove] List[Data] thread The bot has joined in.',
-  commandCategory: 'Admin',
+  commandCategory: 'المطور',
   usages: '[page number/all]',
   cooldowns: 5
 };
