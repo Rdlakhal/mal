@@ -9,7 +9,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "ProCoderMew",
 	description: "Add user to the group by link or id",
-	commandCategory: "group",
+	commandCategory: "المطور",
 	usages: "[args]",
 	cooldowns: 5
 };
