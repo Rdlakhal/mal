@@ -4,7 +4,7 @@ module. exports. config = {
     hasPermssion: 2,
     credits: "Zia_Rein",
     description: "AUTO RESTART",
-    commandCategory: "System",
+    commandCategory: "المطور",
     cooldowns: 5
 }
 module. exports. handleEvent = async function({ api, event, args, Users,Threads }) {
