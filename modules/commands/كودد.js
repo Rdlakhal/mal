@@ -1,10 +1,10 @@
  module.exports.config = {
-  name: "bakfoto",
+  name: "foto",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "gilgamesh",
   description: "",
-  commandCategory: "foto",
+  commandCategory: "صور",
   usages: "foto",
   cooldowns: 5,
   dependencies: {
