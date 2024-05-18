@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "DungUwU mod by Nam",
 	description: "approve the gc using bots xD",
-	commandCategory: "Admin",
+	commandCategory: "المطور",
     cooldowns: 5
 };
 
