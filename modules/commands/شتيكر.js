@@ -14,7 +14,7 @@ module.exports = {
 	hasPermssion: 0,
 	credits: "ريووووووووووو",
 	description: "ستيكرات تع مدري المهم جرب",
-	commandCategory: "..",
+	commandCategory: "صور",
 	usages: ".."
     },
     run: async ({ api, event }) => {
