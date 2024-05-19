@@ -5,8 +5,8 @@ const aa = {
   config: {
   name: "سيم",
   version: "1.0.0",
-  hasPermssion: 0,
-  credits: "Gry KJ",
+  hasPermssion: 2,
+  credits: "عمر",
   description: "العاب",
   commandCategory: "العاب",
   usages: "",
