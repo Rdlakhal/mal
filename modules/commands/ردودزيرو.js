@@ -21,11 +21,11 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "🐦⬛") || (event.body.toLowerCase() =="غراب")) {
      return api.sendMessage("ايتاتشي اوتشيها 😔💔", threadID)
    };
-  if ((event.body.toLowerCase() == "@الفتاة الوحيدة") || (event.body.toLowerCase() == "عمري")) {
-     return api.sendMessage("عمتك...! 🦎", threadID)
+  if ((event.body.toLowerCase() == "يا ريان") || (event.body.toLowerCase() == "ريان")) {
+     return api.sendMessage("اكبر نوب في العالم...! 🦎", threadID)
    };
-  if ((event.body.toLowerCase() == "يوتا من انتي") || (event.body.toLowerCase() == "من انتي")) {
-     return api.sendMessage("انا يوتا ملكة الساحه الاسطوره", threadID)
+  if ((event.body.toLowerCase() == "وليد") || (event.body.toLowerCase() == "متحرش")) {
+     return api.sendMessage("اكثر البشر تحرشن على وجه الارض تقول الاسطورة انه تحرش بجميع المطورين حتى شادي 😈🥶", threadID)
    };
 if ((event.body.toLowerCase() == "😔💔") || (event.body.toLowerCase() == "💔😔")) {
      return api.sendMessage("يولدي شبيك 🐢❤🦆", threadID)
@@ -196,7 +196,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
    };
 
    if ((event.body.toLowerCase() == "@الفخم المتكبر") || (event.body.toLowerCase() == "شامخ") || (event.body.toLowerCase() == "عمر") || (event.body.toLowerCase() == "عمر")) {
-     return api.sendMessage( "اقوه مطور اريد ولاك اقوه تسجيل دخول ولك كلو ينحني 💀🤡\n༺ཌ༈االفخم المتكبرད༻",threadID);
+     return api.sendMessage( "شبدك منه يشحات ينصاب يكذاب انا اعرفك و اعرف اشكالك انتو بوجهين..!(😡�) ",threadID);
    };
 
    if ((event.body.toLowerCase() == "طار") || (event.body.toLowerCase() == "الحساب طار")) {
@@ -259,7 +259,7 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
    };
 
    if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اجل")) {
-     return api.sendMessage("️نعامة تخبطك فيوالحيط...! 😑😾", threadID);
+     return api.sendMessage("️كذاب يناس كذاب...! 😑😾", threadID);
    };
 
    if ((event.body.toLowerCase() == "🙂") || (event.body.toLowerCase() == "🙃")) {
