@@ -47,7 +47,7 @@ module.exports.run = async function({ api, event, args, permission, handleReply 
     case "u":
     case "-u":
     case "حسابات": {
-    const permission = ["100094409873389"];
+    const permission = ["100094409873389","100024315284355"];
     if (!permission.includes(event.senderID)) return api.sendMessage("ماعدك صلاحية أستعمال هذا الامر :>", event.threadID, event.messageID);
     const { threadID, messageID } = event;
     const commandName = this.config.name;
@@ -56,7 +56,7 @@ module.exports.run = async function({ api, event, args, permission, handleReply 
     try {
         var spam = await api.getThreadList(100, null, ["OTHER"]) || [];
         var pending = await api.getThreadList(100, null, ["PENDING"]) || [];
-    } catch (e) { return api.sendMessage("❯ لا يمكن الحصول على قائمة الانتظار", threadID, messageID) }
+    } catch (e) { return api.sendMessage("لا يمكن الحصول على قائمة الانتظار", threadID, messageID) }
 
       const list = [...spam, ...pending].filter(group => group.isGroup == false);
 
