@@ -42,7 +42,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
     }
   }
   const axios = require('axios');
-  const fs = require('fs-extra'): 
+  const fs = require('fs-extra');
   const img = ["https://i.imgur.com/0ur3dLU.jpeg","https://i.imgur.com/PnLf0hw.jpeg"," https://i.imgur.com/lM7q1g3.jpeg","https://i.imgur.com/Qo7HxLe.jpeg","https://i.imgur.com/RcOwqE0.jpeg","https://i.imgur.com/pMT247s.jpeg","https://i.imgur.com/B7ZJS0I.jpeg","https://i.imgur.com/dcrIjLh.jpeg","https://i.imgur.com/6Lg75kM.jpeg","https://i.imgur.com/uOJMUn3.jpeg"," https://i.imgur.com/bDbGc5I.jpeg","https://i.imgur.com/nKxid5W.jpeg","https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt",]
 var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
@@ -83,7 +83,7 @@ module.exports.run = async function({ api, event, args }) {
         imgP.push(fs.createReadStream(path))
   const command = commands.values();
   var group = [], msg = "༺ཌ༈ⓜⓐⓛⓐⓚ༈ད༻\n";
-  let check = true, page_num_input = "😃💔";
+  let check = true, page_num_input = "";
   let bonus = 0;
 
   for (const commandConfig of command) {
