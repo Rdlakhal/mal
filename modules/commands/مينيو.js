@@ -25,9 +25,9 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
       msg += `〖${command_config.commandCategory.toUpperCase()}〗\n`;
       msg += `\nاسم الأمر: ${dataAfter}`;
       msg += `\nمعلومات: ${command_config.description}`;
-      msg += `\nالاستخدام: ${(command_config.usages) ? command_config.usages : "ال"}`;
+      msg += `\nالاستخدام: ${(command_config.usages) ? command_config.usages : "الكل"}`;
       msg += `\nوقت الانتظار: ${command_config.cooldowns || 5}s`;
-      msg += `\nالصلاحية: ${(command_config.hasPermssion == 0) ? "ك" : (command_config.hasPermssion == 1) ? "مسؤولي المجموعات" : "المطور"}`;
+      msg += `\nالصلاحية: ${(command_config.hasPermssion == 0) ? "الكل" : (command_config.hasPermssion == 1) ? "مسؤولي المجموعات" : "المطور"}`;
      msg += `\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`
       msg += `\n\n↞ تم برمجته بواسطة ${command_config.credits} `;
     } else {
@@ -84,7 +84,7 @@ module.exports.run = async function({ api, event, args }) {
         imgP.push(fs.createReadStream(path))
   const command = commands.values();
   var group = [], msg = "༺ཌ༈ⓜⓐⓛⓐⓚ༈ད༻\n";
-  let check = true, page_num_input = "";
+  let check = true, page_num_input = "😃💔";
   let bonus = 0;
 
   for (const commandConfig of command) {
@@ -92,7 +92,7 @@ module.exports.run = async function({ api, event, args }) {
     else group.find(item => item.group.toLowerCase() == commandConfig.config.commandCategory.toLowerCase()).cmds.push(commandConfig.config.name);
   }
 
-  if (args[0] && ["all", "ك"].includes(args[0].trim())) {
+  if (args[0] && ["all", "الكل"].includes(args[0].trim())) {
     let all_commands = [];
     group.forEach(commandGroup => {
       commandGroup.cmds.forEach(item => all_commands.push(item));
