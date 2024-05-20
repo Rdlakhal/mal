@@ -42,10 +42,8 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
     }
   }
   const axios = require('axios');
-  const fs = require('fs-extra');
-  const img = ["https://scontent.xx.fbcdn.net/v/t1.15752-9/438089792_1135988231159796_4523076980072127150_n.jpg?stp=dst-jpg_p480x480&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEkHBPeGczMlw9gFa1eYz-9HbHs_us4v3odsez-6zi_et3bTydZ9j2Nnz-buEpCbQrnF2qk0Y3nfOIn5L82oMZX&_nc_ohc=VPVkT-T_OyYAb4bOxUn&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGSX_2tAoggZC8f6S3JpjbrquUlRosKNxDvK_VLo0yZdA&oe=664DDB6A", "https://scontent.xx.fbcdn.net/v/t1.15752-9/438089827_768216195503592_8072226927899701248_n.jpg?stp=dst-jpg_p480x480&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHRTXHZnV4En-DLGGKUsDH-mBMFQb_TxsOYEwVBv9PGwxjpslSv1qxETVzC3JmaOyb3U8W4OhGR2LAPk7Uy7Mnr&_nc_ohc=5KP5y67IdQIAb5LNJQX&_nc_ad=z-m&_nc_cid=0&_nc_ht=.&oh=&oe=664DD29C",
-"https://scontent.xx.fbcdn.net/v/t1.15752-9/438083808_1766225380568866_7681935192886424738_n.jpg?stp=dst-jpg_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwx1rmjL5D3e3cPhKOzAA6gC41e5g0MN2ALjV7mDQw3eOYv46w1ldWFE8NVMW3-Lg5HKIGXKHgmU71qQhyV3I4&_nc_ohc=FT3uEAolWFAAb6WTxji&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QHpkE8QU19Zxq6P8dRWeU2HkRNbGxRQO3cXohfaelzWOw&oe=664DE4D5", 
-"https://scontent.xx.fbcdn.net/v/t1.15752-9/414252410_334076712827303_5239024295342902847_n.jpg?stp=dst-jpg_p480x480&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGxwLtccKVU49mvP8ixjNeo6X_pJBTHbdTpf-kkFMdt1Jsa-KSjNGFFTdbiTMhzZgc4lbAL5AG7c_gPNOmgu-Q5&_nc_ohc=rNR0VxWcXXcAb7wUdMi&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QH57NBHuxUQ79d7PC3uGf3hB8viItPQLz33PRQl_HUSMQ&oe=664E038B"
+  const fs = require('fs-extra'): 
+  const img = ["https://i.imgur.com/0ur3dLU.jpeg","https://i.imgur.com/PnLf0hw.jpeg"," https://i.imgur.com/lM7q1g3.jpeg","https://i.imgur.com/Qo7HxLe.jpeg","https://i.imgur.com/RcOwqE0.jpeg","https://i.imgur.com/pMT247s.jpeg","https://i.imgur.com/B7ZJS0I.jpeg", "https://i.imgur.com/dcrIjLh.jpeg","https://i.imgur.com/6Lg75kM.jpeg","https://i.imgur.com/uOJMUn3.jpeg"," https://i.imgur.com/bDbGc5I.jpeg","https://i.imgur.com/nKxid5W.jpeg","https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt"
  ]
 var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
