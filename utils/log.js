@@ -17,13 +17,13 @@ module.exports = (data, option) => {
 module.exports.loader = (data, option) => {
 	switch (option) {
 		case "warn":
-			console.log(chalk.blue('[ SIESTA GLOBL ] » ') + chalk.blue(data));
+			console.log(chalk.blue('[ malak GLOBL ] » ') + chalk.blue(data));
 			break;
 		case "error":
 			console.log(chalk.red('[ ERORR ] » ') + chalk.red(data));
 			break;
 		default:
-			console.log(chalk.blue(`[ SESTA SYSTM ] » `) + chalk.blue(data));
+			console.log(chalk.blue(`[ malak SYSTM ] » `) + chalk.blue(data));
 			break;
 	}
 }
