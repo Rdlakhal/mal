@@ -1,4 +1,4 @@
-const axios = require('axios');
+onst axios = require('axios');
 
 module.exports.config = {
     name: "joinNoti",
@@ -68,7 +68,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 		const atth = gifes.data;
 		memLength.sort((a, b) => a - b);
 			
-			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」: اهلا \n\nفي  شات  [⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{threadName}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}" : msg = threadData.customJoin;
+			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」اسـم الـعـضـو الـجـديـد\n \n\nاسـم الـمـجـمـوعـة\n\n『{threadName}』\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}" : msg = threadData.customJoin;
 			msg = msg
 			.replace(/\{name}/g, nameArray.join('🌚💔'))
 			.replace(/\{type}/g, (memLength.length > 1) ?  'عضو مبند 🌚💔' : 'انا بوت ملاك في خدمتك 💀🎻')
