@@ -38,7 +38,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                 }
             }
             api.changeNickname(` ${(!global.config.BOTNAME) ? "و" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-          	api.sendMessage(`احي`, threadID);
+          	api.sendMessage(``, threadID);
 		}); 
 	}
     else {
@@ -47,7 +47,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
             let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
             const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join("خرا");
+			const path = join(" ");
 			const pathGif = join(path, `hdfi2.jpg`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
@@ -70,9 +70,9 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 			
 			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」اسـم الـعـضـو الـجـديـد\n \n\nاسـم الـمـجـمـوعـة\n\n『{threadName}』\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}" : msg = threadData.customJoin;
 			msg = msg
-			.replace(/\{name}/g, nameArray.join('🌚💔'))
+			.replace(/\{name}/g, nameArray.join(', '))
 			.replace(/\{type}/g, (memLength.length > 1) ?  'عضو مبند 🌚💔' : 'انا بوت ملاك في خدمتك 💀🎻')
-			.replace(/\{soThanhVien}/g, memLength.join('😂💔'))
+			.replace(/\{soThanhVien}/g, memLength.join(', '))
 			.replace(/\{threadName}/g, threadName);
 
 			if (existsSync(path)) mkdirSync(path, { recursive: true });
