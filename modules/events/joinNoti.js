@@ -28,7 +28,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                 const threadData = (await Threads.getInfo(threadID)) || {};
                 if (threadData.hasOwnProperty("adminIDs")) {
                     check = false;
-                    api.sendMessage(" ", threadID, (err, info) => {
+                    api.sendMessage("", threadID, (err, info) => {
                         global.client.handleReply.push({
                             name: "langChoose_0x01042022",
                             messageID: info.messageID,
@@ -47,7 +47,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
             let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
             const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join(" ");
+			const path = join("");
 			const pathGif = join(path, `hdfi2.jpg`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
