@@ -28,7 +28,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                 const threadData = (await Threads.getInfo(threadID)) || {};
                 if (threadData.hasOwnProperty("adminIDs")) {
                     check = false;
-                    api.sendMessage("وتف", threadID, (err, info) => {
+                    api.sendMessage(" ", threadID, (err, info) => {
                         global.client.handleReply.push({
                             name: "langChoose_0x01042022",
                             messageID: info.messageID,
