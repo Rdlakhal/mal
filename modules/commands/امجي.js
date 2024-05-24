@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1",
   hasPermssion: 0,
   credits: "عمر",
-  description: "روابط مختصرة للصور التي تُرفق بها",
+  description: "رابط صورة",
   usePrefix: false,
   commandCategory: "خدمات",
   usages: "[رد على صور]",
@@ -32,7 +32,7 @@ module.exports.run = async ({ api, event }) => {
   const shortenedLinks = [];
 
   for (const link of links) {
-    const res = await axios.get(`https://bot.api-johnlester.repl.co/imgur?link=${encodeURIComponent(link)}`);
+    const res = await axios.get(`https://imgur-724edf1d7f4b.herokuapp.com/api/caera/imgur?link=${encodeURIComponent(link)}`);
     shortenedLinks.push(res.data.uploaded.image);
   }
 
