@@ -21,7 +21,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
     console.log(2)
     if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
         console.log(1)
-        return api.sendMessage("‌    ‌▂▃▅▆تحميل...𝟏𝟎𝟎%▆▅▃▂\n\n●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n⚜️== 「اتصال ناجح ✅」==⚜️\n ●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]", threadID, async () => {
+        return api.sendMessage("‌    ‌▂▃▅▆تحميل...𝟏𝟎𝟎%▆▅▃▂\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n⚜️== 「اتصال ناجح ✅」==⚜️\n ●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]", threadID, async () => {
             let check = true;
             while (check) {
                 setTimeout(() => check = false, 30 * 1000);
