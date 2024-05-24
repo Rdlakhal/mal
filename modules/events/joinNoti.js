@@ -28,7 +28,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                 const threadData = (await Threads.getInfo(threadID)) || {};
                 if (threadData.hasOwnProperty("adminIDs")) {
                     check = false;
-                    api.sendMessage(" ", threadID, (err, info) => {
+                    api.sendMessage("وتف", threadID, (err, info) => {
                         global.client.handleReply.push({
                             name: "langChoose_0x01042022",
                             messageID: info.messageID,
@@ -38,7 +38,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                 }
             }
             api.changeNickname(` ${(!global.config.BOTNAME) ? "و" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-          	api.sendMessage(``, threadID);
+          	api.sendMessage(`احي`, threadID);
 		}); 
 	}
     else {
@@ -47,7 +47,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
             let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
             const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join(" ");
+			const path = join("خرا");
 			const pathGif = join(path, `hdfi2.jpg`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
@@ -64,15 +64,15 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 					global.data.allUserID.push(id);
 				}
 			}
-		const gifes = await axios.get(`https://i.pinimg.com/originals/e7/1f/95/e71f9525a5518264edf7df95408d87c6.gif`, { responseType: "stream"});
+		const gifes = await axios.get(`https://i.imgur.com/aBbZnVa.gif`, { responseType: "stream"});
 		const atth = gifes.data;
 		memLength.sort((a, b) => a - b);
 			
-			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n「{name}」: اهلا \n\nفي  شات  {threadName} \n{type}" : msg = threadData.customJoin;
+			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」: اهلا \n\nفي  شات  [⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{threadName}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}" : msg = threadData.customJoin;
 			msg = msg
-			.replace(/\{name}/g, nameArray.join(', '))
-			.replace(/\{type}/g, (memLength.length > 1) ?  'các bạn' : 'انا بوت ملاك في خدمتك 💀🎻')
-			.replace(/\{soThanhVien}/g, memLength.join(', '))
+			.replace(/\{name}/g, nameArray.join('🌚💔'))
+			.replace(/\{type}/g, (memLength.length > 1) ?  'عضو مبند 🌚💔' : 'انا بوت ملاك في خدمتك 💀🎻')
+			.replace(/\{soThanhVien}/g, memLength.join('😂💔'))
 			.replace(/\{threadName}/g, threadName);
 
 			if (existsSync(path)) mkdirSync(path, { recursive: true });
