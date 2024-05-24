@@ -1,4 +1,4 @@
-onst axios = require('axios');
+const axios = require('axios');
 
 module.exports.config = {
     name: "joinNoti",
@@ -12,19 +12,23 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, Users, Threads }) {
-   var fullYear = global.client.getTime("fullYear");
-  	var getHours = await global.client.getTime("hours");
-			var session = `${getHours < 3 ? "ن" : getHours < 8 ? "ح" : getHours < 11 ? "ه" : getHours < 16 ? "ق" : getHours < 23 ? "ث" : "ه"}`
-    const { join } = global.nodemodule["path"];
+    const moment = require("moment-timezone");
+    var fullYear = global.client.getTime("fullYear");
+    var getHours = await global.client.getTime("hours");
+    var session = `${getHours < 3 ? "ن" : getHours < 8 ? "ح" : getHours < 11 ? "ه" : getHours < 16 ? "ق" : getHours < 23 ? "ث" : "ه"}`;
+    const { join } = require("path");
     const { threadID } = event;
-  const { PREFIX } = global.config;
-    console.log(2)
+    const { PREFIX } = global.config;
+
+    console.log(2);
+
     if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-        console.log(1)
-        return api.sendMessage("‌    ‌▂▃▅▆تحميل...𝟏𝟎𝟎%▆▅▃▂\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n⚜️== 「اتصال ناجح ✅」==⚜️\n ●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]", threadID, async () => {
+        console.log(1);
+        return api.sendMessage("‌▂▃▅▆تحميل...𝟏𝟎𝟎%▆▅▃▂\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n⚜️== 「اتصال ناجح ✅」==⚜️\n ●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]", threadID, async () => {
             let check = true;
+            setTimeout(() => check = false, 30 * 1000);
+
             while (check) {
-                setTimeout(() => check = false, 30 * 1000);
                 const threadData = (await Threads.getInfo(threadID)) || {};
                 if (threadData.hasOwnProperty("adminIDs")) {
                     check = false;
@@ -37,50 +41,55 @@ module.exports.run = async function({ api, event, Users, Threads }) {
                     });
                 }
             }
+
             api.changeNickname(` ${(!global.config.BOTNAME) ? "و" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-          	api.sendMessage(``, threadID);
-		}); 
-	}
-    else {
+            api.sendMessage(``, threadID);
+        });
+    } else {
         try {
-            const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+            const { createReadStream, existsSync, mkdirSync } = require("fs-extra");
             let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
             const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join("");
-			const pathGif = join(path, `hdfi2.jpg`);
+            const path = join("");
+            const pathGif = join(path, `hdfi2.jpg`);
 
-			var mentions = [], nameArray = [], memLength = [], i = 0;
-			
-			for (id in event.logMessageData.addedParticipants) {
-				const userName = event.logMessageData.addedParticipants[id].fullName;
-				nameArray.push(userName);
-				mentions.push({ tag: userName, id });
-				memLength.push(participantIDs.length - i++);
+            var mentions = [], nameArray = [], memLength = [], i = 0;
 
-				if (!global.data.allUserID.includes(id)) {
-					await Users.createData(id, { name: userName, data: {} });
-					global.data.userName.set(id, userName);
-					global.data.allUserID.push(id);
-				}
-			}
-		const gifes = await axios.get(`https://i.imgur.com/aBbZnVa.gif`, { responseType: "stream"});
-		const atth = gifes.data;
-		memLength.sort((a, b) => a - b);
-			
-			(typeof threadData.customJoin == "undefined") ? msg = " ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」اسـم الـعـضـو الـجـديـد\n \n\nاسـم الـمـجـمـوعـة\n\n『{threadName}』\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}" : msg = threadData.customJoin;
-			msg = msg
-			.replace(/\{name}/g, nameArray.join(', '))
-			.replace(/\{type}/g, (memLength.length > 1) ?  'عضو مبند 🌚💔' : 'انا بوت ملاك في خدمتك 💀🎻')
-			.replace(/\{soThanhVien}/g, memLength.join(', '))
-			.replace(/\{threadName}/g, threadName);
+            for (const participant of event.logMessageData.addedParticipants) {
+                const userName = participant.fullName;
+                const userId = participant.userFbId;
+                nameArray.push(userName);
+                mentions.push({ tag: userName, id: userId });
+                memLength.push(participantIDs.length - i++);
 
-			if (existsSync(path)) mkdirSync(path, { recursive: true });
+                if (!global.data.allUserID.includes(userId)) {
+                    await Users.createData(userId, { name: userName, data: {} });
+                    global.data.userName.set(userId, userName);
+                    global.data.allUserID.push(userId);
+                }
+            }
 
-			if (existsSync(pathGif)) formPush = { body: msg, attachment: atth, mentions }
-			else formPush = { body: msg, attachment: atth, mentions }
+            const gifes = await axios.get(`https://i.imgur.com/aBbZnVa.gif`, { responseType: "stream" });
+            const atth = gifes.data;
+            memLength.sort((a, b) => a - b);
 
-			return api.sendMessage(formPush, threadID);
-		} catch (e) { return console.log(e) };
-	}
+            let msg = (typeof threadData.customJoin == "undefined") ? 
+                ` ⚜️=×= 「 اشعار 」=×=⚜️\n\n\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n「{name}」اسـم الـعـضـو الـجـديـد\n \n\nاسـم الـمـجـمـوعـة\n\n『{threadName}』\n[⚜]●▬▬▬▬๑⇧⇧๑▬▬▬▬●[⚜]\n{soThanhVien}\n[⚜]●▬▬▬▬▬๑⇧⇧๑▬▬▬▬▬●[⚜]\n{type}` : threadData.customJoin;
+
+            msg = msg
+                .replace(/\{name}/g, nameArray.join(', '))
+                .replace(/\{type}/g, (memLength.length > 1) ? 'عضو مبند 🌚💔' : 'انا بوت ملاك في خدمتك 💀🎻')
+                .replace(/\{soThanhVien}/g, memLength.join(', '))
+                .replace(/\{threadName}/g, threadName);
+
+            if (!existsSync(path)) mkdirSync(path, { recursive: true });
+
+            let formPush = { body: msg, attachment: atth, mentions };
+
+            return api.sendMessage(formPush, threadID);
+        } catch (e) { 
+            console.log(e);
         }
+    }
+};
