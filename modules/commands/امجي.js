@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "رفع",
+  name: "لينك",
   version: "1",
   hasPermssion: 0,
   credits: "عمر",
