@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "رفع",
+    name: "رابط",
     version: "1.0.1",
     hasPermssion: 0,
     credits: "عمر",
@@ -13,10 +13,10 @@ module.exports.config = {
 
 module.exports.languages = {
     "vi": {
-        "invaidFormat": "❌ يجب أن تكون الرسالة التي ترد عليها صوتًا أو مقطع فيديو أو صورة من نوع ما"
+        "invaidFormat": "هل انت احمق"
     },
     "en": {
-        "invaidFormat": "❌ يجب الرد على صورة أو فيديو"
+        "invaidFormat": "هل غبائك متوارث؟"
     }
 }
 
@@ -28,9 +28,17 @@ module.exports.run = async ({ api, event, getText }) => {
     const attachmentUrl = event.messageReply.attachments[0].url;
 
     try {
+        console.log(`Sending request to: https://imgur-724edf1d7f4b.herokuapp.com/api/caera/imgur?link=${encodeURIComponent(attachmentUrl)}`);
         const response = await axios.get(`https://imgur-724edf1d7f4b.herokuapp.com/api/caera/imgur?link=${encodeURIComponent(attachmentUrl)}`);
-        const directLink = response.data.data.link;
-        return api.sendMessage(`رابط التحميل المباشر: ${directLink}`, event.threadID, event.messageID);
+        console.log('Response data:', response.data);
+
+        if (response.data && response.data.data && response.data.data.link) {
+            const directLink = response.data.data.link;
+            return api.sendMessage(`رابط التحميل المباشر: ${directLink}`, event.threadID, event.messageID);
+        } else {
+            console.error('Invalid response structure:', response.data);
+            return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
+        }
     } catch (error) {
         console.error("Error details:", error.response ? error.response.data : error.message);
         return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
