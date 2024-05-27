@@ -4,25 +4,25 @@ module.exports.config = {
     name: "رفع",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "عمر",
-    description: "احصل على رابط مباشر للفيديو والصوت",
-    commandCategory: "خدمات",
-    usages: "رفع",
+    credits: "ط¹ظ…ط±",
+    description: "ط§ط­طµظ„ ط¹ظ„ظ‰ ط±ط§ط¨ط· ظ…ط¨ط§ط´ط± ظ„ظ„ظپظٹط¯ظٹظˆ ظˆط§ظ„طµظˆطھ",
+    commandCategory: "المطور",
+    usages: "ط±ظپط¹",
     cooldowns: 5,
 };
 
 module.exports.languages = {
     "vi": {
-        "invaidFormat": "هل انت احمق"
+        "invaidFormat": "ظ‡ظ„ ط§ظ†طھ ط§ط­ظ…ظ‚"
     },
     "en": {
-        "invaidFormat": "هل غبائك متوارث؟"
+        "invaidFormat": "ظ‡ظ„ ط؛ط¨ط§ط¦ظƒ ظ…طھظˆط§ط±ط«طں"
     }
-}
+};
 
 module.exports.run = async ({ api, event, getText }) => {
     if (event.type !== "message_reply") return api.sendMessage(getText("invaidFormat"), event.threadID, event.messageID);
-    if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage(getText("invaidFormat"), event.threadID, event.messageID);
+    if (!event.messageReply.attachments || event.messageReply.attachments.length === 0) return api.sendMessage(getText("invaidFormat"), event.threadID, event.messageID);
     if (event.messageReply.attachments.length > 1) return api.sendMessage(getText("invaidFormat"), event.threadID, event.messageID);
 
     const attachmentUrl = event.messageReply.attachments[0].url;
@@ -34,13 +34,13 @@ module.exports.run = async ({ api, event, getText }) => {
 
         if (response.data && response.data.data && response.data.data.link) {
             const directLink = response.data.data.link;
-            return api.sendMessage(`رابط التحميل المباشر: ${directLink}`, event.threadID, event.messageID);
+            return api.sendMessage(`ط±ط§ط¨ط· ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¨ط§ط´ط±: ${directLink}`, event.threadID, event.messageID);
         } else {
             console.error('Invalid response structure:', response.data);
-            return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
+            return api.sendMessage("ط­ط¯ط« ط®ط·ط£ ط£ط«ظ†ط§ط، ظ…ط¹ط§ظ„ط¬ط© ط·ظ„ط¨ظƒ. ظٹط±ط¬ظ‰ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰ ظ„ط§ط­ظ‚ط§ظ‹.", event.threadID, event.messageID);
         }
     } catch (error) {
         console.error("Error details:", error.response ? error.response.data : error.message);
-        return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
+        return api.sendMessage("ط­ط¯ط« ط®ط·ط£ ط£ط«ظ†ط§ط، ظ…ط¹ط§ظ„ط¬ط© ط·ظ„ط¨ظƒ. ظٹط±ط¬ظ‰ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰ ظ„ط§ط­ظ‚ط§ظ‹.", event.threadID, event.messageID);
     }
-}
+};
