@@ -13,10 +13,10 @@ module.exports.config = {
 
 module.exports.languages = {
     "vi": {
-        "invaidFormat": "ايش اسوي بامك هسا💢🙂"
+        "invaidFormat": "❌ يجب أن تكون الرسالة التي ترد عليها صوتًا أو مقطع فيديو أو صورة من نوع ما"
     },
     "en": {
-        "invaidFormat": "سوال انت غبائك متوارث؟.. 🙂💔"
+        "invaidFormat": "❌ يجب الرد على صورة أو فيديو"
     }
 }
 
@@ -30,9 +30,9 @@ module.exports.run = async ({ api, event, getText }) => {
     try {
         const response = await axios.get(`https://imgur-724edf1d7f4b.herokuapp.com/api/caera/imgur?link=${encodeURIComponent(attachmentUrl)}`);
         const directLink = response.data.data.link;
-        return api.sendMessage(`رابط التحميل الخاص بك: ${directLink}`, event.threadID, event.messageID);
+        return api.sendMessage(`رابط التحميل المباشر: ${directLink}`, event.threadID, event.messageID);
     } catch (error) {
-        console.error(error);
+        console.error("Error details:", error.response ? error.response.data : error.message);
         return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
     }
 }
