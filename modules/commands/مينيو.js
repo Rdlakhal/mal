@@ -43,7 +43,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
   }
   const axios = require('axios');
   const fs = require('fs-extra');
-  const img = ["https://i.imgur.com/0ur3dLU.jpeg","https://i.imgur.com/PnLf0hw.jpeg"," https://i.imgur.com/lM7q1g3.jpeg","https://i.imgur.com/Qo7HxLe.jpeg","https://i.imgur.com/RcOwqE0.jpeg","https://i.imgur.com/pMT247s.jpeg","https://i.imgur.com/B7ZJS0I.jpeg","https://i.imgur.com/dcrIjLh.jpeg","https://i.imgur.com/6Lg75kM.jpeg","https://i.imgur.com/uOJMUn3.jpeg"," https://i.imgur.com/bDbGc5I.jpeg","https://i.imgur.com/nKxid5W.jpeg","https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt",]
+  const img = ["https://i.imgur.com/XwvbUHQ.jpeg",]
 var path = __dirname + "/cache/menu.jpg"
   var rdimg = img[Math.floor(Math.random() * img.length)]; 
   const imgP = []
