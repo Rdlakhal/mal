@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "رابط",
+    name: "رفع",
     version: "1.0.1",
     hasPermssion: 0,
     credits: "عمر",
