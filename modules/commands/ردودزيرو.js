@@ -155,8 +155,8 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
   if ((event.body.toLowerCase() == "@شامخ عليكم بقوه") || (event.body.toLowerCase() == "يا شامخ")) {
      return api.sendMessage("سيدك وتاج راسك👑💪😎", threadID);
    };
-    if ((event.body.toLowerCase() == "@خالد المغربي") || (event.body.toLowerCase() == "خالد المغربي")) {
-    return api.sendMessage("سيدك وتاج راسك😎👑", threadID);
+    if ((event.body.toLowerCase() == "اوامر") || (event.body.toLowerCase() == "اكتب قائمة")) {
+    return api.sendMessage("قائمة", threadID);
    };
   
   if ((event.body.toLowerCase() == "👍") || (event.body.toLowerCase() == "👍🏻")) {
