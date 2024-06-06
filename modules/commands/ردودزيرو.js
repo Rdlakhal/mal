@@ -21,8 +21,8 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "🐦⬛") || (event.body.toLowerCase() =="غراب")) {
      return api.sendMessage("ايتاتشي اوتشيها 😔💔", threadID)
    };
-  if ((event.body.toLowerCase() == "يا ريان") || (event.body.toLowerCase() == "ريان")) {
-     return api.sendMessage("اكبر نوب في العالم...! 🦎", threadID)
+  if ((event.body.toLowerCase() == "تجربة") || (event.body.toLowerCase() == "ريان")) {
+     return api.sendMessage("ناجحه...! 🦎", threadID)
    };
   if ((event.body.toLowerCase() == "وليد") || (event.body.toLowerCase() == "متحرش")) {
      return api.sendMessage("اكثر البشر تحرشن على وجه الارض تقول الاسطورة انه تحرش بجميع المطورين حتى شادي 😈🥶", threadID)
