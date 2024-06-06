@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Richard",
     description: "imgur upload",
-    commandCategory: "imgur",
+    commandCategory: "خدمات",
     usages: "[reply to image]",
     cooldowns: 5,
     dependencies: {
@@ -35,7 +35,7 @@ module.exports.run = async ({ api, event }) => {
         var imgurLink = res.data.uploaded.url;
 
         // إرسال رابط Imgur إلى الدردشة
-        return api.sendMessage(`Here is your Imgur link:\n${imgurLink}`, event.threadID, event.messageID);
+        return api.sendMessage(`\n${imgurLink}`, event.threadID, event.messageID);
     } catch (error) {
         console.error('Error uploading image:', error);
         return api.sendMessage('An error occurred while uploading the image. Please try again later.', event.threadID, event.messageID);
