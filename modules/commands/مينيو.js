@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "الاوامر",
+	name: "قائمة",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "عمر",
