@@ -43,8 +43,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 	}
 	const axios = require('axios');
 	const fs = require('fs-extra');
-	const img = ["https://i.imgur.com/TyeL3Oq.jpeg","https://i.imgur.com/pcutv6v.jpeg", "https://i.imgur.com/ENNh6Y6.jpeg"
- ]
+	const img = ["https://i.imgur.com/TyeL3Oq.jpeg","https://i.imgur.com/pcutv6v.jpeg", "https://i.imgur.com/ENNh6Y6.jpeg"]
 	var path = __dirname + "/cache/menu.jpg"
 	var rdimg = img[Math.floor(Math.random() * img.length)]; 
 	const imgP = []
@@ -74,7 +73,7 @@ module.exports.run = async function({ api, event, args }) {
 	const axios = require('axios');
 	const fs = require('fs-extra');
 	const imgP = []
-	const img = ["https://i.imgur.com/TyeL3Oq.jpeg","https://i.imgur.com/pcutv6v.jpeg", "https://i.imgur.com/ENNh6Y6.jpeg"]
+	const img = ["https://i.imgur.com/MS4vkMD.jpeg"]
 	var path = __dirname + "/cache/menu.jpg"
 	var rdimg = img[Math.floor(Math.random() * img.length)]; 
 
