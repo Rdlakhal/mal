@@ -33,7 +33,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 		} else {
 			check = true;
 			let count = 0;
-			msg += `هذه هي جميع الاوامر المتاحة في فئة 〔${dataAfter.group.toUpperCase()}〕\n`;
+			msg += `هاذي هيا الاوامر من نوع  ${dataAfter.group.toUpperCase()}\n`;
 
 			dataAfter.cmds.forEach(item => {
 				msg += `\n ${count+=1}↞ ${item}: ${commands.get(item).config.description}`;
