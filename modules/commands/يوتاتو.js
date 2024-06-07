@@ -5,7 +5,7 @@ module.exports.config = {
     version: "1.0.0",
     hasPermssion: 0,
     credits: "Omar",
-    description: "التفاعل مع GPT-3",
+    description: "التفاعل مع Character AI",
     commandCategory: "خدمات",
     usages: "يوتا [السؤال]",
     cooldowns: 5,
@@ -27,16 +27,17 @@ module.exports.run = async ({ api, event, args }) => {
     }
 
     try {
-        const response = await axios.get(`https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt`, {
+        const response = await axios.get(`https://old.character.ai/chat2`, {
             params: {
-                prompt: prompt,
-                model: 'v3'
+                char: 'SGVsAvurSP15SdXfumNdQReZEwA5qxLb4viRHaP5Fkg',
+                input: prompt
             }
         });
-        const message = response.data.reply;
+        console.log(response.data); // Debugging response data
+        const message = response.data;
         return api.sendMessage(`「${message}」`, event.threadID, event.messageID);
     } catch (error) {
-        console.error("Error details:", error.response ? error.response.data : error.message);
+        console.error("Error details:", error.response ? error.response.data : error.message); // Detailed error logging
         return api.sendMessage("❌ حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
     }
 };
@@ -44,13 +45,14 @@ module.exports.run = async ({ api, event, args }) => {
 module.exports.handleReply = async function ({ api, event, handleReply }) {
     try {
         const userAnswer = event.body.trim();
-        const response = await axios.get(`https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt`, {
+        const response = await axios.get(`https://old.character.ai/chat2`, {
             params: {
-                prompt: userAnswer,
-                model: 'v3'
+                char: 'SGVsAvurSP15SdXfumNdQReZEwA5qxLb4viRHaP5Fkg',
+                input: userAnswer
             }
         });
-        const message = response.data.reply;
+        console.log(response.data); // Debugging response data
+        const message = response.data;
         return api.sendMessage(`「${message}」`, event.threadID, (error, info) => {
             if (error) return console.error(error);
             global.client.handleReply.push({
@@ -60,7 +62,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
             });
         }, event.messageID);
     } catch (error) {
-        console.error("Error details:", error.response ? error.response.data : error.message);
+        console.error("Error details:", error.response ? error.response.data : error.message); // Detailed error logging
         return api.sendMessage("❌ حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
     }
 };
