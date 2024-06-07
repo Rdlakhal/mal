@@ -128,8 +128,8 @@ module.exports.run = function({ api, event, args }) {
 		group = group.slice(index_start, index_end);
 		group.forEach(commandGroup => msg += `\n${index_start+=1} » ${commandGroup.group.toLowerCase()}`);
 		msg += `\n\n»Page(${page_num_input || 1}/${page_num_total})`;
-		msg += `\n»To view details of other pages, use: ${prefix}menu [number of pages]`;
-		msg += `\n»Reply to messages by number to view commands by category`;
+		msg += `\n${prefix}menu [number of pages]`;
+		msg += `\n`;
 	}
 	return api.sendMessage(msg, threadID, async (error, info) => {
 		global.client.handleReply.push({
