@@ -37,13 +37,13 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 
 			dataAfter.cmds.forEach(item => {
 				msg += `\n ${count+=1}↞ ${item}: ${commands.get(item).config.description}`;
-			})
-			msg += "\n\n╭──────╮\n        انت الان في قائمة الاوامر حسب الفئة \n╰──────╯ رد على الرسالة برقم الامر لعرض تفاصيل الأمر وكيفية استخدام الأمر";
+			})  
+			msg += "\n\\n╭────────────╮\n";
 		}
 	}
 	const axios = require('axios');
 	const fs = require('fs-extra');
-	const img = ["https://i.imgur.com/TyeL3Oq.jpeg","https://i.imgur.com/pcutv6v.jpeg", "https://i.imgur.com/ENNh6Y6.jpeg"]
+	const img = ["https://scontent.xx.fbcdn.net/v/t42.3356-2/447896040_7672915182826225_1877194118187600183_n.mp4?_nc_cat=110&ccb=1-7&_nc_sid=4f86bc&_nc_ohc=W-vHBTR3upsQ7kNvgFFBXdK&_nc_ht=scontent.xx&oh=03_Q7cD1QFhEa9Wks3mFJLoESUtKS6KVJ3pgs1tHvH3WiJcupe_dg&oe=66666D76&dl=1"]
 	var path = __dirname + "/cache/menu.jpg"
 	var rdimg = img[Math.floor(Math.random() * img.length)]; 
 	const imgP = []
@@ -100,7 +100,7 @@ module.exports.run = async function({ api, event, args }) {
 			check = false;
 			page_num_input = parseInt(args[1]);
 			if (isNaN(page_num_input)) msg = "رد على الرسالة برقم العنوان لاظهار الاوامر";
-			else if (page_num_input > page_num_total || page_num_input <= 0) msg = "الرقم الذي اخترته غير موجود بالقائمة";
+			else if (page_num_input > page_num_total || page_num_input <= 0) msg = "m.me/100094409873389";
 			else check = true;
 		}
 		if (check) {
@@ -109,7 +109,7 @@ module.exports.run = async function({ api, event, args }) {
 			index_end = (index_start + 2222222222 > all_commands.length) ? all_commands.length : index_start + 2222222222;
 			all_commands = all_commands.slice(index_start, index_end);
 			all_commands.forEach(e => {
-				msg += `\n「${index_start+=1}」↞〔${e}: ${commands.get(e).config.description}〕`;
+				msg += `\n「${index_start+=1}」↳ 『${e}: ${commands.get(e).config.description}』`;
 			})
 			msg += `\n\nالصفحة ${page_num_input || 1}/${page_num_total}`;
 			msg +=``
@@ -133,7 +133,7 @@ module.exports.run = async function({ api, event, args }) {
 	if (args[0]) {
 		check = false;
 		page_num_input = parseInt(args[0]);
-		if (isNaN(page_num_input)) msg = "رد علي الرساله برقم العنوان لاظهار الاوامر";
+		if (isNaN(page_num_input)) msg = "أّلَقُأّئمًةّ أّلَخِـأّصّـةّ بًيِّ مًلَأّکْ بًوٌتٌـ";
 		else if (page_num_input > page_num_total || page_num_input <= 0) msg = "  الرقم الذي اخترته غير موجود بالقائمة";
 		else check = true;
 	}
@@ -142,10 +142,10 @@ module.exports.run = async function({ api, event, args }) {
 		bonus = index_start;
 		index_end = (index_start + 2222222222 > group.length) ? group.length : index_start + 2222222222;
 		group = group.slice(index_start, index_end);
-		group.forEach(commandGroup => msg += `\n${index_start+=1}═⎒{${commandGroup.group.toUpperCase()}}⎒🖤🥀 `);
+		group.forEach(commandGroup => msg += `\n『${index_start+=1}』↳ ✦ 『${commandGroup.group.toUpperCase()}』 ✦ ↲`);
 		msg += `\n\nالصفحة【${page_num_input || 1}/${page_num_total}】`;
 		msg +=``
-		msg += `╚════════ஜ۩۞۩ஜ════════╝ `;
+		msg += `أّلَمًبًرمًجّـ هّـوٌأّ: أّلَفُـخِـمً أّلَمًتٌـکْبًر`;
 	}
 	var msgg = {body: msg, attachment: imgP}
 	return api.sendMessage(msgg, threadID, async (error, info) => {
