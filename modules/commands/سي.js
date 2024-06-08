@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const aa = {
   config: {
-  name: "سيم",
+  name: "‌",
   version: "1.0.0",
   hasPermssion: 1,
   credits: "عمر",
