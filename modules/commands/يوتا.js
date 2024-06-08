@@ -1,5 +1,5 @@
 const axios = require("axios");
-const commandName = "ملاك";
+const commandName = "ملك";
 const xv = `
 Ai character info :
 
