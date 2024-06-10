@@ -1,5 +1,5 @@
 const axios = require("axios");
-const commandName = "ملك";
+const commandName = "❤";
 const xv = `
 Ai character info :
 
@@ -13,7 +13,7 @@ module.exports = {
         hasPermission: 0,
         description: "AI",
         prefix: true,
-        commandCategory: "العاب",
+        commandCategory: "𝗔𝗜",
     },
     run: async function ({ event, api, args }) {
         const prompt = args.join(" ");
