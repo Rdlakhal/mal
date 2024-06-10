@@ -23,7 +23,7 @@ module.exports = {
                 "",
                 "",
                 "",
-          ];
+            ];
 
             const random = Math.floor(Math.random() * stickers.length);
             const randomSticker = stickers[random];
@@ -47,10 +47,23 @@ module.exports = {
             )}\n\n${xv}&model=v3`;
             const res = await axios.get(url2);
             const message = res.data.reply;
-            return api.sendMessage(message, event.threadID, event.messageID);
+            return api.sendMessage(
+                message,
+                event.threadID,
+                (err, info) => {
+                    global.client.handleReply.push({
+                        name: commandName,
+                        author: event.senderID,
+                        messageID: info.messageID,
+                        type: "gptHerBaby",
+                    });
+                },
+                event.messageID
+            );
         }
     },
     handleReply: async function ({ api, event, handleReply }) {
+        const { messageID, type } = handleReply;
         const userAnswer = event.body.trim().toLowerCase();
         const url2 = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(
             userAnswer
@@ -70,22 +83,27 @@ module.exports = {
             event.messageID
         );
     },
-};
-
-// استجابة لجميع الرسائل، حتى لو كانت بدون بادئة، في المحادثة ذاتها
-module.exports.handleEvent = async function ({ api, event, getText }) {
-    if (event.type === "message_reply" && event.messageReply.senderID === api.getCurrentUserID()) {
-        const userAnswer = event.body.trim().toLowerCase();
-        const url2 = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(
-            userAnswer
-        )}\n\n${xv}&model=v3`;
-        try {
-            const res = await axios.get(url2);
-            const message = res.data.reply;
-            return api.sendMessage(message, event.threadID, event.messageID);
-        } catch (error) {
-            console.error("Error details:", error.response ? error.response.data : error.message);
-            return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
+    handleEvent: async function ({ api, event, getText }) {
+        // تحقق مما إذا كانت الرسالة الجديدة ردًا على رسالة تم إنشاؤها بواسطة هذا الكود المحدد
+        if (
+            event.type === "message_reply" &&
+            event.messageReply.senderID === api.getCurrentUserID() &&
+            global.client.handleReply.some(
+                (reply) => reply.messageID === event.messageReply.messageID && reply.name === commandName
+            )
+        ) {
+            const userAnswer = event.body.trim().toLowerCase();
+            const url2 = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(
+                userAnswer
+            )}\n\n${xv}&model=v3`;
+            try {
+                const res = await axios.get(url2);
+                const message = res.data.reply;
+                return api.sendMessage(message, event.threadID, event.messageID);
+            } catch (error) {
+                console.error("Error details:", error.response ? error.response.data : error.message);
+                return api.sendMessage("حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقاً.", event.threadID, event.messageID);
+            }
         }
-    }
+    },
 };
