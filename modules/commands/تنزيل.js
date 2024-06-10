@@ -3,11 +3,11 @@ const axios = require("axios");
 module.exports.config = {
     name: "at",
     version: "1.0.0",
-    role: 3,
-    credits: "S H A D Y",
-    description: "",
-    commandCategory: "الأدمن",
-    usages: "",
+    role: 2,
+    credits: "𝗔𝗜",
+    description: "𝗔𝗜",
+    commandCategory: "𝗔𝗜",
+    usages: "𝗔𝗜",
     cooldowns: 0,
 };
 
@@ -122,7 +122,7 @@ module.exports.handleEvent = async function ({ event, api, global }) {
 
 module.exports.handleReply = async function ({ event, handleReply, api, global }) {
     const { type, link, messageID } = handleReply;
-    const { body } = event;
+    const { body, threadID } = event;
     const args = body.split(" ");
 
     if (type === "do") {
@@ -131,24 +131,29 @@ module.exports.handleReply = async function ({ event, handleReply, api, global }
             api.setMessageReaction("⚙️", event.messageID, (err) => {}, true);
 
             try {
-                const attachment = await global.utils.getStreamFromURL(`https://app-alld-4e6d840874be.herokuapp.com/api/caera/aute?link=${encodeURIComponent(link)}`);
+                const response = await axios.get(`https://app-alld-4e6d840874be.herokuapp.com/api/caera/aute?link=${encodeURIComponent(link)}`, { responseType: 'stream' });
+                const attachment = response.data;
                 api.sendMessage(
                     {
                         body: "༈「تـم تـحـمـيـل الـفـيـديـو」 ✅ ༈",
                         attachment
                     },
-                    event.threadID,
+                    threadID,
                     (err, info) => {
+                        if (err) {
+                            console.error(err);
+                            return api.sendMessage("حدث خطأ أثناء إرسال الفيديو.", threadID);
+                        }
                         api.setMessageReaction("✅", event.messageID, (err) => {}, true);
                     }
                 );
             } catch (error) {
+                console.error(error);
                 api.sendMessage(
                     "حدث خطأ أثناء محاولة تحميل الفيديو. يرجى المحاولة مرة أخرى لاحقاً.",
-                    event.threadID,
+                    threadID,
                     event.messageID
                 );
-                console.error(error);
             }
         }
     }
