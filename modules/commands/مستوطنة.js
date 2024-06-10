@@ -4,8 +4,8 @@ module.exports.config = {
     version: "1.0.1",
     hasPermssion: 2,
     credits: "جلجامش ساما",
-    description: "أّعٌدٍأّء/حًلَفُـأّء",
-    commandCategory: "System",
+    description: ".. ",
+    commandCategory: "المطور",
     usages: "",
     cooldowns: 5
 };
