@@ -1,3 +1,8 @@
+const axios = require("axios");
+const fs = require("fs-extra");
+const ytdl = require("ytdl-core");
+const yts = require("yt-search");
+
 module.exports.config = {
   name: "اغاني",
   version: "2.0.5",
@@ -5,22 +10,18 @@ module.exports.config = {
   credits: "جلجامش ساما",
   usePrefix: false,
   description: "قم بتشغيل الأغنية التي تحبها",
-  commandCategory: "𝗔𝗜",
+  commandCategory: "ترفيه",
   usages: "[إسم الأغنية]",
   cooldowns: 10,
   dependencies: {
     "fs-extra": "",
-    "axios": ""
+    "axios": "",
+    "ytdl-core": "",
+    "yt-search": ""
   }
 };
 
 module.exports.run = async ({ api, event }) => {
-  const axios = require("axios");
-  const fs = require("fs-extra");
-  const ytdl = require("ytdl-core");
-  const request = require("request");
-  const yts = require("yt-search");
-
   const input = event.body;
   const text = input.substring(12);
   const data = input.split(" ");
@@ -37,7 +38,7 @@ module.exports.run = async ({ api, event }) => {
 
     const searchResults = await yts(song);
     if (!searchResults.videos.length) {
-      return api.sendMessage("Error: Invalid request.", event.threadID, event.messageID);
+      return api.sendMessage("خطأ: الطلب غير صالح.", event.threadID, event.messageID);
     }
 
     const video = searchResults.videos[0];
@@ -67,9 +68,7 @@ module.exports.run = async ({ api, event }) => {
       }
 
       const message = {
-        body: `✅︙لَقُدٍ نِجّـحًتٌـ أّلَعٌمًلَيِّةّ
-📝︙أّلَأّرشُـأّدٍ ${video.title}
-🎶︙أّلَمًغُنِيِّ ${video.author.name}`,
+        body: `✅︙لَقُدٍ نِجّـحًتٌـ أّلَعٌمًلَيِّةّ\n📝︙أّلَأّرشُـأّدٍ ${video.title}\n🎶︙أّلَمًغُنِيِّ ${video.author.name}`,
         attachment: fs.createReadStream(filePath)
       };
 
@@ -77,8 +76,14 @@ module.exports.run = async ({ api, event }) => {
         fs.unlinkSync(filePath);
       });
     });
+
+    stream.on('error', (error) => {
+      console.error('[ERROR]', error);
+      fs.unlinkSync(filePath);
+      api.sendMessage('أّعٌتٌـذر، حدث خطأ أثناء تحميل الأغنية.', event.threadID);
+    });
   } catch (error) {
     console.error('[ERROR]', error);
-    api.sendMessage('أّعٌتٌـذر  لَأّ أّجّـلَبً أّغُأّنِيِّ أّلَأّطِفُـأّلَ.', event.threadID);
+    api.sendMessage('أّعٌتٌـذر، لا أستطيع جلب الأغنية المطلوبة.', event.threadID);
   }
 };
