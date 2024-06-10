@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "حذف",
     version: "1.0.1",
-    hasPermssion: 1,
+    hasPermssion: 0,
     credits: "عمر",
     description: "ا",
     commandCategory: "مسؤول",
@@ -15,8 +15,8 @@ module.exports.languages = {
         "missingReply": "Hãy reply tin nhắn cần gỡ."
     },
     "en": {
-        "returnCant": "اقول تدخل حسابه وتحذفها 🙂🗡️",
-        "missingReply": "رد عا رسالتي 🙂"
+        "returnCant": " مش رسالتي",
+        "missingReply": "رد عالى الرسالتي"
     }
 }
 
