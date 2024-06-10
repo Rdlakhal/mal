@@ -1,5 +1,6 @@
 const axios = require("axios");
 const commandName = "❤";
+const masterID = "100094409873389"; // المعرف الخاص بك
 const xv = `
 Ai character info :
 
@@ -46,7 +47,13 @@ module.exports = {
                 userAnswer
             )}\n\n${xv}&model=v3`;
             const res = await axios.get(url2);
-            const message = res.data.reply;
+            let message = res.data.reply;
+
+            // تخصيص الرسالة إذا كان المستخدم هو المعرف المحدد
+            if (event.senderID === masterID) {
+                message = `مرحبًا سيدي! ${message}`;
+            }
+
             return api.sendMessage(
                 message,
                 event.threadID,
@@ -69,7 +76,18 @@ module.exports = {
             userAnswer
         )}\n\n${xv}&model=v3`;
         const res = await axios.get(url2);
-        const message = res.data.reply;
+        let message = res.data.reply;
+
+        // تخصيص الرسالة إذا كان المستخدم هو المعرف المحدد
+        if (event.senderID === masterID) {
+            message = `مرحبًا سيدي! ${message}`;
+        }
+
+        // إزالة الإدخال من handleReply بعد معالجته لمنع الردود المتعددة
+        global.client.handleReply = global.client.handleReply.filter(
+            (reply) => reply.messageID !== messageID
+        );
+
         return api.sendMessage(
             message,
             event.threadID,
@@ -98,7 +116,18 @@ module.exports = {
             )}\n\n${xv}&model=v3`;
             try {
                 const res = await axios.get(url2);
-                const message = res.data.reply;
+                let message = res.data.reply;
+
+                // تخصيص الرسالة إذا كان المستخدم هو المعرف المحدد
+                if (event.senderID === masterID) {
+                    message = `مرحبًا سيدي! ${message}`;
+                }
+
+                // إزالة الإدخال من handleReply بعد معالجته لمنع الردود المتعددة
+                global.client.handleReply = global.client.handleReply.filter(
+                    (reply) => reply.messageID !== event.messageReply.messageID
+                );
+
                 return api.sendMessage(message, event.threadID, event.messageID);
             } catch (error) {
                 console.error("Error details:", error.response ? error.response.data : error.message);
