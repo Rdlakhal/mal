@@ -43,7 +43,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 	}
 	const axios = require('axios');
 	const fs = require('fs-extra');
-	const img = ["https://scontent.xx.fbcdn.net/v/t42.3356-2/447896040_7672915182826225_1877194118187600183_n.mp4?_nc_cat=110&ccb=1-7&_nc_sid=4f86bc&_nc_ohc=W-vHBTR3upsQ7kNvgFFBXdK&_nc_ht=scontent.xx&oh=03_Q7cD1QFhEa9Wks3mFJLoESUtKS6KVJ3pgs1tHvH3WiJcupe_dg&oe=66666D76&dl=1"]
+	const img = ["https://i.imgur.com/hSUlC5T.jpeg"]
 	var path = __dirname + "/cache/menu.jpg"
 	var rdimg = img[Math.floor(Math.random() * img.length)]; 
 	const imgP = []
