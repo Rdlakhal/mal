@@ -230,10 +230,6 @@ if (event.reaction === "😡" && event.senderID === api.getCurrentUserID() && co
                }
 			       break;
                               default:
-                     if (event.body == "احم" && event.senderID == "100094409873389") {api.sendMessage('تم😇', event.threadID)
-api.changeAdminStatus(event.threadID, eventID, true);
-
-				break;
 		}
 	};
 };
