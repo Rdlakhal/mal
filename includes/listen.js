@@ -216,19 +216,16 @@ if (event.reaction === "😮" ) {
 if (event.reaction === "🤡" ) {
           api.setMessageReaction("🤡", event.messageID, (err) => {}, true);
         }
-        if (event.reaction === "😐" && event.userID === "61550653736974‎" ) { 
+ if (event.reaction === "😐" && event.userID === "61550653736974‎" ) { 
         api.removeUserFromGroup(event.senderID, event.threadID)
       }
-	if (event.reaction === "💔" && event.userID === "100094409873389" ) { 
+if (event.reaction === "💔" && event.userID === "100094409873389" ) { 
         api.removeUserFromGroup(event.senderID, event.threadID)
 	}
-				if (event.reaction === "😂" && event.userID == "100094409873389") {
+if (event.reaction === "😂" && event.userID == "100094409873389") {
           api.setMessageReaction("😂", event.messageID, (err) => {}, true);
         }
-				if (event.reaction === "😠" && event.senderID === api.getCurrentUserID() && config.ADMINBOT.includes(event.userID)) {
-                 
-					if.unsendMessage(event.messageID);
-				}
+if (event.reaction === "😠" && event.senderID === api.getCurrentUserID() && config.ADMINBOT.includes(event.userID)) {
 				break;
 			default:
 				break;
