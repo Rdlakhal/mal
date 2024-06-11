@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "g",
 	version: "1.0.5",
-	hasPermssion: 2,
+	hasPermssion: 1,
 	credits: "عمر",
 	description: "مش شغلك",
 	commandCategory: "المطور",
@@ -228,7 +228,7 @@ module.exports.run = async ({ event, api, args, Threads, getText }) => {
 		}
 
 		case "بحث":
-		case "🈯": {
+		case "❓": {
 			const contentJoin = reason || "";
 			const getThreads =  (await Threads.getAll(['threadID', 'threadInfo'])).filter(item => !!item.threadInfo);
 			var matchThreads = [], a = '', b = 0;
