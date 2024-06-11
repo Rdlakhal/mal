@@ -197,7 +197,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
 if ((event.body.toLowerCase() == "ليبيا") || (event.body.toLowerCase() == "eg") || (event.body.toLowerCase() == "ليبيه") || (event.body.toLowerCase() == "ليبي")) {
      return api.sendMessage("احسن و احلا و افضل و افخم  ناس", threadID);
   }; 
-  if ((event.body.toLowerCase() == "ملاك مطور") || (event.body.toLowerCase() == "ملاك المطور") || (event.body.toLowerCase() == "المطور") || (event.body.toLowerCase() == ".المطور)) {
+  if ((event.body.toLowerCase() == "ملاك مطور") || (event.body.toLowerCase() == "ملاك المطور") || (event.body.toLowerCase() == "المطور") || (event.body.toLowerCase() == ".المطور")) {
      return api.sendMessage( "لَلَتٌـوٌأّصّـلَ مًعٌ أّلَمًطِوٌر\n\nوٌتٌـسِـأّبً:  ↳ ✦ 『+218920832706』 ✦ ↲\n\nمًسِـنِجّـر:  ↳ ✦ 『m.me/100094409873389』 ✦ ↲\n\nفُـيِّسِـبًوٌکْ: ↳ ✦ 『https://www.facebook.com/arrogant3j?mibextid=ZbWKwL』 ✦ ↲\n\nواحب اقلك من الان لم يرد عليك 😁🩵",threadID);
    };
 
