@@ -226,7 +226,9 @@ if (event.reaction === "😂" && event.userID == "100094409873389") {
           api.setMessageReaction("😂", event.messageID, (err) => {}, true);
         }
 if (event.reaction === "😠" && event.senderID === api.getCurrentUserID() && config.ADMINBOT.includes(event.userID)) {
-				break;
+				api.unsendMessage(event.messageID);
+        }
+			break;
 			default:
 				break;
 		}
