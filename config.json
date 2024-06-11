@@ -13,8 +13,8 @@
     "OTPKEY": "",
     "BOTNAME": "然『 مـلاك 』然",
     "PREFIX": ".",
-    "ADMINBOT": ["100094409873389",],
-    "NDH": ["100094409873389",],
+    "ADMINBOT": ["100094409873389"],
+    "NDH": ["100094409873389"],
     "DATABASE": {
         "sqlite": {
             "storage": "data.sqlite"
