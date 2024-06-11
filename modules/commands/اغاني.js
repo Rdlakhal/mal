@@ -1,44 +1,43 @@
-const axios = require("axios");
-const fs = require("fs-extra");
-const ytdl = require("ytdl-core");
-const yts = require("yt-search");
-
 module.exports.config = {
-  name: "اغاني",
+  name: "مسيقى",
   version: "2.0.5",
   hasPermssion: 0,
   credits: "جلجامش ساما",
   usePrefix: false,
   description: "قم بتشغيل الأغنية التي تحبها",
-  commandCategory: "ترفيه",
+  commandCategory: "المتطور",
   usages: "[إسم الأغنية]",
   cooldowns: 10,
   dependencies: {
     "fs-extra": "",
-    "axios": "",
-    "ytdl-core": "",
-    "yt-search": ""
+    "axios": ""
   }
 };
 
 module.exports.run = async ({ api, event }) => {
+  const axios = require("axios");
+  const fs = require("fs-extra");
+  const ytdl = require("ytdl-core");
+  const request = require("request");
+  const yts = require("yt-search");
+
   const input = event.body;
   const text = input.substring(12);
   const data = input.split(" ");
 
   if (data.length < 2) {
-    return api.sendMessage("أّعٌتٌـذر لَأّيِّوٌجّـدٍ أّغُنِيِّةّ بًلَأّ أّسِـمً أّدٍخِـلَ أّسِـمًهّـأّ", event.threadID);
+    return api.sendMessage("🚫︙لم تقم بإِدخال الأغنية المراد البحث عنها", event.threadID);
   }
 
   data.shift();
   const song = data.join(" ");
 
   try {
-    api.sendMessage(`حًسِـنِأّ『${song}』أّذنِ`, event.threadID);
+    api.sendMessage(`🎼︙ جارِ إحضار نتائج حول『${song}』`, event.threadID);
 
     const searchResults = await yts(song);
     if (!searchResults.videos.length) {
-      return api.sendMessage("خطأ: الطلب غير صالح.", event.threadID, event.messageID);
+      return api.sendMessage("Error: Invalid request.", event.threadID, event.messageID);
     }
 
     const video = searchResults.videos[0];
@@ -64,11 +63,13 @@ module.exports.run = async ({ api, event }) => {
 
       if (fs.statSync(filePath).size > 26214400) {
         fs.unlinkSync(filePath);
-        return api.sendMessage('[💀] حًجّـمً أّلَفُـيِّدٍيِّوٌ أّکْبًر مًنِ قُدٍرتٌـيِّ.', event.threadID);
+        return api.sendMessage('[⚠️] تعذر إرسال الملف لأن حجمه أكبر من 25 ميغابايت.', event.threadID);
       }
 
       const message = {
-        body: `✅︙لَقُدٍ نِجّـحًتٌـ أّلَعٌمًلَيِّةّ\n📝︙أّلَأّرشُـأّدٍ ${video.title}\n🎶︙أّلَمًغُنِيِّ ${video.author.name}`,
+        body: `✅︙تم تحميل موسيقاك بنجاح
+📝︙الوصف ${video.title}
+🎶︙الفنان ${video.author.name}`,
         attachment: fs.createReadStream(filePath)
       };
 
@@ -76,14 +77,8 @@ module.exports.run = async ({ api, event }) => {
         fs.unlinkSync(filePath);
       });
     });
-
-    stream.on('error', (error) => {
-      console.error('[ERROR]', error);
-      fs.unlinkSync(filePath);
-      api.sendMessage('أّعٌتٌـذر، حدث خطأ أثناء تحميل الأغنية.', event.threadID);
-    });
   } catch (error) {
     console.error('[ERROR]', error);
-    api.sendMessage('أّعٌتٌـذر، لا أستطيع جلب الأغنية المطلوبة.', event.threadID);
+    api.sendMessage('حدث خطأ أثناء معالجة الأمر.', event.threadID);
   }
 };
