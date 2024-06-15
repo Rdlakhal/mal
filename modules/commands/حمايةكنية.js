@@ -70,13 +70,13 @@ client.on('message.group', async message => {
 
     if (command === 'kan') {
         if (args[0] === 'on') {
-            kan(true);
+            toggleProtection(true);
             await client.sendGroupMsg(message.group.id, 'Nickname protection enabled');
         } else if (args[0] === 'off') {
-            kan(false);
+            toggleProtection(false);
             await client.sendGroupMsg(message.group.id, 'Nickname protection disabled');
         } else {
-            await client.sendGroupMsg(message.group.id, 'Usage: !toggleProtection [on|off]');
+            await client.sendGroupMsg(message.group.id, 'Usage: kan [on|off]');
         }
     }
 });
