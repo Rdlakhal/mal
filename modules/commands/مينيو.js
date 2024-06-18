@@ -1,4 +1,4 @@
-module.exports.config = {
+dule.exports.config = {
 	name: "قائمة",
 	version: "1.0.0",
 	hasPermssion: 0,
@@ -15,7 +15,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 	let msg = "";
 	let data = handleReply.content;
 	let check = false;
-	if (isNaN(num)) msg = "رد على الرسالة برقم العنوان لاظهار الاوامر";
+	if (isNaN(num)) msg = "ટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ\nرد على الرسالة برقم العنوان لاظهار الاوامر\nટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ";
 	else if (num > data.length || num <= 0) msg = "الرقم الذي اخترته غير موجود بالقائمة ";
 	else {
 		const { commands } = global.client;
@@ -36,7 +36,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 			msg += `هاذي هيا الاوامر من نوع  ${dataAfter.group.toUpperCase()}\n`;
 
 			dataAfter.cmds.forEach(item => {
-				msg += `\n ${count+=1}↞ ${item}: ${commands.get(item).config.description}`;
+				msg += `\n ↳ ✦ 『${count+=1}』 ✦ ↲\n ${item}\n\nટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ\n ${commands.get(item).config.description}\nટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ`;
 			})  
 			msg += "\n\\n╭────────────╮\n";
 		}
