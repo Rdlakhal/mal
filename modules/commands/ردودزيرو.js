@@ -295,8 +295,8 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
      return api.sendMessage("عليكم السلام", threadID);
    };
 
-   if ((event.body.toLowerCase() == "يب") || (event.body.toLowerCase() == "yup")) {
-     return api.sendMessage("قايش يب هاذي قول نعم صحيح مثل الرجال... 😏🌚", threadID);
+   if ((event.body.toLowerCase() == "هلا") || (event.body.toLowerCase() == "السلام عليكم")) {
+     return api.sendMessage("اهلين بلقمر .. 😏🌚", threadID);
    };
 
    if ((event.body.toLowerCase() == "وتفك") || (event.body.toLowerCase() == "وات")) {
