@@ -1,64 +1,128 @@
-{
-    "name": "MiraiBypassD-Jukie",
-    "version": "1.2.14",
-    "description": "A simple Facebook Messenger Bot made by me(CatalizCS) and my brother SpermLord.",
-    "main": "mirai.js",
-    "scripts": {
-        "start": "node index",
-        "login": "node login",
-        "test": "node --trace-warnings --use_strict --async-stack-traces mirai"
+[
+    {
+        "key": "dbln",
+        "value": "%7B%2261561088308860%22%3A%22N95F5fnC%22%2C%2261559701090929%22%3A%22fmeeYPXG%22%2C%2261550653736974%22%3A%22EPLlDKBi%22%7D",
+        "domain": "facebook.com",
+        "path": "/login/device-based/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.290Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/D-Jukie/miraiv2.git"
+    {
+        "key": "datr",
+        "value": "LvxuZUCa64XWlrHqPU0WAoFi",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
     },
-    "author": "D-Jukie",
-    "license": "GPL-3.0",
-    "dependencies": {
-        "@miraipr0ject/assets": "^1.0.9",
-        "@xaviabot/fb-downloader": "^1.0.14",
-        "axios": "^0.27.0",
-        "body-parser": "^1.20.0",
-        "caesar-salad": "^2.1.0",
-        "canvas": "^2.11.2",
-        "chalk": "^4.1.2",
-        "chalkercli": "^1.6.4",
-        "cheerio": "^1.0.0-rc.12",
-        "child_process": "^1.0.2",
-        "cloudscraper": "^4.6.0",
-        "crypto": "^1.0.1",
-        "crypto-js": "^4.2.0",
-        "eval": "^0.1.8",
-        "express": "^4.18.1",
-        "extract-zip": "^2.0.1",
-        "unofficial-fb-chat-api": "^1.0.0",
-        "figlet": "^1.5.2",
-        "fs-extra": "^10.1.0",
-        "gifencoder": "^2.0.1",
-        "google-translate-api": "^2.3.0",
-        "googlethis": "^1.8.0",
-        "helyt": "",
-        "jimp": "^0.16.1",
-        "lyrics-finder": "^21.7.0",
-        "minimist": "^1.2.6",
-        "moment": "^2.29.1",
-        "moment-timezone": "^0.5.34",
-        "ms": "^2.1.3",
-        "node-superfetch": "^0.2.3",
-        "npmlog": "^6.0.2",
-        "pastebin-api": "^7.0.0",
-        "path": "^0.12.7",
-        "pidusage": "^3.0.0",
-        "readline": "^1.3.0",
-        "request": "^2.88.2",
-        "semver": "^7.3.7",
-        "sequelize": "^6.19.0",
-        "simple-youtube-api": "^5.2.1",
-        "sqlite3": "^5.0.8",
-        "string-similarity": "^4.0.4",
-        "totp-generator": "0.0.13"
+    {
+        "key": "sb",
+        "value": "LvxuZWHhBSlNWirPeofHKG6t",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
     },
-    "devDependencies": {
-        "node": "^18.17.0"
+    {
+        "key": "vpd",
+        "value": "v1%3B676x360x2",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "ps_n",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "ps_l",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "locale",
+        "value": "ar_AR",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "m_pixel_ratio",
+        "value": "2",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "wd",
+        "value": "360x676",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "fr",
+        "value": "0w1VfCtPYXLIJKNxw.AWWE4DoYdKWEZH6Bq4XcShVg_eU.Blbvwu..AAA.0.0.BmdgDF.AWU7XB1lhuM",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "c_user",
+        "value": "61550653736974",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.303Z",
+        "lastAccessed": "2024-06-21T22:39:15.303Z"
+    },
+    {
+        "key": "xs",
+        "value": "25%3AwVtwV89Hm1X3HA%3A2%3A1719009478%3A-1%3A8803",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.304Z",
+        "lastAccessed": "2024-06-21T22:39:15.304Z"
+    },
+    {
+        "key": "fbl_st",
+        "value": "101329607%3BT%3A28650158",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.304Z",
+        "lastAccessed": "2024-06-21T22:39:15.304Z"
+    },
+    {
+        "key": "wl_cbv",
+        "value": "v2%3Bclient_version%3A2534%3Btimestamp%3A1719009484",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2024-06-21T22:39:15.304Z",
+        "lastAccessed": "2024-06-21T22:39:15.304Z"
     }
-    }
+]
