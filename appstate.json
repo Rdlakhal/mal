@@ -1,4 +1,4 @@
-    {
+{
     "name": "MiraiBypassD-Jukie",
     "version": "1.2.14",
     "description": "A simple Facebook Messenger Bot made by me(CatalizCS) and my brother SpermLord.",
@@ -61,3 +61,4 @@
     "devDependencies": {
         "node": "^18.17.0"
     }
+}
