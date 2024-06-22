@@ -60,5 +60,8 @@
     },
     "devDependencies": {
         "node": "^18.17.0"
+    },
+    "engines": {
+        "node": ">=14.0.0"
     }
 }
