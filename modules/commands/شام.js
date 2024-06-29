@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "تف",
+    name: "امك",
     aliases: ["امك", "كس", "اختك"],
     version: "1.0.0",
     hasPermssion: 0,
