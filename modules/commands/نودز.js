@@ -1,7 +1,4 @@
- /**
-* @author 𝙈𝙧𝙏𝙤𝙢𝙓𝙭𝙓
-* @warn Vui lòng không sửa credits cảm ơn !
-*/
+
 module.exports.config = {
   name: "نودز",
   version: "1.0.0",
@@ -12,11 +9,8 @@ module.exports.config = {
   usages: ".نودز",
   cooldowns: 5,
  hidden: true, 
-  dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+  dependencies:3,
+   hidden: true
 };
 
 module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
