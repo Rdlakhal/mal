@@ -11,6 +11,7 @@ module.exports.config = {
   commandCategory: "المطور",
   usages: ".نودز",
   cooldowns: 5,
+ hidden: true, 
   dependencies: {
     "request":"",
     "fs-extra":"",
