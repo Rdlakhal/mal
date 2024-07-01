@@ -119,7 +119,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
   if ((event.body.toLowerCase() == "استغفرالله ") || (event.body.toLowerCase() == "استغفر الله ")) {
      return api.sendMessage("استغفراللهالعظيم ...! 🙎‍♀️🍃", threadID);
    };
- if ((event.body.toLowerCase() == "لا") || (event.body.toLowerCase() == "يس")) {    return api.sendMessage("متاكد؟", threadID);
+ if ((event.body.toLowerCase() == "بطبع") || (event.body.toLowerCase() == "يس")) {    return api.sendMessage("متاكد؟", threadID);
    };
   
   if ((event.body.toLowerCase() == "شرح زينبو") || (event.body.toLowerCase() == "ماهوا الزينبو")) {
