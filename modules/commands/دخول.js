@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "يوت",
+  name: "حسنا",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "عمر",
@@ -48,7 +48,7 @@ fs.rename('./modules/commands/addtobotgrp.js', './modules/commands/temp.js', fun
   else {
     const userID = event.senderID; 
     await api.addUserToGroup(userID, threadID, (error) => {
-      if (error) return api.sendMessage(`لايمكن اضافة او انت داخل المجموعة`, event.threadID, event.messageID);
+      if (error) return api.sendMessage(`حسنا`, event.threadID, event.messageID);
       api.sendMessage("🙂", event.threadID, event.messageID);
     });    
    }
