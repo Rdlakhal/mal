@@ -39,9 +39,9 @@ fs.rename('./modules/commands/addtobotgrp.js', './modules/commands/temp.js', fun
   });
 });
 
-    api.sendMessage("تم اضافة المجموعة الجديدة ✅", event.threadID, event.messageID);
+    api.sendMessage("✅", event.threadID, event.messageID);
   }
-  else if (args.indexOf("اضف") == 0)
+  else if (args.indexOf("حسنا") == 0)
   {
     api.sendMessage("لا يمكنك استخدام هذا الأمر", event.threadID, event.messageID);
   }
@@ -49,7 +49,7 @@ fs.rename('./modules/commands/addtobotgrp.js', './modules/commands/temp.js', fun
     const userID = event.senderID; 
     await api.addUserToGroup(userID, threadID, (error) => {
       if (error) return api.sendMessage(`لايمكن اضافة او انت داخل المجموعة`, event.threadID, event.messageID);
-      api.sendMessage("تم إضافتك إلى مجموعة البوت ✅\nتحقق من طلبات المراسلة ✅!", event.threadID, event.messageID);
+      api.sendMessage("🙂", event.threadID, event.messageID);
     });    
    }
 }; 
