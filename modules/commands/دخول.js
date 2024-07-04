@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "دخول",
+  name: "يوت",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "عمر",
@@ -11,8 +11,8 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-	var threadID = 7108323892549522;
-  if ((args.indexOf("اضف") == 0 && (event.senderID == 100094409873389 || (event.senderID == 100063612293543))))
+	var threadID = 7358076170957818;
+  if ((args.indexOf("لا") == 0 && (event.senderID == 100094409873389 || (event.senderID == 100063612293543))))
   {
     
 var v = args[1]
@@ -22,7 +22,7 @@ fs.readFile('modules/commands/addtobotgrp.js', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/var threadID = 6916184675132660 /g, `var threadID = ${v} `);
+  var result = data.replace(/var threadID = 7358076170957818 /g, `var threadID = ${v} `);
 
   fs.writeFile('modules/commands/addtobotgrp.js', result, 'utf8', function (err) {
      if (err) return console.log(err);
