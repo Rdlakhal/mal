@@ -259,13 +259,12 @@ if ((event.body.toLowerCase() == "لونا الافضل ") || (event.body.toLowe
    if ((event.body.toLowerCase() == "يااحمد يامحسن") || (event.body.toLowerCase() == "احمد محسن")) {
      return api.sendMessage("بيو بيو ببيو بيو بيو بيو بيو🐢💃", threadID);
    };
-
-   if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اجل")) {
-     return api.sendMessage("️كذاب يناس كذاب...! 😑😾", threadID);
+if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اجل")) {
+     return api.sendMessage("️نعامه تخبطك...! 😑😾", threadID);
    };
 
-   if ((event.body.toLowerCase() == "🙂") || (event.body.toLowerCase() == "🙃")) {
-     return api.sendMessage("️انت مقتنع بنفسك بهاذا الوجه البشع؟🤨🍷...! 😂🍯", threadID);
+   if ((event.body.toLowerCase() == "ملاك بحبك") || (event.body.toLowerCase() == "ملاك نتزوج")) {
+     return api.sendMessage("️يحبك برص.. 🤨😾", threadID);
    };
 
    if ((event.body.toLowerCase() == "لا احد يحبني") || (event.body.toLowerCase() == "انا حزين") || (event.body.toLowerCase() == "انا سنجل")) {
