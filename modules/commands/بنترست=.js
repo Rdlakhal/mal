@@ -1,69 +1,74 @@
-cmd install pin.js const axios = require("axios");
-const path = require("path");
-
-module.exports = {
-  config: {
-    name: "pin",
-    aliases: ["pin"],
-    version: "1.0",
-    author: "Arrogant",
-    role: 0,
-    countDown: 20,
-    longDescription: {
-  en: "This command allows you to search for images on pinterest based on a given query and fetch a specified number of images."
-},
-    category: "Search",
-    guide: {
-      en: "{pn} <search query> <number of images>\nExample: {pn} tomozaki -5"
-    }
-  },
-
-  onStart: async function ({ api, event, args }) {
-    try {
-      const fs = require("fs-extra");
-      const keySearch = args.join(" ");
-      if (!keySearch.includes("-")) {
-        return api.sendMessage(
-          "⛔ 𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗨𝘀𝗲\n━━━━━━━━━━━━━━━\n\nPlease enter the search query and number of images (1-99)",
-          event.threadID,
-          event.messageID
-        );
-      }
-      const keySearchs = keySearch.substr(0, keySearch.indexOf('-'))
-      let numberSearch = keySearch.split("-").pop() || 99
-    if (numberSearch> 99 ){
-      numberSearch = 99
-    }
-
-      const apiUrl = `https://aryan-apis.onrender.com/api/pinterest2?search=${encodeURIComponent(keySearchs)}&keysearch=${numberSearch}&apikey=aryan`;
-
-
-      const res = await axios.get(apiUrl);
-      const data = res.data.result;
-      const imgData = [];
-
-      for (let i = 0; i < Math.min(numberSearch, data.length); i++) {
-        const imgResponse = await axios.get(data[i], {
-          responseType: "arraybuffer"
-        });
-        const imgPath = path.join(__dirname, "cache", `${i + 1}.jpg`);
-        await fs.outputFile(imgPath, imgResponse.data);
-        imgData.push(fs.createReadStream(imgPath));
-      }
-
-      await api.sendMessage({
-        body: `📸 𝗣𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁\n━━━━━━━━━━━━━━━\n\n𝖧𝖾𝗋𝖾 𝗂𝗌 𝗍𝗁𝖾 𝗍𝗈𝗉 ${numberSearch} 𝗋𝖾𝗌𝗎𝗅𝗍𝗌 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝗊𝗎𝖾𝗋𝗒 ${keySearchs}`,
-        attachment: imgData,
-      }, event.threadID, event.messageID);
-
-      await fs.remove(path.join(__dirname, "cache"));
-    } catch (error) {
-      console.error(error);
-      return api.sendMessage(
-        `An error occurred.`,
-        event.threadID,
-        event.messageID
-      );
-    }
+module.exports.config = {
+  name: "كف",
+  version: "3.1.1",
+  hasPermssion: 0,
+  credits: "Black Amex",
+  description: "married",
+  commandCategory: "𝔾𝔸𝕄𝔼𝕊",
+  usages: "[@سوي تاغ لي للشخص]",
+  cooldowns: 5,
+  dependencies: {
+      "axios": "",
+      "fs-extra": "",
+      "path": "",
+      "jimp": ""
   }
 };
+
+module.exports.onLoad = async() => {
+  const { resolve } = global.nodemodule["path"];
+  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+  const { downloadFile } = global.utils;
+  const dirMaterial = __dirname + `/cache/canvas/`;
+  const path = resolve(__dirname, 'cache/canvas', 'slapbat.png');
+  if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
+  if (!existsSync(path)) await downloadFile("https://i.imgur.com/NoHXxGb.jpg", path);
+}
+
+async function makeImage({ one, two }) {
+  const fs = global.nodemodule["fs-extra"];
+  const path = global.nodemodule["path"];
+  const axios = global.nodemodule["axios"]; 
+  const jimp = global.nodemodule["jimp"];
+  const __root = path.resolve(__dirname, "cache", "canvas");
+
+  let batgiam_img = await jimp.read(__root + "/slapbat.png");
+  let pathImg = __root + `/batman${one}_${two}.png`;
+  let avatarOne = __root + `/avt_${one}.png`;
+  let avatarTwo = __root + `/avt_${two}.png`;
+
+  let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+  fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
+
+  let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+  fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
+
+  let circleOne = await jimp.read(await circle(avatarOne));
+  let circleTwo = await jimp.read(await circle(avatarTwo));
+  batgiam_img.composite(circleOne.resize(240, 240), 470, 40).composite(circleTwo.resize(240, 240), 170, 170);
+
+  let raw = await batgiam_img.getBufferAsync("image/png");
+
+  fs.writeFileSync(pathImg, raw);
+  fs.unlinkSync(avatarOne);
+  fs.unlinkSync(avatarTwo);
+
+  return pathImg;
+}
+async function circle(image) {
+  const jimp = require("jimp");
+  image = await jimp.read(image);
+  image.circle();
+  return await image.getBufferAsync("image/png");
+}
+
+module.exports.run = async function ({ event, api, args }) {    
+  const fs = global.nodemodule["fs-extra"];
+  const { threadID, messageID, senderID } = event;
+  const mention = Object.keys(event.mentions);
+  if (!mention[0]) return api.sendMessage("تاغ للشخص الي تبي", threadID, messageID);
+  else {
+      const one = senderID, two = mention[0];
+      return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+  }
+    }
