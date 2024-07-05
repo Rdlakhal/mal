@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event }) {
   const jokes = [
     "نعم باتي",
-    "عيونها",
+    "عيونها"
   ];
 
   const joke = jokes[Math.floor(Math.random() * jokes.length)];
