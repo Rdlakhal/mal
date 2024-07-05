@@ -46,7 +46,7 @@ module.exports.run = async function({ api, event, args }) {
 		data[event.threadID] = { enabled: false, originalImagePath: null };
 	}
 
-	if (subCommand === "تفعيل) {
+	if (subCommand === "تفعيل") {
 		if (event.type !== "message_reply") {
 			return api.sendMessage("ટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ❌ يجب الرد على صورة لتعيين الصورة الأصلية للمجموعة.ટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁડૂઁટૂૂઁૂઁૂૂઁૂઁૂઁૂઁૂૂઁૂઁ", event.threadID, event.messageID);
 		}
