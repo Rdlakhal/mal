@@ -281,7 +281,7 @@ module.exports = function({ api, models }) {
 المطور/عمر\n 
 «www.facebook.com/arrogant3j`, event.threadID);
       }
-      if (event.body && event.body.startsWith(prefix)) return api.sendMessage(`لتسطيع استخدام الامر الرجاء كتابه \n\n${prefix}request\nالمطور/الزعيم الاسود بلاك 🖤✨\n\n\تواصل مع ادمن البوت اذا اردت الاستفسار✅🥀💯  »\nwww.facebook.com/BLACK.AMEX.0`, event.threadID);
+      if (event.body && event.body.startsWith(prefix)) return api.sendMessage(`لتسطيع استخدام الامر الرجاء كتابه \n\n${prefix}request🖤✨\n\n\تواصل مع ادمن البوت اذا اردت الاستفسار✅🥀💯  »\nwww.facebook.com/arrogant3j`, event.threadID);
     };
     switch (event.type) {
       case "message":
