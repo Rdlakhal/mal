@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "ملاك",
+    name: "يوتا",
     version: "1.0.0",
     hasPermssion: 2,
     credits: "3bida",
