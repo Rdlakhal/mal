@@ -10,7 +10,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event }) {
-  const jokes =["نعم باتي","عيونها]";
+  const jokes =["نعم باتي","عيونها"];
 
   const joke = jokes[Math.floor(Math.random() * jokes.length)];
   api.sendMessage(joke, event.threadID, event.messageID);
