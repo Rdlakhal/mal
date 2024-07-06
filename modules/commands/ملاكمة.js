@@ -10,21 +10,19 @@ module.exports.config = {
 };
 
 module.exports.run = async({ api, event, args, client, Users, Threads, __GLOBAL, Currencies, role }) => {
-    // التحقق مما إذا كان المستخدم مطور أو مشرف
-    if (role < 0) {
-        return api.sendMessage('هذا الأمر مخصص للمطورين أو الأدمن فقط!', event.threadID, event.messageID);
-    }
-
     var hi = ["نعم بابي 😚🫣", "عيونها 😚😊", "نعم البي 🫢😊"];
     var know = hi[Math.floor(Math.random() * hi.length)];
+
+    if (role < 1) {
+        return api.sendMessage('هذا الأمر مخصص للمطورين فقط!', event.threadID, event.messageID);
+    }
 
     api.sendMessage(`${know}`, event.threadID);
 };
 
 module.exports.atCall = async function ({ api, message, event, args, threadsData, role }) {
-    // التحقق مما إذا كان المستخدم مطور أو مشرف
     if (role < 1) {
-        return message.reply('هذا الأمر مخصص للمطورين أو الأدمن فقط!');
+        return message.reply('هذا الأمر مخصص للمطورين فقط!');
     }
     let threadData = await threadsData.get(event.threadID);
     const BOTID = api.getCurrentUserID();
