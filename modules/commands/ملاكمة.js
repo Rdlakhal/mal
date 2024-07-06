@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "يوتا",
     version: "1.0.0",
-    hasPermssion: 2, // تحديد الإذن للمطورين فقط
+    hasPermssion: 1, // تحديد الإذن للمطورين فقط
     credits: "3bida",
     description: "",
     usages: "",
@@ -10,9 +10,9 @@ module.exports.config = {
 };
 
 module.exports.run = async({ api, event, args, client, Users, Threads, __GLOBAL, Currencies, role }) => {
-    // التحقق مما إذا كان المستخدم مطور
-    if (role < 1) {
-        return api.sendMessage('بس بابا بيناديني بهاذا الاسم 🤨😾🌳🍃', event.threadID, event.messageID);
+    // التحقق مما إذا كان المستخدم مطور أو مشرف
+    if (role < 2) {
+        return api.sendMessage('هذا الأمر مخصص للمطورين أو الأدمن فقط!', event.threadID, event.messageID);
     }
 
     var hi = ["نعم بابي 😚🫣", "عيونها 😚😊", "نعم البي 🫢😊"];
@@ -22,7 +22,10 @@ module.exports.run = async({ api, event, args, client, Users, Threads, __GLOBAL,
 };
 
 module.exports.atCall = async function ({ api, message, event, args, threadsData, role }) {
-    if (role < 1) return message.reply('فقط الأدمن يقدر يشغله يا غبي 🌝');
+    // التحقق مما إذا كان المستخدم مطور أو مشرف
+    if (role < 1) {
+        return message.reply('هذا الأمر مخصص للمطورين أو الأدمن فقط!');
+    }
     let threadData = await threadsData.get(event.threadID);
     const BOTID = api.getCurrentUserID();
     
