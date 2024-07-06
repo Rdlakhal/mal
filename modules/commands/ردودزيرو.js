@@ -308,7 +308,7 @@ if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اج
      return api.sendMessage("من قال ذلك ?", threadID);
    };
   
-  if (event.body.indexOf("ملاك") == 0 || (event.body.indexOf("ببيبي") == 0)) {
+  if (event.body.indexOf("عمر") == 0 || (event.body.indexOf("ببيبي") == 0)) {
     var msg = {
       body: `${rand}`
     }
