@@ -11,8 +11,8 @@ module.exports.config = {
 
 module.exports.run = async({ api, event, args, client, Users, Threads, __GLOBAL, Currencies, role }) => {
     // التحقق مما إذا كان المستخدم مطور
-    if (role < 2) {
-        return api.sendMessage('هذا الأمر مخصص للمطورين فقط!', event.threadID, event.messageID);
+    if (role < 1) {
+        return api.sendMessage('بس بابا بيناديني بهاذا الاسم 🤨😾🌳🍃', event.threadID, event.messageID);
     }
 
     var hi = ["نعم بابي 😚🫣", "عيونها 😚😊", "نعم البي 🫢😊"];
