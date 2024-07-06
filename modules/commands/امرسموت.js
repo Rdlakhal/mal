@@ -18,11 +18,12 @@ module.exports = {
     }
   },
 
-  atCall: async function ({api,  message, event, args, threadsData, role }) {
+  // عند استدعاء الأمر
+  atCall: async function ({ api, message, event, args, threadsData, role }) {
     if (role < 1) return message.reply('فقط الأدمن يقدر يشغله يا غبي 🌝');
-    let {adminIDs} = await threadsData.get(event.threadID);
+    let threadData = await threadsData.get(event.threadID);
     const BOTID = api.getCurrentUserID();
-    if (!adminIDs.includes(BOTID)) return message.reply('قم بجعل البوت أدمن لتستعمل هذا الأمر ⚠️');
+    if (!threadData.adminIDs.includes(BOTID)) return message.reply('قم بجعل البوت أدمن لتستعمل هذا الأمر ⚠️');
     
     if (!args[0]) {
       await threadsData.set(event.threadID, true, "settings.shutUp");
@@ -33,19 +34,20 @@ module.exports = {
     }
   },
 
+  // عند تلقي رسالة في الدردشة
   atChat: async function ({ event, usersData, message, threadsData, api }) {
-    let {adminIDs} = await threadsData.get(event.threadID);
+    let threadData = await threadsData.get(event.threadID);
     const name = await usersData.getName(event.senderID);
     
     if (
       event.body &&
       (await threadsData.get(event.threadID, "settings.shutUp")) === true &&
-      event.senderID !== api.getCurrentUserID() && !adminIDs.includes(event.senderID)
+      event.senderID !== api.getCurrentUserID() &&
+      !threadData.adminIDs.includes(event.senderID)
     ) {
       api.removeUserFromGroup(event.senderID, event.threadID).then(() => {
-        message.reply(`⚠️ ${name}:\n تم طردك لأنك تكلمت في وضع السكوت .`);
+        message.reply(`⚠️ ${name}:\n تم طردك لأنك تكلمت في وضع السكوت.`);
       });
     }
   }
 };
-      
