@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "القوانين",
+	name: "اعدادات",
 	version: "1.0.1",
 	hasPermssion: 0,
 	credits: "امين",
