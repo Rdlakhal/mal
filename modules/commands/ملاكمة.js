@@ -23,5 +23,5 @@ module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL
     var hi = ["❤️‍🩹❤🥰شو بدك", "نعم يروحي🥰😊", "حاضرة 🥰😘", "نعم ياحبيب قلبي ❤🥰", "بحبك بابي 😍🥰😊"];
     var know = hi[Math.floor(Math.random() * hi.length)];
 
-    return api.sendMessage(`「 ❖ 」 ${know} 「 ❖ 」`, event.threadID);
+    return api.sendMessage(`${know}`, event.threadID);
 };
