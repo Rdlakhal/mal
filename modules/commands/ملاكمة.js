@@ -10,8 +10,8 @@ module.exports.config = {
 };
 
 module.exports.run = async({api, event, args, client, Users, Threads, __GLOBAL, Currencies}) => {
-    var hi = ["❤️‍🩹❤🥰شو بدك", "نعم يروحي🥰😊", "حاضرة 🥰😘", "نعم ياحبيب قلبي ❤🥰", "بحبك بابي 😍🥰😊"];
+    var hi = ["نعم بابي 😚🫣","عيونها 😚😊","نعم البي 🫢😊"];
     var know = hi[Math.floor(Math.random() * hi.length)];
 
-    api.sendMessage(`「 ❖ 」 ${know} 「 ❖ 」`, event.threadID);
+    api.sendMessage(`${know}`, event.threadID);
 };
