@@ -1,9 +1,3 @@
-const fonts = "/cache/Play-Bold.ttf"
-const downfonts = "https://drive.google.com/u/0/uc?id=1uni8AiYk7prdrC7hgAmezaGTMH5R8gW8&export=download"
-const fontsName = 45
-const fontsInfo = 33
-const fontsOthers = 27
-const colorName = "#000000"
 module.exports.config = {
   name: "بطاقة",
   version: "2.0.0",
