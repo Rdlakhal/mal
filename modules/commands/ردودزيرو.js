@@ -238,7 +238,7 @@ if ((event.body.toLowerCase() == "ليبيا") || (event.body.toLowerCase() == "
    };
 
    if ((event.body.toLowerCase() == "احح") || (event.body.toLowerCase() == "ااااااح") || (event.body.toLowerCase() == "اححححح") || (event.body.toLowerCase() == "اح")) {
-     return api.sendMessage("منحرف اهربووووووووو", threadID);
+     return api.sendMessage(" اهربووووووووو", threadID);
    };
 
    if ((event.body.toLowerCase() == "مح") || (event.body.toLowerCase() == "بوسيني")) {
