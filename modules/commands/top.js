@@ -97,7 +97,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
 
             return api.sendMessage(` ${option} اكثر الاشخاص تفاعلا من حيث المستوى:\n\n${msg}`, threadID, messageID);
         } else if ((args[0] == "money") || (args[0] == "الاموال")) {
-            var data, msg = "",
+            var data, msg = "المطور الفخم المتكبر",
                 i = 0;
 
             //////////////////////////////////////////////
@@ -136,7 +136,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
                 i += 1;
             }
 
-      return api.sendMessage(`🌏اغنى ${option} اعضاء على السيرفر🔥\n${msg}`, threadID, messageID);
+      return api.sendMessage(`🦆اغنى ${option} اعضاء على السيرفر🔥\n${msg}`, threadID, messageID);
         } else return global.utils.throwError(this.config.name, threadID, messageID);
     }
     //THIS MODULE WAS MADE BY ME(CATALIZCS) - PLEASE DONT DELETE MY CREDIT (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
