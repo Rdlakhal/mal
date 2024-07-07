@@ -21,6 +21,12 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "🐦⬛") || (event.body.toLowerCase() =="غراب")) {
      return api.sendMessage("ايتاتشي اوتشيها 😔💔", threadID)
    };
+  if ((event.body.toLowerCase() == "حب") || (event.body.toLowerCase() =="حبي" && event.senderID == "100094409873389")) {
+     return api.sendMessage("عيوني عموري 😚❤", threadID);
+   };
+  if ((event.body.toLowerCase() == "ليش") || (event.body.toLowerCase() == "ليش طيب") || (event.body.toLowerCase() == "كيف") || (event.body.toLowerCase() == "كيف صار")) {
+     return api.sendMessage("لان المخرج عاوز كده يروحمك", threadID);
+   };
   if ((event.body.toLowerCase() == "تجربة") || (event.body.toLowerCase() == "ريان")) {
      return api.sendMessage("ناجحه...! 🦎", threadID)
    };
