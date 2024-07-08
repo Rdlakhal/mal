@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "رست",
+    name: "ريست",
     version: "2.0.2",
     hasPermssion: 2,
     credits: "Mirai ",
