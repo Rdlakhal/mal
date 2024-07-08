@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "غني",
+  name: "شغلي",
   version: "2.0.4",
   hasPermssion: 0,
   credits: "DRIDI-RAYEN",
@@ -84,4 +84,3 @@ module.exports.run = async ({ api, event }) => {
     api.sendMessage('حدث خطأ أثناء معالجة الأمر.', event.threadID);
   }
 };
-
