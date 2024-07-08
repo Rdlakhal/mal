@@ -281,7 +281,7 @@ module.exports = function({ api, models }) {
 المطور/عمر\n 
 «www.facebook.com/arrogant3j`, event.threadID);
       }
-      if (event.body && event.body.startsWith(prefix)) return api.sendMessage(``, event.threadID);
+      if (event.body && event.body.starsWih(prefix)) return api.sendMessage(``, event.threadID);
     };
     switch (event.type) {
       case "message":
