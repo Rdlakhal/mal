@@ -264,25 +264,6 @@ module.exports = function({ api, models }) {
   /////////////////////////////////////////////////
 
   return (event) => {
-    if (event.type == "change_thread_image") api.sendMessage(`» [ GROUP UPDATES ] ${event.snippet}`, event.threadID);
-    let data = JSON.parse(fs.readFileSync(__dirname + "/../modules/commands/cache/approvedThreads.json"));
-    let adminBot = global.config.ADMINBOT
-    if (!data.includes(event.threadID) && !adminBot.includes(event.senderID)) {
-      //getPrefix
-      const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
-      const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
-
-      //check body
-      if (event.body && event.body == `${prefix}request`) {
-        adminBot.forEach(e => {
-          api.sendMessage(`${event.threadID}`, e);
-        })
-        return api.sendMessage(`سيتم طلب الموافقه مسؤول البوت 🖤\n         
-المطور/عمر\n 
-«www.facebook.com/arrogant3j`, event.threadID);
-      }
-      if (event.body && event.body.starsWih(prefix)) return api.sendMessage(``, event.threadID);
-    };
     switch (event.type) {
       case "message":
       case "message_reply":
