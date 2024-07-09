@@ -11,7 +11,6 @@ module.exports.config = {
 
 module.exports.run = async({ event, api, args, Currencies, Users }) => {
         const { threadID, messageID } = event;
-
         ///////////////////////////////////////////
         //===== Kiểm tra có limit hay không =====//
         if (args[1] && isNaN(args[1]) || parseInt(args[1]) <= 0) return api.sendMessage("thông tin độ dài list phải là một con số và không dưới 0", event.threadID, event.messageID);
@@ -26,7 +25,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
             //////////////////////////////////////////////
             //===== Lấy toàn bộ nhóm và số message =====//
             try {
-                data = await api.getThreadList(option, null, ["INBOX"]);
+              data = await api.getThreadList(option, null, ["INBOX"]);
             } catch (e) {
                 console.log(e);
             }
@@ -97,7 +96,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
 
             return api.sendMessage(` ${option} اكثر الاشخاص تفاعلا من حيث المستوى:\n\n${msg}`, threadID, messageID);
         } else if ((args[0] == "money") || (args[0] == "الاموال")) {
-            var data, msg = "المطور الفخم المتكبر",
+            var data, msg = "\n\nالمطور عمك\n\n",
                 i = 0;
 
             //////////////////////////////////////////////
@@ -132,7 +131,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
                 //if (nameUser) nameUser = await Users.getNameUser(dataUser.userID);
                 var nameUser = (await Users.getData(dataUser.userID)).name;
 
-                msg += `${i + 1}. ${nameUser} :${dataUser.money} دولار\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــ`;
+                msg += `${i + 1}. ${nameUser} :${dataUser.money} دولار\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n`;
                 i += 1;
             }
 
