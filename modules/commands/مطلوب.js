@@ -1,8 +1,8 @@
 module.exports.config = {
-	name: "تلوب",
+	name: "مطلوب",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "𝒚𝒐𝒅𝒂 𝒕𝒂𝒌𝒂𝒉𝒂𝒔𝒉𝒊",
+	credits: "عمر",
 	description: "حط صورتك على بوستر مطلوب",
 	commandCategory: "صور",
 	usages: " ",
