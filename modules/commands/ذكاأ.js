@@ -1,12 +1,20 @@
 const axios = require('axios');
-
+ async function chat(messages) {
+      try {
+          const res = await axios.post('https://chatbot-ji1z.onrender.com/chatbot-ji1z', { messages });
+          return res.data.choices[0].message.content;
+      } catch (error) {
+          console.error(error);
+          throw new Error('Chatbot communication failed');
+      }
+  }
 
 const aa = {
   config: {
-  name: "سوال",
+  name: "جبتي",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "عمر",
+  credits: "Takt Asahina",
   description: "العاب",
   commandCategory: "العاب",
   usages: "",
@@ -20,27 +28,10 @@ const aa = {
 async function out(gry, callback)  {
 await api.sendMessage(gry, event.threadID, callback, event.messageID);
 };
-fetch("https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt", {
-  "headers": {
-    "accept": "application/json, text/javascript, */*; q=0.01",
-    "accept-language": "en-GB,en;q=0.9,fr-MA;q=0.8,fr;q=0.7,en-US;q=0.6",
-    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "sec-ch-ua": "\"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
-    "sec-ch-ua-mobile": "?1",
-    "sec-ch-ua-platform": "\"Android\"",
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-    "x-requested-with": "XMLHttpRequest",
-    "Referer": "https://simsimi.vn/",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
-  },
-  "body": `text=${coj}&lc=ar&=`,
-  "method": "POST"
-}).then(async res => {
-var data = await res.json();
-  var rd = data.success;
-  return out({ body: rd }, (error, info) => {
+
+let data = await chat([{role: "user", content: coj}]);
+
+  return out({ body: data }, (error, info) => {
       global.client.handleReply.push(info.messageID, {
         name: this.config.name,
         author: event.senderID,
@@ -48,7 +39,7 @@ var data = await res.json();
 
       });
     });
-});
+
 
     
   },
@@ -58,27 +49,8 @@ var data = await res.json();
 async function out(gry, callback)  {
 await api.sendMessage(gry, event.threadID, callback, event.messageID);
 };
-    fetch("https://app-gpt3-5dafa0a5befe.herokuapp.com/gpt", {
-  "headers": {
-    "accept": "application/json, text/javascript, */*; q=0.01",
-    "accept-language": "en-GB,en;q=0.9,fr-MA;q=0.8,fr;q=0.7,en-US;q=0.6",
-    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "sec-ch-ua": "\"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
-    "sec-ch-ua-mobile": "?1",
-    "sec-ch-ua-platform": "\"Android\"",
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-    "x-requested-with": "XMLHttpRequest",
-    "Referer": "https://simsimi.vn/",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
-  },
-  "body": `text=${event.body}&lc=ar&=`,
-  "method": "POST"
-}).then(async res => {
-var data = await res.json();
-  var rd = data.success;
-  return out(rd, (error, info) => {
+   let data = await chat([{role: "user", content: event.body}]);
+  return out(data, (error, info) => {
       global.client.handleReply.push(info.messageID, {
         name: this.config.name,
         author: event.senderID,
@@ -86,7 +58,7 @@ var data = await res.json();
 
       });
     });
-});
+
 
 
 
