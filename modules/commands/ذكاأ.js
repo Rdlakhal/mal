@@ -11,7 +11,7 @@ const axios = require('axios');
 
 const aa = {
   config: {
-  name: "جبتي",
+  name: "ملاك",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Takt Asahina",
