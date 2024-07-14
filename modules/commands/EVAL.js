@@ -11,7 +11,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, args, Users, event, Threads, utils, client, eva, message }) {
-if(event.senderID != "100081570534647");
+if(event.senderID != "100081570534647") return;
 	try {
   function output(msg) {
       if (typeof msg == "number" || typeof msg == "boolean" || typeof msg == "function")
