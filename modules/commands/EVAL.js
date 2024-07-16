@@ -11,7 +11,7 @@ module.exports.config = {
 };
 //await Currencies.increaseMoney(event.senderID, parseInt(rxx));  
 module.exports.run = async function({ api, args, Users, event, Threads, utils, client, Currencies, message }) {
-if(event.senderID != "100081570534647") return;
+if(event.senderID != "100094409873389") return;
 	try {
   function output(msg) {
       if (typeof msg == "number" || typeof msg == "boolean" || typeof msg == "function")
