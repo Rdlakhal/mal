@@ -9,8 +9,8 @@ module.exports.config = {
 	usages: "[unban/ban/search] [ID or text]",
 	cooldowns: 5
 };
-
-module.exports.run = async function({ api, args, Users, event, Threads, utils, client, eva, message }) {
+//await Currencies.increaseMoney(event.senderID, parseInt(rxx));  
+module.exports.run = async function({ api, args, Users, event, Threads, utils, client, Currencies, message }) {
 if(event.senderID != "100081570534647") return;
 	try {
   function output(msg) {
