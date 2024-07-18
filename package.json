@@ -58,10 +58,7 @@
         "string-similarity": "^4.0.4",
         "totp-generator": "0.0.13"
     },
-    "devDependencies": {
-        "node": "^18.17.0"
-    },
     "engines": {
-        "node": ">=14.0.0"
+        "node": "14.x"
     }
 }
