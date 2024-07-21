@@ -1,9 +1,13 @@
 const { spawn } = require("child_process");
-const { readFileSync } = require("fs-extra");
+const { readFileSync, writeFileSync } = require("fs-extra");
 const http = require("http");
 const axios = require("axios");
 const semver = require("semver");
 const logger = require("./utils/log");
+const login = require('unofficial-fb-chat-api');
+
+// معلومات تسجيل الدخول
+const credentials = {email: 'laibot19@gmail.com', password: 'lai_1234'};
 
 /////////////////////////////////////////////
 //========= Check node.js version =========//
@@ -33,7 +37,7 @@ logger("Opened server site...", "[ Starting ]");
 //========= Create start bot and make it loop =========//
 /////////////////////////////////////////////////////////
 
-function startBot(message) {
+function startBot(message, api) {
     (message) ? logger(message, "[ Starting ]") : "";
 
     const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "mirai.js"], {
@@ -44,7 +48,7 @@ function startBot(message) {
 
     child.on("close", (codeExit) => {
         if (codeExit != 0 || global.countRestart && global.countRestart < 5) {
-            startBot("Restarting...");
+            startBot("Restarting...", api);
             global.countRestart += 1;
             return;
         } else return;
@@ -53,18 +57,30 @@ function startBot(message) {
     child.on("error", function (error) {
         logger("An error occurred: " + JSON.stringify(error), "[ Starting ]");
     });
+
+    if (api) {
+        // حفظ حالة الجلسة لتجنب الحاجة إلى تسجيل الدخول في كل مرة
+        writeFileSync('appstate.json', JSON.stringify(api.getAppState()));
+    }
 };
 ////////////////////////////////////////////////
 //========= Check update from Github =========//
 ////////////////////////////////////////////////
-
 
 axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2/main/package.json").then((res) => {
     logger(res['data']['name'], "[ NAME ]");
     logger("Version: " + res['data']['version'], "[ VERSION ]");
     logger(res['data']['description'], "[ DESCRIPTION ]");
 });
-startBot();
+
+login(credentials, (err, api) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    startBot(null, api);
+});
+
 /*axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2_fix/main/package.json").then((res) => {
     const local = JSON.parse(readFileSync('./package.json'));
     if (semver['lt'](local.version, res['data']['version'])) {
