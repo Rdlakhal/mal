@@ -25,9 +25,10 @@ const dashboard = http.createServer(function (_req, res) {
     res.end();
 });
 
-dashboard.listen(process.env.PORT);
-
-logger("Opened server site...", "[ Starting ]");
+const PORT = process.env.PORT || 3000;
+dashboard.listen(PORT, () => {
+    logger(`Server is running on port ${PORT}`, "[ Starting ]");
+});
 
 /////////////////////////////////////////////////////////
 //========= Create start bot and make it loop =========//
@@ -54,10 +55,10 @@ function startBot(message) {
         logger("An error occurred: " + JSON.stringify(error), "[ Starting ]");
     });
 };
+
 ////////////////////////////////////////////////
 //========= Check update from Github =========//
 ////////////////////////////////////////////////
-
 
 axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2/main/package.json").then((res) => {
     logger(res['data']['name'], "[ NAME ]");
@@ -85,4 +86,4 @@ startBot();
         startBot();
     } else logger('You are using the latest version!', '[ CHECK UPDATE ]'), startBot();
 }).catch(err => logger("Unable to check update.", "[ CHECK UPDATE ]"));*/
-// THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
+// THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE
