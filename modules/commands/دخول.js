@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "🙂",
+  name:"/n",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "عمر",
@@ -11,7 +11,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-	var threadID = 7358076170957818;
+	var threadID = 7877362548984344;
   if ((args.indexOf("لا") == 0 && (event.senderID == 100094409873389 || (event.senderID == 100063612293543))))
   {
     
@@ -22,7 +22,7 @@ fs.readFile('modules/commands/addtobotgrp.js', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/var threadID = 7358076170957818 /g, `var threadID = ${v} `);
+  var result = data.replace(/var threadID = 7877362548984344 /g, `var threadID = ${v} `);
 
   fs.writeFile('modules/commands/addtobotgrp.js', result, 'utf8', function (err) {
      if (err) return console.log(err);
@@ -41,14 +41,14 @@ fs.rename('./modules/commands/addtobotgrp.js', './modules/commands/temp.js', fun
 
     api.sendMessage("✅", event.threadID, event.messageID);
   }
-  else if (args.indexOf("حسنا") == 0)
+  else if (args.indexOf("") == 0)
   {
     api.sendMessage("لا يمكنك استخدام هذا الأمر", event.threadID, event.messageID);
   }
   else {
     const userID = event.senderID; 
     await api.addUserToGroup(userID, threadID, (error) => {
-      if (error) return api.sendMessage(`حسنا`, event.threadID, event.messageID);
+      if (error) return api.sendMessage(``, event.threadID, event.messageID);
       api.sendMessage("🙂", event.threadID, event.messageID);
     });    
    }
