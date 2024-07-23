@@ -20,7 +20,7 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'smto.png');
+    const path = resolve(__dirname, 'cache/canvas', 'smtt.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(path)) await downloadFile("https://scontent.xx.fbcdn.net/v/t1.15752-9/438095276_291864083863382_3445979593059847264_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5DCOlQL6MNUAb5j5EPY&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QG-PGyS8wn5eCM8TlJqqZ2VqcaYfBjM_U1P5TQs9AVQrg&oe=6650CA2D", path);
 }
@@ -32,7 +32,7 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let batgiam_img = await jimp.read(__root + "/smto.png");
+    let batgiam_img = await jimp.read(__root + "/smtt.png");
     let pathImg = __root + `/smto${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
