@@ -1,5 +1,5 @@
 module.exports.config = {
- name: "حماية",
+ name: "الادمن",
  version: "1.0.0",
  credits: "D-Jukie",
  hasPermssion: 1,
