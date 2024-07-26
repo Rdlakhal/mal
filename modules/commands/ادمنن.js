@@ -18,5 +18,5 @@ module.exports.run = async({ api, event, Threads}) => {
     else data["guard"] = false;
     await Threads.setData(event.threadID, { data });
       global.data.threadData.set(parseInt(event.threadID), data);
-    return api.sendMessage(`» تم ${(data["guard"] == true) ? "تشغيل" : "اطفاء"} حماية الادمن!`, event.threadID, event.messageID);
+    return api.sendMessage(`» تم ${(data["guard"] == true) ? "تشغيل" : "اطفاء"} الادمن الادمن!`, event.threadID, event.messageID);
 }
