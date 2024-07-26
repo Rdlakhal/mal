@@ -131,11 +131,11 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
                 //if (nameUser) nameUser = await Users.getNameUser(dataUser.userID);
                 var nameUser = (await Users.getData(dataUser.userID)).name;
 
-                msg += `${i + 1}. ${nameUser} :${dataUser.money} دولار\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n`;
+                msg += `𖠺⃟꯭💎꯭⃟𖠺꯭꯭${i + 1}𖠺⃟꯭💎꯭⃟𖠺꯭꯭. ${nameUser} :${dataUser.money} دولار\nــــ-ـــــ-ـــ-ـــــ-ـــ-ــــ-ــــــ-ــــــ-ــــــ-ــــــ\n`;
                 i += 1;
             }
 
-      return api.sendMessage(`🦆اغنى ${option} اعضاء على السيرفر🔥\n${msg}`, threadID, messageID);
+      return api.sendMessage(`𖠺⃟꯭💎꯭⃟𖠺꯭꯭اغنى ${option} اعضاء على السيرفر\n${msg}𖠺⃟꯭💎꯭⃟𖠺꯭꯭`, threadID, messageID);
         } else return global.utils.throwError(this.config.name, threadID, messageID);
     }
     //THIS MODULE WAS MADE BY ME(CATALIZCS) - PLEASE DONT DELETE MY CREDIT (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
