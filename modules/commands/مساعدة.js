@@ -70,12 +70,12 @@ module.exports. run = function({ api, event, args, getText }) {
     i = startSlice;
     const returnArray = arrayInfo.slice(startSlice, startSlice + numberOfOnePage);
     
-    for (let item of returnArray) msg += ` ╭─────────╮\n 🪽「${++i}」${prefix}${item}\n ╰─────────╯\n`;
+    for (let item of returnArray) msg += `𖠺⃟꯭💎꯭⃟𖠺꯭꯭ ╭─────────╮𖠺⃟꯭💎꯭⃟𖠺꯭꯭\n 🪽「${++i}」${prefix}${item}\n𖠺⃟꯭💎꯭⃟𖠺꯭꯭ ╰─────────╯𖠺⃟꯭💎꯭⃟𖠺꯭꯭\n`;
     
     
     const siu = `───「قائمة الاوامر」───`;
     
- const text = `\nالصفحة 「${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}」\n هناك 8 📃 ${prefix}كل صفحة فيها اوامر مختلفة
+ const text = `\nالصفحة 「${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}」\n هناك 8 📃 ${prefix} 𖠺⃟꯭💎꯭⃟𖠺꯭꯭
  `;
  
     return api.sendMessage(siu + "\n\n" + msg  + text, threadID, async (error, info) => {
