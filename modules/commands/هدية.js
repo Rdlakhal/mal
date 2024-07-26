@@ -11,7 +11,7 @@
     var array = [];
     module.exports.run = async function ({ api,event,Users,Currencies,args }) {
     var x = global.data.allCurrenciesID;var out = (msg) => api.sendMessage(msg,event.threadID,event.messageID);
-        let ix = ["100","200","300","400","500","600","709","800","900","1000"];
+        let ix = ["10000","20000","30000","40000","50000","60000","70009","80000","90000","100000"];
             let rxx = ix[Math.floor(Math.random() * ix.length)]; 
                 let rxxi = global.data.allThreadID;var xs = false;
                     var mention = Object.keys(event.mentions);
@@ -61,7 +61,7 @@
                 default: {
                         if(array.includes(event.senderID)) return out("انت محصل عـا الفلوس قمنقلع   !");array.push(event.senderID);
                     await Currencies.increaseMoney(event.senderID, parseInt(rxx)); 
-                return out("ππππ〖 اجتهد في جمع المال لكي تصنع من البوت على السيرفر〗ππππ\nالف مبروك صرت من اغنة الاغنياء و ثروتك تقدر بي : " + rxx);
+                return out(" ‌: " + rxx);
             }
         }
     };
