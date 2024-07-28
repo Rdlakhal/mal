@@ -11,7 +11,7 @@ const axios = require('axios');
 
 const aa = {
   config: {
-  name: "ملاك",
+  name: "الملاك",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Takt Asahina",
@@ -24,7 +24,7 @@ const aa = {
   run: async function({ event, api, args}) {
   
     const coj = args.join(" ")
-    if (!coj) return out('💙')
+    if (!coj) return out('اطرح سوأل... 😃🔥')
 async function out(gry, callback)  {
 await api.sendMessage(gry, event.threadID, callback, event.messageID);
 };
