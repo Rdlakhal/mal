@@ -60,22 +60,22 @@ var f = Math.floor(Math.random() * 5000) + 400;
             d = Math.floor( t/(00*60*60*24) ); 
            
             switch(e.body) {
-                case "1": msg = `اشتغلت بالكهوف بدوله لَيِّبًيِّأّ وحصلت  ${a}$`;
+                case "1": msg = `عملت في ليبيا وكسبت  ${a}$`;
                 await Currencies.increaseMoney(e.senderID, parseInt(a)); 
                 break;             
-                case "2": msg = `اشتغلت بالكهوف بدوله الجزائر وحصلت  ${b}$`; 
+                case "2": msg = `عملت في الجزائر وكسبت  ${b}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(b)); 
                 break;
-                case "3": msg = `اشتغلت بالكهوف بدوله المغرب وحصلت ${c}$`; 
+                case "3": msg = `عملت في المغرب وكسبت ${c}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(c)); 
                 break;
-                case "4": msg = `اشتغلت بالكهوف بدوله اليمن وحصلت ${x}$`; 
+                case "4": msg = `عملت في اليمن وكسبت ${x}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(x)); 
                 break;
-                case "5": msg = `اشتغلت بالكهوف بالولايات المتحدة تونس وحصلت ${y}$`; 
+                case "5": msg = `عملت في تونس وكسبت ${y}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(y)); 
                 break;
-                case "6": msg = `اشتغلت بالكهوف بدوله كمبوديا وحصلت ${f}$`; 
+                case "6": msg = `عملت في فلسطين وكسبت ${f}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(f)); 
                 break;
                 default: break;
@@ -130,7 +130,7 @@ module.exports.run = async ({
                 "\n4 ≥ اليمن" +
                 "\n5 ≥ تونس" +
                 "\n6 ≥ فلسطين" +
-                `\n\n🔥╰──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╯`,
+                `\n\n╰──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╯`,
                 attachment: fs.createReadStream(__dirname + `/cache/cave.jpg`)}
                 return api.sendMessage(msg,e.threadID,  (error, info) => {
                 data.work2Time = Date.now();
