@@ -11,7 +11,7 @@ async function chat(messages) {
 
 const aa = {
     config: {
-        name: "ملاك",
+        name: "ملاكي",
         version: "1.0.0",
         hasPermssion: 0,
         credits: "Takt Asahina",
