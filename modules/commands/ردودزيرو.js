@@ -27,7 +27,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "البوت " || event.body.toLowerCase() == "رصيد") && event.senderID == "61557927778438") {
   return api.sendMessage("وش بدك يا عطب", threadID);
   }
-  if ((event.body.toLowerCase() == "ملاك 😚" || event.body.toLowerCase() == "بوت") && event.senderID == "100094409873389") {
+  if ((event.body.toLowerCase() == "😚" || event.body.toLowerCase() == "بوت") && event.senderID == "100094409873389") {
   return api.sendMessage("نعم يا نبض قلبي🫢🫣🩷🩷", threadID);
 }
 
@@ -145,7 +145,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
   if ((event.body.toLowerCase() == "وينكم") || (event.body.toLowerCase() == "اين الجميع")) {
      return api.sendMessage("ملاك يوتا موجود و نوري يطفي نور الكل😐🤘", threadID);
    };
-  if ((event.body.toLowerCase() == "ملاك الخداع") || (event.body.toLowerCase() == "انت بوت؟ ")) {
+  if ((event.body.toLowerCase() == " الخداع") || (event.body.toLowerCase() == "انت بوت؟ ")) {
      return api.sendMessage("نعم معك ملاك الخداع بوت💪😎", threadID);
    };
   
@@ -210,7 +210,7 @@ if ((event.body.toLowerCase() == "بحبكي") || (event.body.toLowerCase() =="�
 if ((event.body.toLowerCase() == "ليبيا") || (event.body.toLowerCase() == "eg") || (event.body.toLowerCase() == "ليبيه") || (event.body.toLowerCase() == "ليبي")) {
      return api.sendMessage("احسن و احلا و افضل و افخم  ناس", threadID);
   }; 
-  if ((event.body.toLowerCase() == "ملاك مطور") || (event.body.toLowerCase() == "ملاك المطور") || (event.body.toLowerCase() == "المطور") || (event.body.toLowerCase() == ".المطور")) {
+  if ((event.body.toLowerCase() == "مطور") || (event.body.toLowerCase() == "المطور") || (event.body.toLowerCase() == "المطور") || (event.body.toLowerCase() == ".المطور")) {
      return api.sendMessage( "لَلَتٌـوٌأّصّـلَ مًعٌ أّلَمًطِوٌر\n\nوٌتٌـسِـأّبً\n  ↳ ✦ 『+218920832706』 ✦ ↲\n\nمًسِـنِجّـر\n ↳ ✦ 『m.me/100094409873389』 ✦ ↲\n\nتٌـلَغُرأّمً\n ↳ ✦ 『t.me/MTKBR1』 ✦ ↲ فُـيِّسِـبًوٌکْ\n ↳ ✦ 『https://www.facebook.com/arrogant3j?mibextid=ZbWKwL』 ✦ ↲\n\nواحب اقلك من الان لم يرد عليك 😁🩵",threadID);
    };
 
@@ -276,7 +276,7 @@ if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اج
      return api.sendMessage("️نعامه تخبطك...! 😑😾", threadID);
    };
 
-   if ((event.body.toLowerCase() == "ملاك بحبك") || (event.body.toLowerCase() == "ملاك نتزوج")) {
+   if ((event.body.toLowerCase() == " بحبك") || (event.body.toLowerCase() == "نتزوج")) {
      return api.sendMessage("️يحبك برص.. 🤨😾", threadID);
    };
 
