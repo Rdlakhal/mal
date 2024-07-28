@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "مشغول",
 	version: "1.0.0",
-	permissions: 0,
+	permissions: 2,
 	credits: "عمر",
 	description: "قم بتشغيل وضع الانشغال أو إيقاف تشغيله",
   usages: "ا",
@@ -23,8 +23,8 @@ module.exports.handleEvent = async function({ api, event, Users }) {
         var info = busyData[senderID];
         delete busyData[senderID];
         fs.writeFileSync(busyPath, JSON.stringify(busyData, null, 4));
-        return api.sendMessage(`مرحبًا بعودتك!!`, threadID, () => {
-            if (info.tag.length == 0) api.sendMessage("محد سوالك تاك !", threadID);
+        return api.sendMessage(`مرحبًا بعودتك سيدي`, threadID, () => {
+            if (info.tag.length == 0) api.sendMessage("لاتوجد اخبار!", threadID);
             else {
                 var msg = "";
                 for (var i of info.tag) {
