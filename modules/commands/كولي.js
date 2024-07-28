@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "aniquote",
+  name: "عبارات",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "ZiaRein",
