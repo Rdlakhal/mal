@@ -1,5 +1,6 @@
 module.exports.config = {
     name: "حماية",
+    aliases: ["حماية", "حظر", "طرد"],
     version: "1.0.0",
     hasPermssion: 0,
     credits: "المتكبر",
@@ -28,29 +29,5 @@ module.exports.run = async function({ api, event, args }) {
         
         // إرسال رسالة تأكيد إزالة العضو بنجاح
         return api.sendMessage('تمت ازالة العضو بنجاح', event.threadID);
-    }
-};
-
-module.exports.handleEvent = async function({ api, event }) {
-    // هنا يجب تضمين نفس منطق التحقق من الكلمات المحظورة
-    const forbiddenWords = ["نيك", "امك", "كس", "اختك"];
-    const message = event.body.toLowerCase();
-    if (forbiddenWords.some(word => message.includes(word))) {
-        var info = await api.getThreadInfo(event.threadID);
-        if (!info.adminIDs.some(item => item.id == api.getCurrentUserID())) {
-            return api.sendMessage('تم رصد كلمات محظورة | 📢\n======================\nيحتاج البوت إلى أن يكون مسؤول في المجموعة', event.threadID, event.messageID);
-        }
-
-        // إزالة العضو من المجموعة
-        api.removeUserFromGroup(event.senderID, event.threadID);
-        
-        // إرسال رسالة تأكيد إزالة العضو بنجاح
-        return api.sendMessage('تمت ازالة العضو بنجاح', event.threadID);
-    }
-};
-
-module.exports.languages = {
-    "ar": {
-        "cooldown": "الرجاء الانتظار قبل استخدام الأمر مجدداً."
     }
 };
