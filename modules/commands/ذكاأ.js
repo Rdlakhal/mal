@@ -24,7 +24,7 @@ const aa = {
   run: async function({ event, api, args}) {
   
     const coj = args.join(" ")
-    if (!coj) return out("اطرح سوأل... 😃🔥","ماذا تريد 🙃🥱")
+    if (!coj) return out("تف")
 async function out(gry, callback)  {
 await api.sendMessage(gry, event.threadID, callback, event.messageID);
 };
