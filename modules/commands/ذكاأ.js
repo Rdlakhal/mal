@@ -1,6 +1,4 @@
 const axios = require('axios');
-const stringSimilarity = require('string-similarity');
-
 async function chat(messages) {
     try {
         const res = await axios.post('https://chatbot-ji1z.onrender.com/chatbot-ji1z', { messages });
@@ -23,32 +21,21 @@ const aa = {
         cooldowns: 5,
     },
 
-    run: async function({ event, api, args}) {
+    run: async function({ event, api, args }) {
         const coj = args.join(" ");
-        const responses = [
-            "يرجى طرح سؤال... 😃🔥",
-            "لم تقم بطرح أي سؤال. حاول مجددًا! 🙃",
-            "لم أتمكن من معرفة سؤالك. 😅"
-        ];
-
-        if (!coj) return out(responses[Math.floor(Math.random() * responses.length)]);
-        
-        async function out(gry, callback)  {
-            await api.sendMessage(gry, event.threadID, callback, event.messageID);
-        };
-
-        // التحقق من التشابه
-        const possibleNames = ["ملاك", "الملاك", "ملاكي"];
-        let matched = false;
-        for (let name of possibleNames) {
-            if (stringSimilarity.compareTwoStrings(name, event.senderID) > 0.7) {
-                matched = true;
-                break;
-            }
+        if (!coj) {
+            const responses = [
+                "هل نسيت طرح السؤال؟ 😅",
+                "يبدو أنك لم تكتب سؤالًا. حاول مرة أخرى! 😃",
+                "تحتاج إلى كتابة شيء لأتمكن من الإجابة عليه! 🔍",
+                "أين السؤال؟ لا أستطيع القراءة بين السطور 😄"
+            ];
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            return out(randomResponse);
         }
 
-        if (!matched) {
-            return out("الاسم المدخل غير مطابق أو لا يشبه الاسم المسجل.");
+        async function out(gry, callback) {
+            await api.sendMessage(gry, event.threadID, callback, event.messageID);
         }
 
         let data = await chat([{ role: "user", content: coj }]);
@@ -63,9 +50,9 @@ const aa = {
     },
 
     handleReply: async function({ api, event, handleReply, usersData, threadsData }) {
-        async function out(gry, callback)  {
+        async function out(gry, callback) {
             await api.sendMessage(gry, event.threadID, callback, event.messageID);
-        };
+        }
 
         let data = await chat([{ role: "user", content: event.body }]);
         return out(data, (error, info) => {
@@ -75,7 +62,14 @@ const aa = {
                 messageID: info.messageID
             });
         });
-    },
+    }
+};
+
+// تعريف المعلومات الخاصة بعمر
+const owner = {
+    name: "عمر",
+    facebookId: "100094409873389",
+    description: "سيدي ومطوري"
 };
 
 module.exports = aa;
