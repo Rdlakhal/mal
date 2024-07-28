@@ -321,7 +321,7 @@ if ((event.body.toLowerCase() == "نعم") || (event.body.toLowerCase() == "اج
      return api.sendMessage("من قال ذلك ?", threadID);
    };
   
-  if (event.body.indexOf("ملاك") == 0 || (event.body.indexOf("بيبي") == 0)) {
+  if (event.body.indexOf("BITHAMED111Dark_i95i") == 0 || (event.body.indexOf("0000🇱🇾0000") == 0)) {
     var msg = {
       body: `${rand}`
     }
