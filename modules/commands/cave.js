@@ -42,7 +42,7 @@ module.exports.handleReply = async ({
     const { threadID, messageID, senderID } = e;
     let data = (await Currencies.getData(senderID)).data || {};
 if (handleReply.author != e.senderID) 
-return api.sendMessage("- اكعد راحة هذا مو شغلك!", e.threadID, e.messageID)
+return api.sendMessage("الم يعلماك والداك ان السرقة حرام 🤨🫳", e.threadID, e.messageID)
 
 var a = Math.floor(Math.random() * 5000) + 900; 
 var b = Math.floor(Math.random() * 5000) + 800; 
@@ -60,19 +60,19 @@ var f = Math.floor(Math.random() * 5000) + 400;
             d = Math.floor( t/(00*60*60*24) ); 
            
             switch(e.body) {
-                case "1": msg = `اشتغلت بالكهوف بدوله فيتنام وحصلت  ${a}$`;
+                case "1": msg = `اشتغلت بالكهوف بدوله لَيِّبًيِّأّ وحصلت  ${a}$`;
                 await Currencies.increaseMoney(e.senderID, parseInt(a)); 
                 break;             
-                case "2": msg = `اشتغلت بالكهوف بدوله الصين وحصلت  ${b}$`; 
+                case "2": msg = `اشتغلت بالكهوف بدوله الجزائر وحصلت  ${b}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(b)); 
                 break;
-                case "3": msg = `اشتغلت بالكهوف بدوله اليابان وحصلت ${c}$`; 
+                case "3": msg = `اشتغلت بالكهوف بدوله المغرب وحصلت ${c}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(c)); 
                 break;
-                case "4": msg = `اشتغلت بالكهوف بدوله تايلاند وحصلت ${x}$`; 
+                case "4": msg = `اشتغلت بالكهوف بدوله اليمن وحصلت ${x}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(x)); 
                 break;
-                case "5": msg = `اشتغلت بالكهوف بالولايات المتحدة الامريكية وحصلت ${y}$`; 
+                case "5": msg = `اشتغلت بالكهوف بالولايات المتحدة تونس وحصلت ${y}$`; 
                 await Currencies.increaseMoney(e.senderID, parseInt(y)); 
                 break;
                 case "6": msg = `اشتغلت بالكهوف بدوله كمبوديا وحصلت ${f}$`; 
@@ -82,9 +82,9 @@ var f = Math.floor(Math.random() * 5000) + 400;
             };
             const choose = parseInt(e.body);
             if (isNaN(e.body)) 
-            return api.sendMessage("⚡بيا بلد تريد تشتغل بالكهوف ؟ ", e.threadID, e.messageID);
+            return api.sendMessage("🔥بيا بلد تريد تشتغل بالكهوف ؟ ", e.threadID, e.messageID);
              if (choose > 6 || choose < 1) 
-            return api.sendMessage("⚡عليك الأختيار بين الرقم 1 أو 6!", e.threadID, e.messageID); 
+            return api.sendMessage("🔥عليك الأختيار بين الرقم من 1 حتى 6!", e.threadID, e.messageID); 
             api.unsendMessage(handleReply.messageID);
             if (msg == "...") {
                 msg = "...";
@@ -123,14 +123,14 @@ module.exports.run = async ({
     }
     else {    
         var msg = {
-            body: "========== 𝑪𝒂𝑽𝒆 =========="+`\n`+
-                "\n1 ≻ فيتنام" +
-                "\n2 ≻ الصين" +
-                "\n3 ≻ اليابان" +
-                "\n4 ≻ تايلاند" +
-                "\n5 ≻ الولاايات المتحدة الامريكية" +
-                "\n6 ≻ كمبوديا" +
-                `\n\n📌رد على الرسالة برقم حتى تشتغل باحدى الدول !`,
+            body: "╭──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╮"+`\n`+
+                "\n1≥  ليبيا" +
+                "\n2 ≥ الجزائر" +
+                "\n3 ≥ المغرب" +
+                "\n4 ≥ اليمن" +
+                "\n5 ≥ تونس" +
+                "\n6 ≥ فلسطين" +
+                `\n\n🔥╰──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╯`,
                 attachment: fs.createReadStream(__dirname + `/cache/cave.jpg`)}
                 return api.sendMessage(msg,e.threadID,  (error, info) => {
                 data.work2Time = Date.now();
