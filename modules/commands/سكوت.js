@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "حماية_الالفاض",
+    name: "\n",
     aliases: ["حماية", "حظر", "طرد"],
     version: "1.0.0",
     hasPermssion: 0,
