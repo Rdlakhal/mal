@@ -21,7 +21,7 @@ module.exports.config = {
 };
 module.exports.languages = {
     "vi": {
-        "cooldown": "⚡️Bạn đã làm việc rồi, quay lại sau: %1 phút %2 giây."      
+        "cooldown": "تعال بعد شوي"      
     },
     "en": {
         "cooldown": " تعال ورا: %1 دقيقة و %2 ثانية."
@@ -32,7 +32,7 @@ module.exports.onLoad = () => {
     const request = require("request");
     const dirMaterial = __dirname + `/cache/`;
     if (!fs.existsSync(dirMaterial + "cache")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "cave.jpg")) request("https://i.postimg.cc/N0D5CTrg/Picsart-22-07-11-15-11-59-573.png").pipe(fs.createWriteStream(dirMaterial + "cave.jpg"));
+    if (!fs.existsSync(dirMaterial + "cave.jpg")) request("https://scontent.xx.fbcdn.net/v/t1.15752-9/450181333_1004354724724501_5110919761776389020_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=9u3xwNwrKQoQ7kNvgGmcBpv&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGApHIkDvNnO7a_nCNAtQWjhJQyjVKg-mDOvPiGROeEZw&oe=66CDA385").pipe(fs.createWriteStream(dirMaterial + "cave.jpg"));
 }
 module.exports.handleReply = async ({ 
     event:e, 
