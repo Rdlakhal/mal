@@ -36,9 +36,9 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 			msg += `هاذي هيا الاوامر من نوع  ${dataAfter.group.toUpperCase()}\n`;
 
 			dataAfter.cmds.forEach(item => {
-				msg += `\n ${count+=1}↞ ${item}: ${commands.get(item).config.description}`;
+				msg += `╭──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╮\n ↲${count+=1}↳ 『${item}』\n${commands.get(item).config.description}`;
 			})  
-			msg += "\n\\n╭────────────╮\n";
+			msg += "╰──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╯";
 		}
 	}
 	const axios = require('axios');
