@@ -1,5 +1,5 @@
  module.exports.config = {
-  name: "foto",
+  name: "فوتو",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "gilgamesh",
