@@ -182,7 +182,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies, globalData
       dateNow < timestamps.get(senderID) + expirationTime
     )
       return api.setMessageReaction(
-        "😼",
+        "⏱",
         event.messageID,
         (err) =>
           err
