@@ -6,7 +6,7 @@ module.exports = {
 		name: "الرانك",
     aliases: ["rank", "المستوى"],
 		version: "1.2",
-		author: "Allou Mohamed",
+		author: "عمر",
 		countDown: 5,
 		role: 0,
 		shortDescription: {
