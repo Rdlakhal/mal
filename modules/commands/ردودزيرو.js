@@ -24,10 +24,10 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "حب" || event.body.toLowerCase() == "حبي") && event.senderID == "100094409873389") {
   return api.sendMessage("نعم يا نبض قلبي🫢🫣🩷🩷", threadID);
   }; 
-  if ((event.body.toLowerCase() == "ملاك" || event.body.toLowerCase() == "رصيد") && event.senderID == "61557927778438") {
+  if ((event.body.toLowerCase() == "البوت " || event.body.toLowerCase() == "رصيد") && event.senderID == "61557927778438") {
   return api.sendMessage("وش بدك يا عطب", threadID);
   }
-  if ((event.body.toLowerCase() == "ملاك 😚" || event.body.toLowerCase() == "ملاك") && event.senderID == "100094409873389") {
+  if ((event.body.toLowerCase() == "ملاك 😚" || event.body.toLowerCase() == "بوت") && event.senderID == "100094409873389") {
   return api.sendMessage("نعم يا نبض قلبي🫢🫣🩷🩷", threadID);
 }
 
