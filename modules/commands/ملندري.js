@@ -1,154 +1,72 @@
 const axios = require("axios");
-module.exports.Preset = {
+module.exports.config = {
   name: "at",
   version: "1.0.0",
-  Role: 3,
+  hasPermssion: 3,
   credits: "S H A D Y",
-  description: "",
-  Class: "الأدمن",
+  description: "تحميل الفيديوهات من منصات متعددة",
+  commandCategory: "الأدمن",
   usages: "",
-  Rest: 0
+  cooldowns: 0,
+};
+
+module.exports.run = async function({ event, api, args }) {};
+
+module.exports.handleEvent = async function({ event, api }) {
+  const { body, threadID, messageID } = event;
+
+  if (!body) return;
+
+  let platform = '';
+  if (body.startsWith("https://youtu")) {
+    platform = 'YouTube';
+  } else if (body.startsWith("https://music.youtube.com")) {
+    platform = 'YouTube Music';
+  } else if (body.startsWith("https://www.instagram.com")) {
+    platform = 'Instagram';
+  } else if (body.startsWith("https://www.facebook.com/")) {
+    platform = 'Facebook';
+  } else if (body.startsWith("https://vt.tiktok.com/") || body.startsWith("https://vm.tiktok.com/")) {
+    platform = 'TikTok';
+  } else if (body.startsWith("https://pin.it/") || body.startsWith("https://www.pinterest.com/")) {
+    platform = 'Pinterest';
+  } else if (body.startsWith("https://imgur.com/") || body.startsWith("https://i.imgur.com/")) {
+    platform = 'Imgur';
   }
- 
-module.exports.run = function ({ event, api, args }) {};
-module.exports.onEvent = async function ({ event, api }) {
-  const { body, threadID } = event;
-  if (
-    body &&
-    (body.startsWith("https://youtu") ||
-      body.startsWith("https://music.youtube.com"))
-  ) {
-    api.setMessageReaction("❔", event.messageID, null, true);
+
+  if (platform) {
+    api.setMessageReaction("❔", messageID, null, true);
     api.sendMessage(
-      `╭──«(»──𝒀𝑶𝑼𝑻𝑼𝑩𝑬──«)»──╮\n⇜ ༈ تم رصد فيديو YouTube 󰂆\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
+      `╭───「${platform}」───╮\nتم رصد فيديو ${platform} 📹\nالرد بـ "تحميل" لتحميل الفيديو.`,
       threadID,
       (err, info) => {
-        global.Settings.onReply.set(info.messageID, {
-          name: "at",
+        global.client.handleReply.push({
+          name: this.config.name,
           messageID: info.messageID,
           link: body,
-          type: "do"
+          type: "download"
         });
-      },
-      event.messageID
-    );
-  } else if (body && body.startsWith("https://www.instagram.com")) {
-    api.setMessageReaction("❔", event.messageID, null, true);
-    api.sendMessage(
-      `╭─«(»──𝑰𝑵𝑺𝑻𝑨𝑮𝑹𝑨𝑴──«)»─╮\n⇜ ༈ تم رصد فيديو Instagram 󰂆\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
-      threadID,
-      (err, info) => {
-        global.Settings.onReply.set(info.messageID, {
-          name: "at",
-          messageID: info.messageID,
-          link: body,
-          type: "do"
-        });
-      },
-      event.messageID
-    );
-  } else if (body && body.startsWith("https://www.facebook.com/")) {
-    api.setMessageReaction("❔", event.messageID, null, true);
-    api.sendMessage(
-      `╭─«(»──𝑭𝑨𝑪𝑬𝑩𝑶𝑶𝑲──«)»─╮\n⇜ ༈ تم رصد فيديو facebook 󰟤\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
-      threadID,
-      (err, info) => {
-        global.Settings.onReply.set(info.messageID, {
-          name: "at",
-          messageID: info.messageID,
-          link: body,
-          type: "do"
-        });
-      },
-      event.messageID
-    );
-  } else if (body &&
-    (body.startsWith("https://vt.tiktok.com/") ||
-      body.startsWith("https://vm.tiktok.com/"))) {
-    api.setMessageReaction("❔", event.messageID, null, true);
-    api.sendMessage(
-      `╭─«(»───𝑻𝑰𝑲𝑻𝑶𝑲───«)»─╮\n⇜ ༈ تم رصد فيديو TikTok 📱\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
-      threadID,
-      (err, info) => {
-        global.Settings.onReply.set(info.messageID, {
-          name: "at",
-          messageID: info.messageID,
-          link: body,
-          type: "do"
-        });
-      },
-      event.messageID
-    );
-  } else if (
-    body &&
-    (body.startsWith("https://pin.it/") ||
-      body.startsWith("https://www.pinterest.com/"))
-  ) {
-    api.setMessageReaction("❔", event.messageID, null, true);
-    api.sendMessage(
-      `╭─«(»──𝑷𝑰𝑵𝑻𝑬𝑹𝑬𝑺𝑻──«)»─╮\n⇜ ༈ تم رصد فيديو Pinterest 󰟯\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
-      threadID,
-      (err, info) => {
-        global.Settings.onReply.set(info.messageID, {
-          name: "at",
-          messageID: info.messageID,
-          link: body,
-          type: "do"
-        });
-      },
-      event.messageID
-    );
-  } else if (
-    body &&
-    (body.startsWith("https://imgur.com/") ||
-      body.startsWith("https://i.imgur.com/"))
-  ) {
-    api.setMessageReaction("❔", event.messageID, null, true);
-    api.sendMessage(
-      `╭─«(»───𝑰𝑴𝑮𝑼𝑹───«)»─╮\n⇜ ༈ تم رصد فيديو Imgur 󰦐\n————————————————\n •قم بالرد بــ "تحميل" اذا كنت تريد تحميله.\n————————————————`,
-      threadID,
-      (err, info) => {
-global.Settings.onReply.set(info.messageID, {
-          name: "at",
-          messageID: info.messageID,
-          link: body,
-          type: "do"
-        });
-      },
-      event.messageID
+      }
     );
   }
 };
- 
-module.exports.onReply = async function ({ event, onReply, api, Message }) {
-  const { type, link, messageID } = onReply;
-  const { body } = event;
-  const args = body.split(" ");
- 
-  if (type == "do") {
-    if (["تحميل"].includes(args[0])) {
-      await api.unsendMessage(messageID);
-      api.setMessageReaction("⚙️", event.messageID, null, true);
- 
- 
-       Message.send({
-        body: "༈「تـم تـحـمـيـل الـفـيـديـو」 ✅ ༈",
-        attachment: await global.Mods.getStreamFromURL(`https://app-alld-4e6d840874be.herokuapp.com/api/caera/aute?link=${encodeURIComponent(link)}`)
-      } );
- 
- 
-  api.setMessageReaction("✅", event.messageID, null, true);
- 
- 
- 
- 
- 
+
+module.exports.handleReply = async function({ event, api, handleReply }) {
+  const { type, link, messageID } = handleReply;
+  const { body, threadID } = event;
+
+  if (type === "download" && body.toLowerCase() === "تحميل") {
+    api.setMessageReaction("⚙️", messageID, null, true);
+    try {
+      const videoStream = await global.utils.getStreamFromURL(`https://app-alld-4e6d840874be.herokuapp.com/api/caera/aute?link=${encodeURIComponent(link)}`);
+      api.sendMessage({
+        body: "تم تحميل الفيديو بنجاح ✅",
+        attachment: videoStream
+      }, threadID);
+      api.setMessageReaction("✅", messageID, null, true);
+    } catch (error) {
+      api.sendMessage("حدث خطأ أثناء تحميل الفيديو. حاول مرة أخرى.", threadID);
+      api.setMessageReaction("❌", messageID, null, true);
     }
   }
- 
- 
- 
- 
- 
- 
 };
