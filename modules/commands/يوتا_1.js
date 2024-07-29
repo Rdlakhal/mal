@@ -14,7 +14,7 @@ async function chat(messages) {
 // الكائن الذي يحتوي على وظائف البوت
 const bot = {
   config: {
-    name: "يوتا",
+    name: "سوسن",
     version: "1.0.0",
     hasPermission: 0,
     credits: "Takt Asahina",
