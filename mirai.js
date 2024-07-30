@@ -150,7 +150,7 @@ function onBot({ models: botModel }) {
                 for (const command of listCommand) {
                     try {
                         var module = require(global.client.mainPath + '/modules/commands/' + command);
-                        if (!module.config || !module.run || !module.config.commandCategory) throw new Error(global.getText('mirai', 'errorFormat'));
+if (!module.config || !module.run || !module.config.commandCategory) throw new Error(global.getText('mirai', 'errorFormat'));
                         if (global.client.commands.has(module.config.name || '')) throw new Error(global.getText('mirai', 'nameExist'));
                         if (!module.languages || typeof module.languages != 'object' || Object.keys(module.languages).length == 0) logger.loader(global.getText('mirai', 'notFoundLanguage', module.config.name), 'warn');
                         if (module.config.dependencies && typeof module.config.dependencies == 'object') {
@@ -208,9 +208,9 @@ function onBot({ models: botModel }) {
                         logger.loader(global.getText('mirai', 'successLoadModule', module.config.name));
                     } catch (error) {
                         console.log(error)
-                    };
-                }
-            }(),
+        };
+    }
+}(),
             function() {
                 const events = readdirSync(global.client.mainPath + '/modules/events').filter(event => event.endsWith('.js') && !global.config.eventDisabled.includes(event));
                 for (const ev of events) {

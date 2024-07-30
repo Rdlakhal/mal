@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 2,
   credits: "عمر",
   description: "Set nicknames all group",
-  commandCategory: "group",
+  commandCategory: "المطور",
   usages: "[name]",
   cooldowns: 3
 };

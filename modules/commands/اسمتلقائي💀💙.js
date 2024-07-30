@@ -7,7 +7,7 @@ module.exports.config = {
   hasPermssion: 1,
   credits: "NTKhang",
   description: "Auto change nickname of new member",
-  commandCategory: "group",
+  commandCategory: "مسؤول",
   usages: "[set/view/on/off]",
   cooldowns: 5
 };

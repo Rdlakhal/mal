@@ -6,7 +6,7 @@
   hasPermssion: 0,
   credits: "𝙈𝙧𝙏𝙤𝙢𝙓𝙭𝙓", //fix get by  𝙍𝙖𝙩𝙪𝙡 𝙃𝙖𝙨𝙨𝙖𝙣
   description: `سيتم تلقائيا حظر كل شخص يرسل ${num} رسائل كل ${timee} ثانية`,
-  commandCategory: "System",
+  commandCategory: "خدمات",
   usages: "x",
   cooldowns: 5
 };

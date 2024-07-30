@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "Black Amex",
   description: "married",
-  commandCategory: "𝔾𝔸𝕄𝔼𝕊",
+  commandCategory: "العاب",
   usages: "[@سوي تاغ لي للشخص]",
   cooldowns: 5,
   dependencies: {

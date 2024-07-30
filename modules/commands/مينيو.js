@@ -29,16 +29,16 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 			msg += `\nوقت الانتظار: ${command_config.cooldowns || 5}s`;
 			msg += `\nالصلاحية: ${(command_config.hasPermssion == 0) ? "الكل" : (command_config.hasPermssion == 1) ? "مسؤولي المجموعات" : "المطور"}`;
       msg += `\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`
-			msg += `\n\n↞ تم تطويره بواسطة ${command_config.credits} `;
+			msg += `\n\n↞ تم تطويره بواسطة X_ALMTKBR_X`;
 		} else {
 			check = true;
 			let count = 0;
 			msg += `هاذي هيا الاوامر من نوع  ${dataAfter.group.toUpperCase()}\n`;
 
 			dataAfter.cmds.forEach(item => {
-				msg += `╭──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╮\n ↲${count+=1}↳ 『${item}』\n${commands.get(item).config.description}`;
+				msg += `╭─𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭─╮\n ↲${count+=1}↳ 『${item}』\n${commands.get(item).config.description}`;
 			})  
-			msg += "╰──𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭──╯";
+			msg += "╰─𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭𖠺⃟꯭💎꯭⃟𖠺꯭꯭─╯";
 		}
 	}
 	const axios = require('axios');
@@ -145,7 +145,7 @@ module.exports.run = async function({ api, event, args }) {
 		group.forEach(commandGroup => msg += `\n『${index_start+=1}』↳ ✦ 『${commandGroup.group.toUpperCase()}』 ✦ ↲`);
 		msg += `\n\nالصفحة【${page_num_input || 1}/${page_num_total}】`;
 		msg +=``
-		msg += `أّلَمًبًرمًجّـ هّـوٌأّ: أّلَفُـخِـمً أّلَمًتٌـکْبًر`;
+		msg += `اكتب مطور للتواصل مع المطور`;
 	}
 	var msgg = {body: msg, attachment: imgP}
 	return api.sendMessage(msgg, threadID, async (error, info) => {

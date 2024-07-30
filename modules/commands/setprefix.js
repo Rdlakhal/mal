@@ -4,7 +4,7 @@ version: "1.0.1",
 hasPermssion: 2,
 credits: "عمر",
 description: "Reset group prefix",
-commandCategory: "Group",
+commandCategory: "مسؤول",
 usages: "[prefix/reset]",
 cooldowns: 5
 };

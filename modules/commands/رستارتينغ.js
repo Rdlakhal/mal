@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 2,
     credits: "Mirai ",
     description: "اعادة التشغيل 👽🎧",
-    commandCategory: "رست",
+    commandCategory: "المطور",
     usages: "restart",
     cooldowns: 5,
     dependencies: { }

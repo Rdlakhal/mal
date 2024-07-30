@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: 'NTKhang',
 	description: '',
-	commandCategory: 'تجربة',
+	commandCategory: 'خدمات',
 	usages: 'givefile',
 	cooldowns: 5,
 	dependencies: {"fs-extra":""}

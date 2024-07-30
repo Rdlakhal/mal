@@ -1,10 +1,10 @@
 module.exports.config = {
-	name: "work",
+	name: "خلفيات",
 	version: "1.0.1",
 	hasPermssion: 2,
 	credits: "Mirai Team",
 	description: "If you work, you can eat!",
-	commandCategory: "Earn money",
+	commandCategory: "صور",
     cooldowns: 5,
     envConfig: {
         cooldownTime: 1200000

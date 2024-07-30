@@ -5,7 +5,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "VanHung - Fixed by LTD", 
 	description: "hihihihi",
-	commandCategory: "no prefix",
+	commandCategory: "خدمات",
 	usages: "fuck",
     cooldowns: 5, 
 };
@@ -29,7 +29,7 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "VanHung - Fixed by LTD", 
 	description: "hihihihi",
-	commandCategory: "no prefix",
+	commandCategory: "خدمات",
 	usages: "fuck",
     cooldowns: 5, 
 };

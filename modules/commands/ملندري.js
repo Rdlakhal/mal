@@ -5,7 +5,7 @@ module.exports.config = {
   hasPermssion: 3,
   credits: "S H A D Y",
   description: "تحميل الفيديوهات من منصات متعددة",
-  commandCategory: "الأدمن",
+  commandCategory: "المطور",
   usages: "",
   cooldowns: 0,
 };
