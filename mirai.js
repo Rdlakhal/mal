@@ -150,7 +150,7 @@ function onBot({ models: botModel }) {
                 for (const command of listCommand) {
                     try {
                         var module = require(global.client.mainPath + '/modules/commands/' + command);
-if (!module.config || !module.run || !module.config.commandCategory) throw new Error(global.getText('mirai', 'errorFormat'));
+                        if (!module.config || !module.run || !module.config.commandCategory) throw new Error(global.getText('mirai', 'errorFormat'));
                         if (global.client.commands.has(module.config.name || '')) throw new Error(global.getText('mirai', 'nameExist'));
                         if (!module.languages || typeof module.languages != 'object' || Object.keys(module.languages).length == 0) logger.loader(global.getText('mirai', 'notFoundLanguage', module.config.name), 'warn');
                         if (module.config.dependencies && typeof module.config.dependencies == 'object') {
@@ -208,9 +208,9 @@ if (!module.config || !module.run || !module.config.commandCategory) throw new E
                         logger.loader(global.getText('mirai', 'successLoadModule', module.config.name));
                     } catch (error) {
                         console.log(error)
-        };
-    }
-}(),
+                    };
+                }
+            }(),
             function() {
                 const events = readdirSync(global.client.mainPath + '/modules/events').filter(event => event.endsWith('.js') && !global.config.eventDisabled.includes(event));
                 for (const ev of events) {
@@ -269,8 +269,9 @@ if (!module.config || !module.run || !module.config.commandCategory) throw new E
                         global.client.events.set(event.config.name, event);
                         logger.loader(global.getText('mirai', 'successLoadModule', event.config.name));
                     } catch (error) {
-                        logger.loader(global.getText('mirai', 'failLoadModule', event.config.name, error), 'error');
-                    }
+                        const moduleName = event.config && event.config.name ? event.config.name : 'unknown';
+                  logger.loader(global.getText('mirai', 'failLoadModule', moduleName, error), 'error');
+                }
                 }
             }()
         logger.loader(global.getText('mirai', 'finishLoadModule', global.client.commands.size, global.client.events.size)) 
@@ -319,8 +320,8 @@ function rainbowText(text) {
 }
 
 const rainbowArt = `
-        █▀ █ █▀▀ █▀ ▀█▀ ▄▀█
-        ▄█ █ ██▄ ▄█ ░█░ █▀█`;
+       █  █‌ ▀█▀  █▀█
+       █▄▄█  █   █▀█`;
 
 console.log(rainbowText(rainbowArt));
 
